@@ -1,21 +1,4 @@
 ﻿$(function () {
-    //设置图表路径
-    //require.config({
-    //    packages: [{
-    //        name:'echarts',
-    //        location: '/Scripts/plugins/echarts',
-    //        main:'echarts',
-    //    },
-    //    {
-    //        name: 'zrender',
-    //        location: '/Scripts/plugins/zrender',
-    //        main: 'zrender'
-    //    }
-    //    ]
-    //});
-
-    
-
     $('#line').click(function () {
         line("line");
     })
@@ -66,6 +49,8 @@ function line(line) {
         url: "/api/ChartsData/" + line,
         type: "POST",
         success: function (data) {
+            var option = eval('(' + data + ')');          
+            //设置图表路径
             require.config({
                 packages: [{
                     name: 'echarts',
@@ -78,14 +63,7 @@ function line(line) {
                     main: 'zrender'
                 }
                 ]
-            });           
-
-           
-
- 
-
-            var option = eval('(' + data + ')');          
-
+            });
             require(
     [
        'echarts',

@@ -63,8 +63,8 @@
     <Compile Include="Entities\Detail.cs" />
     <Compile Include="Entities\EChartEnums.cs" />
     <Compile Include="Entities\feature\FeatureImage.cs" />
-    <Compile Include="Entities\feature\Restore.cs" />
     <Compile Include="Entities\feature\MagicType.cs" />
+    <Compile Include="Entities\feature\Restore.cs" />
     <Compile Include="Entities\feature\MagicTitle.cs" />
     <Compile Include="Entities\feature\MagicOption.cs" />
     <Compile Include="Entities\feature\DataView.cs" />

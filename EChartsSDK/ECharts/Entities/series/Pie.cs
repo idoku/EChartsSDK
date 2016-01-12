@@ -18,19 +18,31 @@ namespace ECharts.Entities.series
 
         public bool? clockWise { get; set; }
 
-        public NigRoseType roseType { get; set; }
+        public NigRoseType? roseType { get; set; }
 
         public int? selectedOffset { get; set; }
 
-        public SelectedModeType selectedMode { get; set; }
+        public SelectedModeType? selectedMode { get; set; }
 
         public bool? legendHoverLink { get; set; }
+
+        public Pie Radius(string radius)
+        {
+            this.radius = radius;
+            return this;
+        }
+
+        public Pie Center(IList<object> center)
+        {
+            this.center = center;
+            return this;
+        }
 
         public Pie() {
             this.type = ChartType.pie;
         }
 
-        public Pie(string name) {
+        public Pie(string name):this() {
             this.name = name;
         }
 

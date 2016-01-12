@@ -33,6 +33,35 @@ namespace ECharts.Entities.data
 
         public int? valueIndex { get; set; }
 
+
+        public T SymbolSize(object symbolSize)
+        {
+            this.symbolSize = symbolSize;
+            return this as T;
+        }
+
+
+
+        public T XAxis(object xAxis)
+        {
+            this.xAxis = xAxis;
+            return this as T;
+        }
+
+
+        public T YAxis(object yAxis)
+        {
+            this.yAxis = yAxis;
+            return this as T;
+        }
+
+
+        public T Value(object value)
+        {
+            this.value = value;
+            return this as T;
+        }
+
         public T ValueIndex(int valueIndex)
         {
             this.valueIndex = valueIndex;

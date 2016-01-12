@@ -14,10 +14,23 @@ namespace ECharts.Entities.series
 
         }
 
+        public MarkData(string name, MarkType type):this()
+        {
+            this.name = name;
+            this.type = type;
+        }
+
+        public MarkData(MarkType type) : this()
+        {
+            this.type = type;
+        }
+
         public MarkData(string name) : this()
         {
             this.name = name;
         }
+
+
 
     }
 }

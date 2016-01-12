@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series.data
 {
-    public class PieData 
+    public class PieData<T>
     {
+        public T value { get; set; }
         public string name { get; set; }
+
+        public PieData(T value, string name)
+        {
+            this.value = value;
+            this.name = name;
+        }
     }
 }

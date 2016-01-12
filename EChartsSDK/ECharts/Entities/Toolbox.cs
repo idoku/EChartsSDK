@@ -12,7 +12,7 @@ namespace ECharts.Entities
     {
      
 
-        public OrientType? horizontal { get; set; }
+        public OrientType? orient { get; set; }
 
         public int? itemGap { get; set; }
 
@@ -29,6 +29,13 @@ namespace ECharts.Entities
         public TextStyle textStyle { get; set; }
 
         public Feature feature { get; set; }
+
+        public ToolBox Orient(OrientType orient)
+        {
+            this.orient = orient;
+            return this;
+        }
+
 
         public Feature Feature()
         {

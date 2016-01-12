@@ -48,7 +48,7 @@ namespace ECharts.Entities
             return this as T;
         }
 
-        public T Y(VerticalType y)
+        public T Y(HorizontalType y)
         {
             this.y = y;
             return this as T;

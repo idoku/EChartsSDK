@@ -16,8 +16,8 @@ namespace EChartsWeb
 
             //绘图插件
             bundles.Add(new ScriptBundle("~/bundles/echarts").Include(
-                     "~/Scripts/plugins/echarts/echarts.js",             
-                     "~/Scripts/Plugins/datepicker/WdatePicker.js"));
+                      "~/Scripts/plugins/echarts/echarts.js"
+                    ));
 
            //zrender
             bundles.Add(new ScriptBundle("~/bundles/zrender").Include(

@@ -35,6 +35,13 @@ namespace ECharts.Entities
             return this;
         }
 
+        public Legend Orient(OrientType orient)
+        {
+            this.orient = orient;
+            return this;
+        }
+        
+
         public Legend Data(params object[] values)
         {
             if (data == null) {

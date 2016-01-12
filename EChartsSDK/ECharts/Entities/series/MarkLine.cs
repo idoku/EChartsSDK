@@ -31,8 +31,28 @@ namespace ECharts.Entities.series
         public Effect effect { get; set; }
 
         public ItemStyle itemStyle { get; set; }
- 
 
+
+        public Bound Bound()
+        {
+            if (bounding == null)
+                bounding = new series.Bound();
+            return bounding;
+        }
+
+        public ItemStyle ItemStyle()
+        {
+            if (itemStyle == null)
+                itemStyle = new ItemStyle();
+            return itemStyle;
+        }
+
+        public Effect Effect()
+        {
+            if (effect == null)
+                effect = new series.Effect();
+            return effect;
+        }
 
     }
 }

@@ -46,7 +46,15 @@ namespace ECharts.Entities
 
         public AxisPointer axisPointer { get; set; }
 
+    
+
         public TextStyle textStyle { get; set; }
+
+        public ToolTip ShowDelay(int showDelay)
+        {
+            this.showDelay = showDelay;
+            return this;
+        }
 
 
         public ToolTip Trigger(TriggerType trigger)

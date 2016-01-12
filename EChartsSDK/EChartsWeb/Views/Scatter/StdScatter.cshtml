@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "StdScatter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Scripts.Render("~/bundles/echarts")
+@Scripts.Render("~/bundles/zrender")
+<script src="~/Scripts/charts/scatter.js"></script>
+
+<h2>Index</h2>
+<input type="button" id="stdScatter" value="查询" />
+
+<div id="charts" style="height:400px"></div>

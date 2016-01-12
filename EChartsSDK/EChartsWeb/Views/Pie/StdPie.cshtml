@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "StdPie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StdPie</h2>
+@Scripts.Render("~/bundles/echarts")
+@Scripts.Render("~/bundles/zrender")
+<script src="~/Scripts/charts/pie.js"></script>
+
+<input type="button" id="stdPie" value="查询" />
+
+<div id="charts" style="height:400px"></div>

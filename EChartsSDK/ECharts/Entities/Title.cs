@@ -49,7 +49,7 @@ namespace ECharts.Entities
             return this;
         }
 
-        public Title SubText(string subText)
+        public Title SubText(string subtext)
         {
             this.subtext = subtext;
             return this;

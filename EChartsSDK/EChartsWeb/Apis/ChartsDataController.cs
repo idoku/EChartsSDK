@@ -149,7 +149,7 @@ namespace EChartsWeb.Apis
         //    return result;
         //}
         #endregion
-
+        
         #region line data
         [AcceptVerbs("GET", "POST")]
         public string Line()
@@ -805,6 +805,334 @@ namespace EChartsWeb.Apis
         }
         #endregion
 
+        #region bar data
 
+        [AcceptVerbs("GET", "POST")]
+        public string Bar()
+        {
+            ChartOption option = new ChartOption();
+            option.Title().Text("世界人口总数").SubText("数据来源网络");
+            option.ToolTip().Trigger(TriggerType.axis)
+               .AxisPointer().Type(AxisPointType.shadow);
+            option.Legend().Data("2011年","2012年");
+            option.ToolBox(ToolBox());
+            option.calculable = true;
+            var x = new ValueAxis();
+            x.BoundaryGap(new List<double>() { 0, 0.01 });
+            option.XAxis(x);
+            var y = new CategoryAxis();
+            y.SetData(new List<object>(ChartsUtil.Pops()));
+            option.YAxis(y);
+            var bar1 = new Bar("2011年");
+            bar1.Data(18203, 23489, 29034, 104970, 131744, 630230);
+            
+            var bar2 = new Bar("2012年");
+            bar2.Data(19325, 23438, 31000, 121594, 134141, 681807);
+         
+            option.Series(bar1, bar2);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        public string StdBar()
+        {
+            ChartOption option = new ChartOption();
+            option.Title().Text("世界人口总数").SubText("数据来源网络");
+            option.ToolTip().Trigger(TriggerType.axis)
+               .AxisPointer().Type(AxisPointType.shadow);
+            option.Legend().Data("2011年", "2012年");
+            option.ToolBox(ToolBox());
+            option.calculable = true;
+            var x = new ValueAxis();
+            x.BoundaryGap(new List<double>() { 0, 0.01 });
+            option.XAxis(x);
+            var y = new CategoryAxis();
+            y.SetData(new List<object>(ChartsUtil.Pops()));
+            option.YAxis(y);
+            var bar1 = new Bar("2011年");
+            bar1.Data(18203, 23489, 29034, 104970, 131744, 630230);
+
+            var bar2 = new Bar("2012年");
+            bar2.Data(19325, 23438, 31000, 121594, 134141, 681807);
+
+            option.Series(bar1, bar2);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        public string HeapBar()
+        {
+            IList<string> ads = ChartsUtil.Ads();
+            IList<int> data1 = ChartsUtil.Datas(7, 90, 240);
+            IList<int> data2 = ChartsUtil.Datas(7, 190, 310);
+            IList<int> data3 = ChartsUtil.Datas(7, 150, 410);
+            IList<int> data4 = ChartsUtil.Datas(7, 300, 400);
+            IList<int> data5 = ChartsUtil.Datas(7, 820, 1400);
+
+            ChartOption option = new ChartOption();
+            
+            option.ToolTip().Trigger(TriggerType.axis).AxisPointer().Type(AxisPointType.shadow);
+            option.Legend().SetData(new List<object>(ads.ToList()));
+            option.ToolBox(ToolBox());
+            
+            option.calculable = true;
+            var x = new ValueAxis();
+            option.XAxis(x);
+
+            var y = new CategoryAxis();
+            y.data = new List<object>(ChartsUtil.Weeks());
+            option.YAxis(y);
+
+            var itemStyle = new ItemStyle();
+            itemStyle.Normal().Label().Show(true).Position(StyleLabelTyle.insideRight);
+
+            Bar b1 = new Bar(ads[0]);
+            b1.stack = "总量";
+            b1.itemStyle = itemStyle;
+            b1.data = data1;
+
+            Bar b2 = new Bar(ads[1]);
+            b2.stack = "总量";
+            b2.itemStyle = itemStyle;
+            b2.data = data2;
+
+            Bar b3 = new Bar(ads[2]);
+            b3.stack = "总量";
+            b3.itemStyle = itemStyle;
+            b3.data = data3;
+
+            Bar b4 = new Bar(ads[3]);
+            b4.stack = "总量";
+            b4.itemStyle = itemStyle;
+            b4.data = data4;
+
+            Bar b5 = new Bar(ads[4]);
+            b5.stack = "总量";
+            b5.itemStyle = itemStyle;
+            b5.data = data5;
+
+
+
+            // option.Series<Line>(l1, l2, l3, l4, l5);
+            option.Series(b1, b2, b3, b4, b5);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]        
+        public string Column()
+        {
+
+            ChartOption option = new ChartOption();
+            option.ToolTip().Trigger(TriggerType.axis)
+               .AxisPointer().Type(AxisPointType.shadow);
+            option.Legend().SetData(new List<object>(ChartsUtil.Ads()));
+            option.ToolBox(ToolBox());
+            option.calculable = true;
+            var x = new CategoryAxis();
+            x.SetData(ChartsUtil.Months().Cast<object>().ToList());
+            option.XAxis(x);
+            var y = new ValueAxis();
+            option.YAxis(y);
+            var bar1 = new Bar("蒸发量");
+            bar1.SetData(ChartsData.EvapsYear);
+            bar1.MarkPoint().Data(new MarkData("最大值", MarkType.max), new MarkData("最小值", MarkType.min));
+            bar1.MarkLine().Data(new MarkData("平均值", MarkType.average));
+
+            var bar2 = new Bar("降水量");
+            bar2.SetData(ChartsData.RainsYear);
+            var mp1 = new MarkData("年最高");
+            double rainMax = ChartsData.RainsYear.Max();
+            mp1.value = rainMax;
+            mp1.yAxis = rainMax + 0.5;
+            mp1.xAxis = ChartsData.RainsYear.IndexOf(rainMax);
+            mp1.symbolSize = 18;
+            var mp2 = new MarkData("年最低");
+            double rainMin = ChartsData.RainsYear.Min();
+            mp2.Value(rainMin).YAxis(rainMin + 0.5).XAxis(ChartsData.RainsYear.IndexOf(rainMin));
+            bar2.MarkPoint().Data(mp1, mp2);
+            bar2.MarkLine().Data(new MarkData("平均值", MarkType.average));
+
+            option.Series(bar1, bar2);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        public string HeapColumn()
+        {
+            IList<string> ads = ChartsUtil.Ads();
+            IList<string> ses = ChartsUtil.Ses();
+            IList<int> data1 = ChartsUtil.Datas(7, 90, 240);
+            IList<int> data2 = ChartsUtil.Datas(7, 190, 310);
+            IList<int> data3 = ChartsUtil.Datas(7, 150, 410);
+            IList<int> data4 = ChartsUtil.Datas(7, 300, 400);
+            IList<int> data5 = ChartsUtil.Datas(7, 820, 1400);
+            IList<int> data6 = ChartsUtil.Datas(7, 600, 1200);
+            IList<int> data7 = ChartsUtil.Datas(7, 80, 400);
+            IList<int> data8 = ChartsUtil.Datas(7, 100, 300);
+            ads.ToList().AddRange(ses);
+            ChartOption option = new ChartOption();
+            option.ToolTip().Trigger(TriggerType.axis);
+            option.Legend().SetData(new List<object>(ads.ToList()));
+            option.ToolBox(ToolBox(OrientType.vertical));
+            option.ToolBox().X(HorizontalType.right).Y(HorizontalType.center);
+            option.calculable = true;
+            var x = new CategoryAxis();
+            x.SetData(ChartsUtil.Weeks().Cast<object>().ToList());
+            option.XAxis(x);
+            var y = new ValueAxis();
+            option.YAxis(y);
+            Bar b1 = new Bar(ads[0]);
+            b1.stack = "广告";
+            b1.data = data1;
+
+            Bar b2 = new Bar(ads[1]);
+            b2.stack = "广告";
+            b2.data = data2;
+
+            Bar b3 = new Bar(ads[2]);
+            b3.stack = "广告";
+            b3.data = data3;
+
+            Bar b4 = new Bar(ads[3]);
+            var mk1 = new MarkLine();
+            mk1.ItemStyle().Normal().LineStyle().Type(LineStyleType.dashed);
+            mk1.Data(new MarkData(MarkType.min), new MarkData(MarkType.max));
+            b4.markLine = mk1;
+            b4.data = data4;
+
+            Bar b5 = new Bar(ads[4]);
+            b5.stack = "搜索引擎";
+            b5.data = data5;
+
+            Bar b6 = new Bar(ses[0]);
+            b6.stack = "搜索引擎";
+            b6.data = data6;
+
+            Bar b7 = new Bar(ses[1]);
+            b7.stack = "搜索引擎";
+            b7.data = data7;
+
+            Bar b8 = new Bar(ses[2]);
+            b8.stack = "搜索引擎";
+            b8.data = data8;
+
+            // option.Series<Line>(l1, l2, l3, l4, l5);
+            option.Series(b1, b2, b3, b4, b5, b6, b7, b8);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        //paired bars
+        #endregion
+
+        #region scatter data
+        [AcceptVerbs("GET", "POST")]
+        public string StdScatter()
+        {
+            ChartOption option = new ChartOption();
+            option.Title().Text("男女身高体重分部").SubText("数据来源网络");
+            option.ToolTip().Trigger(TriggerType.axis)
+               .ShowDelay(0).Formatter(new JRaw(@" function (params) {
+                if (params.value.length > 1) {
+                    return params.seriesName + ' :<br/>'
+                       + params.value[0] + 'cm ' 
+                       + params.value[1] + 'kg ';
+                }
+                else {
+                    return params.seriesName + ' :<br/>'
+                       + params.name + ' : '
+                       + params.value + 'kg ';
+                }
+            }"))
+            .AxisPointer().Show(true).Type(AxisPointType.cross)
+            .LineStyle().Type(LineStyleType.dashed).Width(1);
+
+            option.Legend().Data("女性", "男性");
+
+            option.ToolBox(ToolBox());
+            option.calculable = true;
+
+            var x = new ValueAxis();
+            x.Scale(true).AxisLabel().Formatter(new JRaw("{value cm}").ToString());
+            option.XAxis(x);
+            var y = new ValueAxis();
+            y.SetData(new List<object>(ChartsUtil.Pops()));
+            option.YAxis(y);
+            var s1 = new Scatter("女性");
+            s1.SetData(ChartsData.females);
+            s1.MarkPoint().Data(new MarkData("最大值", MarkType.max),new MarkData("最小值", MarkType.min));
+            s1.MarkLine().Data(new MarkData("平均值", MarkType.average));
+            
+            var s2 = new Scatter("男性");
+            s2.SetData(ChartsData.males);
+            s2.MarkPoint().Data(new MarkData("最大值", MarkType.max), new MarkData("最小值", MarkType.min));
+            s2.MarkLine().Data(new MarkData("平均值", MarkType.average));
+            option.Series(s1, s2);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+        #endregion
+
+        #region pie data
+        [AcceptVerbs("GET", "POST")]
+        public string StdPie()
+        {
+            IList<string> ads = ChartsUtil.Ads();
+           
+            IList<int> data1 = ChartsUtil.Datas(7, 90, 240);
+            IList<int> data2 = ChartsUtil.Datas(7, 190, 310);
+            IList<int> data3 = ChartsUtil.Datas(7, 150, 410);
+            IList<int> data4 = ChartsUtil.Datas(7, 300, 400);
+             
+            
+            ChartOption option = new ChartOption();
+            option.Title().Text("用户访问来源").SubText("虚构").X(HorizontalType.center);            
+            option.ToolTip().Trigger(TriggerType.item).Formatter(new JRaw(@"{a} <br/>{b} : {c} ({d}%)").ToString());
+            option.Legend().Orient(OrientType.vertical).X(HorizontalType.left).SetData(new List<object>(ads.ToList()));
+            option.ToolBox(ToolBox(OrientType.vertical));
+            option.ToolBox().X(HorizontalType.right).Y(HorizontalType.center);
+            option.calculable = true;
+
+            var pie = new Pie("访问来源");
+
+            pie.Radius("55%").Center(new List<object>() { "50%", "60%" });
+            pie.Data(new PieData<int>(345, ads[0]), new PieData<int>(310, ads[1]), new PieData<int>(234, ads[2]),
+                new PieData<int>(135, ads[3]), new PieData<int>(1543, ads[4]));
+
+            
+            option.Series(pie);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+        #endregion
+
+        private ToolBox ToolBox(OrientType orient= OrientType.horizontal)
+        {
+            
+            ToolBox tool = new ECharts.Entities.ToolBox();
+            var feature = new Feature();
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Mark().Show(true);
+            feature.Restore().Show(true);
+            feature.MagicType().Show(true).Type("line", "bar", "stack", "tiled");
+            feature.SaveAsImage().Show(true);
+            tool.Show(true).SetFeature(feature);
+            tool.Orient(orient);
+            return tool;
+        }
     }
 }

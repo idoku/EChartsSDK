@@ -134,8 +134,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineController.cs" />
+    <Compile Include="Controllers\PieController.cs" />
+    <Compile Include="Controllers\ScatterController.cs" />
     <Compile Include="Controllers\ToolTipController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -151,10 +154,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Html\Line.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\charts\bar.js" />
     <Content Include="Scripts\charts\line.js" />
+    <Content Include="Scripts\charts\pie.js" />
+    <Content Include="Scripts\charts\scatter.js" />
     <Content Include="Scripts\charts\tooltip.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -176,6 +183,8 @@
     <Content Include="Scripts\plugins\datepicker\skin\whyGreen\datepicker.css" />
     <Content Include="Scripts\plugins\datepicker\skin\whyGreen\img.gif" />
     <Content Include="Scripts\plugins\datepicker\WdatePicker.js" />
+    <Content Include="Scripts\plugins\echarts3\echarts.js" />
+    <Content Include="Scripts\plugins\echarts3\echarts.min.js" />
     <Content Include="Scripts\plugins\echarts\chart\bar.js" />
     <Content Include="Scripts\plugins\echarts\chart\chord.js" />
     <Content Include="Scripts\plugins\echarts\chart\eventRiver.js" />
@@ -195,6 +204,7 @@
     <Content Include="Scripts\plugins\echarts\chart\wordCloud.js" />
     <Content Include="Scripts\plugins\echarts\echarts-all.js" />
     <Content Include="Scripts\plugins\echarts\echarts.js" />
+    <Content Include="Scripts\require.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\plugins\zrender\animation\Animation.js" />
@@ -282,6 +292,12 @@
     <Content Include="Views\Line\TimeLine.cshtml" />
     <Content Include="Views\Line\LogLine.cshtml" />
     <Content Include="Views\Line\Index.cshtml" />
+    <Content Include="Views\Bar\Index.cshtml" />
+    <Content Include="Views\Bar\HeapColumn.cshtml" />
+    <Content Include="Views\Bar\Column.cshtml" />
+    <Content Include="Views\Bar\HeapBar.cshtml" />
+    <Content Include="Views\Scatter\StdScatter.cshtml" />
+    <Content Include="Views\Pie\StdPie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

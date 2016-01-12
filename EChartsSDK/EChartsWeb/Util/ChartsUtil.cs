@@ -22,6 +22,15 @@ namespace EChartsWeb.Util
         }
 
 
+        public static IList<string> Months()
+        {
+            IList<string> months = new List<string>(){
+              "一月","二月","三月", "四月","五月","六月",
+              "七月","八月","九月","十月","十一月","十二月"
+            };
+            return months;
+        }
+
         public static IList<string> Ads()
         {
             IList<string> ads = new List<string>()
@@ -29,6 +38,24 @@ namespace EChartsWeb.Util
             "邮件营销","联盟广告","视频广告","直接访问","搜索引擎"
             };
             return ads;
+        }
+
+        public static IList<string> Ses()
+        {
+            IList<string> ses = new List<string>()
+            {
+            "百度","谷歌","必应"
+            };
+            return ses;
+        }
+       
+        public static IList<string> Pops()
+        {
+            IList<string> ses = new List<string>()
+            {
+                "巴西", "印尼", "美国", "印度", "中国", "世界人口(万)"
+            };
+            return ses;
         }
 
         public static IList<double> DDatas(int len, int min, int max)

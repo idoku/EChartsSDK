@@ -41,6 +41,12 @@ namespace ECharts.Entities
             return toolbox;
         }
 
+        public ChartOption ToolBox(ToolBox toolbox)
+        {
+            this.toolbox = toolbox;
+            return this;
+        }
+
         public Title Title()
         {
             if (title == null)

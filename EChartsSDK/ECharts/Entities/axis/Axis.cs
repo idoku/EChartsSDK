@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.axis
 {
+    
     public abstract class Axis : AbstractData<Axis>
     {
         public AxisType? type { get; set; }

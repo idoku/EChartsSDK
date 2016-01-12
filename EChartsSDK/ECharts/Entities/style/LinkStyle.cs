@@ -8,8 +8,29 @@ namespace ECharts.Entities.style
 {
     public class LinkStyle
     {
-        public LinkStyleType type { get; set; }
+        public LinkStyleType? type { get; set; }
         public object color { get; set; }
         public int? width { get; set; }
+
+        public LinkStyle Type(LinkStyleType type)
+        {
+            this.type = type;
+            return this;
+        }
+
+
+        public LinkStyle Width(int width)
+        {
+            this.width = width;
+            return this;
+        }
+
+        public LinkStyle Color(object color)
+        {
+            this.color = color;
+            return this;
+        }
+
+
     }
 }

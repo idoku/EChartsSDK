@@ -15,9 +15,23 @@ namespace ECharts.Entities.axis
 
         public bool? scale { get; set; }
 
+        public IList<double> boundaryGap { get; set; }
+
         public TextStyle nameTextStyle { get; set; }
 
         public PositionType? position { get; set; }
+
+        public ValueAxis Scale(bool scale)
+        {
+            this.scale = scale;
+            return this;
+        }
+
+        public ValueAxis BoundaryGap(IList<double> boundaryGap)
+        {
+            this.boundaryGap = boundaryGap;
+            return this;
+        }
 
         public ValueAxis Name(string name)
         {
