@@ -13,6 +13,12 @@ namespace ECharts.Entities.feature
 
         public MarkTitle title { get; set; }
 
+        public Mark Show(bool show)
+        {
+            this.show = show;
+            return this;
+        }
+
         public MarkTitle Title()
         {
             if (title == null)

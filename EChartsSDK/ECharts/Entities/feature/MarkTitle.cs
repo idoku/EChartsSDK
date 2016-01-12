@@ -14,6 +14,24 @@ namespace ECharts.Entities.feature
 
         public string markClear { get; set; }
 
+
+        public MarkTitle Mark(string mark)
+        {
+            this.mark = mark;
+            return this;
+        }
+
+        public MarkTitle MarkUndo(string markUndo)
+        {
+            this.markUndo = markUndo;
+            return this;
+        }
+
+        public MarkTitle MarkClear(string markClear)
+        {
+            this.markClear = markClear;
+            return this;
+        }
     }
 
 }

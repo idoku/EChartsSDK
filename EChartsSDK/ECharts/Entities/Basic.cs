@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities
 {
-    public class Basic<T>
+    public class Basic<T> where T :class
     {
         public bool? show { get; set; }
 
@@ -24,29 +24,34 @@ namespace ECharts.Entities
 
         public int? z { get; set; }
 
+        public T Show(bool show)
+        {
+            this.show = show;
+            return this as T;
+        }
 
         public T X(int x)
         {
             this.x = x;
-            return default(T);
+            return this as T;
         }
 
         public T X(HorizontalType x)
         {
             this.x = x;
-            return default(T);
+            return this as T;
         }
 
         public T Y(int y)
         {
             this.y = y;
-            return default(T);
+            return this as T;
         }
 
         public T Y(VerticalType y)
         {
             this.y = y;
-            return default(T);
+            return this as T;
         }
 
     }

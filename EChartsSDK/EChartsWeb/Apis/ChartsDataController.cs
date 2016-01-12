@@ -1,6 +1,7 @@
 ﻿using ECharts;
 using ECharts.Entities;
 using ECharts.Entities.axis;
+using ECharts.Entities.feature;
 using ECharts.Entities.series;
 using ECharts.Entities.series.data;
 using ECharts.Entities.style;
@@ -158,12 +159,23 @@ namespace EChartsWeb.Apis
             ChartOption option = new ChartOption();
             option.ToolTip().Trigger(TriggerType.axis);
             option.Legend().SetData(new List<object>(ads));
+
+            
+            var feature = new Feature();
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Mark().Show(true);
+            feature.Restore().Show(true);
+            feature.MagicType().Show(true).Type("line", "bar", "stack", "tiled");
+            feature.SaveAsImage().Show(true);
+            option.ToolBox().Show(true).SetFeature(feature);               
+
+
             option.calculable = true;
             var x = new CategoryAxis();
             x.BoundaryGap(false).SetData(new List<object>(weeks));
             option.XAxis(x);
             option.YAxis(new ValueAxis());
-          
+            
             
             var l1 = new Line("邮件营销");
             var s = new ItemStyle();

@@ -15,5 +15,25 @@ namespace ECharts.Entities.feature
         public bool? readOnly { get; set; }
 
         public IList<string> lang { get; set; }
+
+        public DataView Show(bool show)
+        {
+            this.show = show;
+            return this;
+        }
+
+        public DataView Title(string title)
+        {
+            this.title = title;
+            return this;        
+        }
+
+        public DataView ReadOnly(bool? readOnly)
+        {
+            this.readOnly = readOnly;
+            return this;
+        }
+
+
     }
 }

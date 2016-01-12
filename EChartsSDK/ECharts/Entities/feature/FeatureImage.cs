@@ -21,5 +21,23 @@ namespace ECharts.Entities.feature
             this.show = show;
             return this;
         }
+
+        public FeatureImage Title(string title)
+        {
+            this.title = title;
+            return this;
+        }
+
+        public FeatureImage Type(ImageType type)
+        {
+            this.type = type.ToString();
+            return this;
+        }
+
+        public FeatureImage Type(string type)
+        {
+            this.type = type;                
+            return this;
+        }
     }
 }

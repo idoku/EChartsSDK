@@ -24,6 +24,14 @@ namespace ECharts.Entities.feature
         public FeatureImage saveAsImage { get; set; }
 
 
+        public MagicType MagicType()
+        {
+            if (magicType == null)
+                magicType = new feature.MagicType();
+            return magicType;
+        }
+
+
         public Mark Mark()
         {
             if (mark == null)

@@ -25,11 +25,21 @@ namespace ECharts.Entities
 
         public bool? calculable { get; set; }
 
+        public ToolBox toolbox { get; set; }
+
         public IList<Axis> xAxis { get; set; }
 
         public IList<Axis> yAxis { get; set; }
 
         public IList<object> series { get; set; }
+
+
+        public ToolBox ToolBox()
+        {
+            if (toolbox == null)
+                toolbox = new Entities.ToolBox();
+            return toolbox;
+        }
 
         public Title Title()
         {

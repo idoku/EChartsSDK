@@ -10,6 +10,8 @@ namespace ECharts.Entities
 {
     public class ToolBox:Basic<ToolBox>
     {
+     
+
         public OrientType? horizontal { get; set; }
 
         public int? itemGap { get; set; }
@@ -33,6 +35,12 @@ namespace ECharts.Entities
             if (feature == null)
                 feature = new Entities.feature.Feature();
             return feature;
+        }
+
+        public ToolBox SetFeature(Feature feature)
+        {
+            this.feature = feature;
+            return this;
         }
 
         public TextStyle TextStyle()

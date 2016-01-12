@@ -2,6 +2,13 @@
 
 namespace ECharts.Entities
 {
+
+    public enum ImageType
+    {
+        [EnumMember(Value = "png")]
+        png,
+    }
+
     public enum StyleLabelTyle
     {
         [EnumMember(Value = "outer")]
