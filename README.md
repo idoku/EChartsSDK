@@ -1,5 +1,5 @@
 # EChartsSDK - Net类库
-当前版本dev3.0.0
+当前版本  echarts2
 ECharts的.NET类库,从ECharts的Java类库移植.
 Echarts:https://github.com/ecomfe/echarts
 java版:https://github.com/abel533/ECharts
