@@ -13,15 +13,15 @@ namespace ECharts.Entities.style
 
         public string decoration { get; set; }
 
-        public HorizontalType align { get; set; }
+        public HorizontalType? align { get; set; }
 
-        public VerticalType baseline { get; set; }
+        public VerticalType? baseline { get; set; }
 
         public string fontFamily { get; set; }
 
         public int? fontSize { get; set; }
 
-        public FontStyleType fontStyle { get; set; }
+        public FontStyleType? fontStyle { get; set; }
 
         public object fontWeight { get; set; }
 

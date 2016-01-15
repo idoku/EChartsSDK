@@ -786,7 +786,7 @@ namespace EChartsWeb.Apis
             option.legend = legend;
             var x = new CategoryAxis();
             x.Name("x").SplitLine().Show(true);
-
+            
             IList<string> baseDatas = ChartsUtil.Sequences(1, 9).ToList().ConvertAll(f=>f.ToString()).ToList();
             x.data= new List<object>(baseDatas);            
             option.XAxis(x);
@@ -1133,6 +1133,41 @@ namespace EChartsWeb.Apis
             tool.Show(true).SetFeature(feature);
             tool.Orient(orient);
             return tool;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        public string Test()
+        {
+            IList<string> ads = ChartsUtil.Ads();
+
+            IList<int> data1 = ChartsUtil.Datas(7, 90, 240);
+            IList<int> data2 = ChartsUtil.Datas(7, 190, 310);
+            IList<int> data3 = ChartsUtil.Datas(7, 150, 410);
+            IList<int> data4 = ChartsUtil.Datas(7, 300, 400);
+
+
+            ChartOption option = new ChartOption();
+            option.Title().Text("用户访问来源").SubText("虚构").X(HorizontalType.center);
+            option.ToolTip().Trigger(TriggerType.item).Formatter(new JRaw(@"{a} <br/>{b} : {c} ({d}%)").ToString());
+            option.Legend().Orient(OrientType.vertical).X(HorizontalType.left).SetData(new List<object>(ads.ToList()));
+            option.ToolBox(ToolBox(OrientType.vertical));
+            option.ToolBox().X(HorizontalType.right).Y(HorizontalType.center);
+            option.calculable = true;
+  
+           
+
+            var pie = new Pie("访问来源");
+
+            pie.Radius("55%").Center(new List<object>() { "50%", "60%" });
+            pie.Data(new PieData<int>(345, ads[0]), new PieData<int>(310, ads[1]), new PieData<int>(234, ads[2]),
+                new PieData<int>(135, ads[3]), new PieData<int>(1543, ads[4]));
+
+
+            option.Series(pie);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
         }
     }
 }

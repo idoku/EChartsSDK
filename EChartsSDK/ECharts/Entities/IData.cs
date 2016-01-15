@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities
 {
-    public interface Data<T> 
+    public interface IData<T> 
     {
 
         T Data(params object[] values);

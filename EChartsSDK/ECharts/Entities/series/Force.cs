@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Force : Series<Force>
+    public class Force : ChartSeries<Force>
     {
         public IList<Category> categories { get; set; }
 
@@ -18,7 +18,7 @@ namespace ECharts.Entities.series
 
         public object center { get; set; }
 
-        public object size { get; set; }
+        public int? size { get; set; }
 
         public int? minRadius { get; set; }
 
@@ -39,6 +39,8 @@ namespace ECharts.Entities.series
         public bool? draggable { get; set; }
 
         public bool? large { get; set; }
+
+        public bool? useWorker { get; set; }
 
         public int? steps { get; set; }
 

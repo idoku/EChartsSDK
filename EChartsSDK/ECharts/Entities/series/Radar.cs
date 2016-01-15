@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Radar : Series<Radar>
+    public class Radar : ChartSeries<Radar>
     {
         public int? polarIndex { get; set; }
 

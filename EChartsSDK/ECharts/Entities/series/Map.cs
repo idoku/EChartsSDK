@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Map : Series<Map>
+    public class Map : ChartSeries<Map>
     {
         public SelectedModeType? selectedMode { get; set; }
 
@@ -18,7 +18,7 @@ namespace ECharts.Entities.series
 
         public object mapLocation { get; set; }
 
-        public MapValCalType mapValueCalculation { get; set; }
+        public MapValCalType? mapValueCalculation { get; set; }
 
         public int? mapValuePrecision { get; set; }
 

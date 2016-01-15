@@ -7,23 +7,21 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities
 {
-    public class Legend : Basic<Legend>, Data<Legend>
-    {
-      
+    public class Legend : Basic<Legend>, IData<Legend>
+    {      
         public OrientType? orient { get; set; }
             
-
         public int? borderWidth { get; set; }
-
        
         public int? itemGap { get; set; }
 
         public int? itemWidth { get; set; }
 
+        public int? itemHeight { get; set; }
+
         public TextStyle textStyle { get; set; }
 
         public object formatter { get; set; }
-
 
         public object selectedMode { get; set; }        
 
@@ -51,7 +49,14 @@ namespace ECharts.Entities
             return this;
         }
 
-
-        
+        public Legend Data(params IconStyle[] values)
+        {
+            if (data == null)
+            {
+                data = new List<object>();
+            }
+            values.ToList().ForEach(v => data.Add(v));
+            return this;
+        }               
     }
 }

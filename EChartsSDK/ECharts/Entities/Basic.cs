@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities
 {
-    public class Basic<T> where T :class
+    public abstract class Basic<T> where T :class
     {
         public bool? show { get; set; }
 

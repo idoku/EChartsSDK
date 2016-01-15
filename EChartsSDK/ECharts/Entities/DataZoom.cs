@@ -4,11 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECharts.Entities.feature
+namespace ECharts.Entities
 {
-    public class DataZoom
+    public class DataZoom:Basic<DataZoom>
     {
-        public bool? show { get; set; }
+        public OrientType? orient { get; set; }
+
+        public int? width { get; set; }
+
+        public int? height { get; set; }
+
+        public string fillerColor { get; set; }
+
+        public string handleColor { get; set; }
+
+        public int? handleSize { get; set; }
+
+        public object xAxisIndex { get; set; }
+
+        public object yAxisIndex { get; set; }
 
         public bool? realtime { get; set; }
 
@@ -16,11 +30,9 @@ namespace ECharts.Entities.feature
 
         public int? end { get; set; }
 
-        public DataZoom Show(bool show)
-        {
-            this.show = show;
-            return this;
-        }
+        public bool? zoomLock { get; set; }
+
+
         public DataZoom Realtime(bool realtime)
         {
             this.realtime = realtime;

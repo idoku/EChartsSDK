@@ -42,7 +42,7 @@ namespace ECharts.Entities.feature
         public DataZoom DataZoom()
         {
             if (dataZoom == null)
-                dataZoom = new feature.DataZoom();
+                dataZoom = new DataZoom();
             return dataZoom;
         }
 

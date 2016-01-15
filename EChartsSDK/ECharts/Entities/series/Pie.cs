@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Pie : Series<Pie>
+    public class Pie : ChartSeries<Pie>
     {
-        public IList<object> center { get; set; }
+        public IList<string> center { get; set; }
 
         public object radius { get; set; }
 
@@ -32,7 +32,7 @@ namespace ECharts.Entities.series
             return this;
         }
 
-        public Pie Center(IList<object> center)
+        public Pie Center(IList<string> center)
         {
             this.center = center;
             return this;

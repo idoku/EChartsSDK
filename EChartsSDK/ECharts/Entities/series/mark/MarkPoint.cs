@@ -23,10 +23,6 @@ namespace ECharts.Entities.series
         public Effect effect { get; set; }
 
         public ItemStyle itemStyle { get; set; }
-
-       
-
-      
       
     }
  

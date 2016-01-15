@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities
 {
-    public class Detail
+    public class GaugeDetail
     {
         public bool? show { get; set; }
 
-        public object backgroundColor { get; set; }
+        public string backgroundColor { get; set; }
 
         public int? borderWidth { get; set; }
 
-        public object borderColor { get; set; }
+        public string borderColor { get; set; }
 
         public int? width { get; set; }
 
         public int? height { get; set; }
 
-        public object offsetCenter { get; set; }
+        public IList<object> offsetCenter { get; set; }
 
         public object formatter { get; set; }
 

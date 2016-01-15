@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Venn : Series<Venn>
+    public class Venn : ChartSeries<Venn>
     {
 
         public Venn()

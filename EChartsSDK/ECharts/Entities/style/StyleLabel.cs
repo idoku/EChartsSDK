@@ -10,7 +10,7 @@ namespace ECharts.Entities.style
     {
         public bool? show { get; set; }
 
-        public StyleLabelTyle position { get; set; }
+        public StyleLabelTyle? position { get; set; }
 
         public bool? rotate { get; set; }
 

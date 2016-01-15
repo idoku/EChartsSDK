@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class TreeMap : Series<TreeMap>
+    public class TreeMap : ChartSeries<TreeMap>
     {
         public object center { get; set; }
 
         public object size { get; set; }
 
-        public string root { get; set; }
+        public string root { get; set; }       
 
         public TreeMap() {
             this.type = ChartType.treemap;

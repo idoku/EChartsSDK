@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class WordCloud : Series<WordCloud>
+    public class WordCloud : ChartSeries<WordCloud>
     {
         public object center { get; set; }
 

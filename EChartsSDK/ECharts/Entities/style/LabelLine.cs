@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.style
 {
-    public class StyleLabelLine
+    public class LabelLine
     {
         public bool? show { get; set; }
 

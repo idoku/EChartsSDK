@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Gauge : Series<Gauge>
+    public class Gauge : ChartSeries<Gauge>
     {
-        public object center { get; set; }
+        public IList<object> center { get; set; }
 
         public object radius { get; set; }
 
@@ -31,11 +31,11 @@ namespace ECharts.Entities.series
 
         public SplitLine splitLine { get; set; }
 
-        public Pointer pointer { get; set; }
+        public GaugePointer pointer { get; set; }
 
-        public Title title { get; set; }
+        public GaugeTitle title { get; set; }
 
-        public Detail detail { get; set; }
+        public GaugeDetail detail { get; set; }
 
         public bool? legendHoverLink { get; set; }
 

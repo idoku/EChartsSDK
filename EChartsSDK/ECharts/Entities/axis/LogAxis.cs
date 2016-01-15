@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.axis
 {
-    public class LogAxis : Axis
+    public class LogAxis : ChartAxis<LogAxis>
     {
         public bool? logPositive { get; set; }
 
@@ -18,11 +18,7 @@ namespace ECharts.Entities.axis
             this.type = AxisType.log;
         }
 
-        public LogAxis Name(string name)
-        {
-            this.name = name;
-            return this;
-        }
+     
 
         public LogAxis LogLabelBase(int logLabelBase)
         {

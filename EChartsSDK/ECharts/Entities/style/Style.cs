@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.style
 {
-    public class Style<T> where T :class
+    public abstract class Style<T> where T :class
     {
         public object color { get; set; }
 
@@ -16,9 +16,11 @@ namespace ECharts.Entities.style
 
         public ChordStyle chordStyle { get; set; }
 
+        public NodeStyle nodeStyle { get; set; }
+
         public LinkStyle linkStyle { get; set; }
 
-        public string borderColor { get; set; }
+        public object borderColor { get; set; }
 
         public int? borderWidth { get; set; }
 
@@ -30,7 +32,7 @@ namespace ECharts.Entities.style
 
         public StyleLabel label { get; set; }
 
-        public StyleLabelLine labelLine { get; set; }
+        public LabelLine labelLine { get; set; }
 
         public T Color(object color) {
             this.color = color;

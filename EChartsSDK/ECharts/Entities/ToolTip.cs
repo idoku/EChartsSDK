@@ -8,14 +8,8 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities
 {
-    public class ToolTip
-    {
-        public bool? show { get; set; }
-
-        public int? zlevel { get; set; }
-
-        public int? z { get; set; }
-
+    public class ToolTip:Basic<ToolTip>
+    {     
         public bool? showContent{ get; set; }
 
         public TriggerType? trigger { get; set; }
@@ -32,21 +26,13 @@ namespace ECharts.Entities
 
         public double? transitionDuration { get; set; }
 
-        public bool? enterable { get; set; }
-
-        public object backgroundColor { get; set; }
-
-        public string borderColor { get; set; }
+        public bool? enterable { get; set; }        
 
         public int? borderRadius { get; set; }
 
         public int? borderWidth { get; set; }
 
-        public int? padding { get; set; }
-
-        public AxisPointer axisPointer { get; set; }
-
-    
+        public AxisPointer axisPointer { get; set; }    
 
         public TextStyle textStyle { get; set; }
 

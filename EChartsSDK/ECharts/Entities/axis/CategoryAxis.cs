@@ -6,20 +6,17 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.axis
 {
-    public class CategoryAxis : Axis
+    public class CategoryAxis : ChartAxis<CategoryAxis>
     {
         public bool? boundaryGap { get; set; }
 
-        public CategoryAxis Name(string name)
-        {
-            this.name = name;
-            return this;
-        }
+       
 
         public CategoryAxis()
         {
             type = AxisType.category;
         }
+
 
 
         public CategoryAxis BoundaryGap(bool boundaryGap)

@@ -9,9 +9,7 @@ using System.Threading.Tasks;
 namespace ECharts.Entities
 {
     public class ToolBox:Basic<ToolBox>
-    {
-     
-
+    {     
         public OrientType? orient { get; set; }
 
         public int? itemGap { get; set; }

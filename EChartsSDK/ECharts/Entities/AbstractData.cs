@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities
 {
-    public abstract class AbstractData<T> :Data<T> where T:class
+    public abstract class AbstractData<T> : IData<T> where T:class
     {
         public IList<object> data;
 

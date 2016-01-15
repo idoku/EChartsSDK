@@ -2,6 +2,39 @@
 
 namespace ECharts.Entities
 {
+    public enum LoadingEffectType
+    {
+        spin,
+        bar,
+        ring,
+        whirling,
+        dynamicLine,
+        bubble
+    }
+
+    public enum PolarType
+    {
+        [EnumMember(Value = "polygon")]
+        polygon,
+        [EnumMember(Value = "circle")]
+        circle
+    }
+
+    public enum TimeType
+    {
+        [EnumMember(Value = "time")]
+        time,
+        [EnumMember(Value = "number")]
+        number,
+    }
+
+    public enum NameLocationType
+    {
+        [EnumMember(Value = "start")]
+        start,
+        [EnumMember(Value = "end")]
+        end,
+    }
 
     public enum ImageType
     {
@@ -155,7 +188,9 @@ namespace ECharts.Entities
         [EnumMember(Value = "left")]
         left,
         [EnumMember(Value = "right")]
-        right
+        right,
+        [EnumMember(Value = "none")]
+        none,
     }
 
     /// <summary>

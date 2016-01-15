@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECharts.Entities
+namespace ECharts.Entities.series
 {
     public class Category
     {

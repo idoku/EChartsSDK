@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Tree : Series<Tree>
+    public class Tree : ChartSeries<Tree>
     {
         public object rootLocation { get; set; }
 
@@ -15,16 +15,15 @@ namespace ECharts.Entities.series
 
         public int? nodePadding { get; set; }
 
-        public OrientType orient { get; set; }
+        public OrientType? orient { get; set; }
 
-        public DirectionType direction { get; set; }
+        public DirectionType? direction { get; set; }
 
         public object roam { get; set; }
 
         public string symbol { get; set; }
 
         public object symbolSize { get; set; }
- 
 
 
         public Tree() {

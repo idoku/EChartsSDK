@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Chord : Series<Chord>
+    public class Chord : ChartSeries<Chord>
     {
         public IList<Category> categories { get; set; }
 
@@ -20,6 +20,8 @@ namespace ECharts.Entities.series
 
         public string symbol { get; set; }
 
+        public int? symbolSize { get; set; }
+
         public int? minRadius { get; set; }
 
         public int? maxRadius { get; set; }
@@ -30,9 +32,9 @@ namespace ECharts.Entities.series
 
         public int? padding { get; set; }
 
-        public SortType sort { get; set; }
+        public SortType? sort { get; set; }
 
-        public SortType sortSub { get; set; }
+        public SortType? sortSub { get; set; }
 
         public bool? clockWise { get; set; }
 

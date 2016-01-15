@@ -8,6 +8,8 @@ namespace ECharts.Entities.series
 {
     public class Line : Rectangular<Line>
     {
+        public bool? showAllSymbol { get; set; }
+
         public bool? smooth { get; set; }
 
         public object dataFilter { get; set; }

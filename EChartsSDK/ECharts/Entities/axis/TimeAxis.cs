@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.axis
 {
-    public class TimeAxis : Axis
+    public class TimeAxis : ChartAxis<TimeAxis>
     {
         public TimeAxis() {
             this.type = AxisType.time;

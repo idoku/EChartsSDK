@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Funnel : Series<Funnel>
+    public class Funnel : ChartSeries<Funnel>
     {
         public object x { get; set; }
 
@@ -20,7 +20,7 @@ namespace ECharts.Entities.series
 
         public object height { get; set; }
 
-        public HorizontalType funnelAlign { get; set; }
+        public HorizontalType? funnelAlign { get; set; }
 
         public int? min { get; set; }
 

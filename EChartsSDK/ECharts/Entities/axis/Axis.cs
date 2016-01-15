@@ -10,21 +10,7 @@ namespace ECharts.Entities.axis
     
     public abstract class Axis : AbstractData<Axis>
     {
-        public AxisType? type { get; set; }
-
-        public bool? show { get; set; }
-
-        public int? zlevel { get; set; }    
-
-        public string name { get; set; }
-
-        public string nameLocation { get; set; }
-
-        
-
-        public int? splitNumber { get; set; }
-
-      
+        public TextStyle nameTextStyle { get; set; }
 
         public AxisLine axisLine { get; set; }
 
@@ -37,10 +23,10 @@ namespace ECharts.Entities.axis
         public SplitArea splitArea { get; set; }
 
 
-        public Axis SplitNumber(int splitNumber)
+        public TextStyle NameTextStyle()
         {
-            this.splitNumber = splitNumber;
-            return this;
+            nameTextStyle = new TextStyle();
+            return nameTextStyle;
         }
 
         public AxisLabel AxisLabel()

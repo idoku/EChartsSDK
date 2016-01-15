@@ -6,25 +6,23 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Rectangular<T>:Series<Rectangular<T>> where T:class
+    public class Rectangular<T>: ChartSeries<Rectangular<T>> where T:class
     {
         public string stack { get; set; }
 
         public int? xAxisIndex { get; set; }
 
         public int? yAxisIndex { get; set; }
-        
+
         public object symbol { get; set; }
 
         public object symbolSize { get; set; }
 
-        public int? symbolRotate { get; set; }
-
-        public bool? showAllSymbol { get; set; }         
+        public double? symbolRotate { get; set; }        
 
         public bool? legendHoverLink { get; set; }
 
-        public T SymbolRotate(int symbolRotate)
+        public T SymbolRotate(double symbolRotate)
         {
             this.symbolRotate = symbolRotate;
             return this as T;

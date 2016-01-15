@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class HeatMap : Series<HeatMap>
+    public class HeatMap : ChartSeries<HeatMap>
     {
         public int? blurSize { get; set; }
 
         public IList<object> gradientColors { get; set; }
 
-        public int? minAlpha { get; set; }
+        public double? minAlpha { get; set; }
 
         public int? valueScale { get; set; }
 

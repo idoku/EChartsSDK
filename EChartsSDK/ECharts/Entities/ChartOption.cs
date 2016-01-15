@@ -13,7 +13,21 @@ namespace ECharts.Entities
 {
     public class ChartOption
     {
-        public Title title { get; set; } 
+        public object backgroundColor { get; set; }
+
+        public object color { get; set; }
+
+        public bool? renderAsImage { get; set; }
+
+        public bool? calculable { get; set; }
+
+        public bool? animation { get; set; }
+
+        public object timeline { get; set; } //timeline
+
+        public Title title { get; set; }
+
+        public ToolBox toolbox { get; set; }
 
         public ToolTip tooltip { get; set; }
 
@@ -23,9 +37,9 @@ namespace ECharts.Entities
 
         public Grid grid { get; set; }
 
-        public bool? calculable { get; set; }
+     
 
-        public ToolBox toolbox { get; set; }
+       
 
         public IList<Axis> xAxis { get; set; }
 
@@ -165,7 +179,7 @@ namespace ECharts.Entities
         public DataZoom DataZoom()
         {
             if (this.dataZoom == null)
-                this.dataZoom = new feature.DataZoom();
+                this.dataZoom = new DataZoom();
             return this.dataZoom;
         }
 
@@ -173,7 +187,7 @@ namespace ECharts.Entities
         {
             if (this.grid==null)
             {
-                grid = new feature.Grid();
+                grid = new Grid();
             }
             return this.grid;
         }

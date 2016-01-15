@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities
 {
-    public class Pointer
+    public class NoDataLoadingOption : LoadingOption
     {
-        public object length { get; set; }
 
-        public int? width { get; set; }
-
-        public object color { get; set; }
     }
 }
