@@ -22,3 +22,24 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+#icon-resize {
+    color:#000;
+    float:right;
+    opacity:.4;
+    filter:alpha(opacity=30);
+}
+
+.col-md-4.ani {
+    transition: width 1s;
+    -moz-transition: width 1s;
+    -webkit-transition: width 1s;
+    -o-transition: width 1s;
+}
+.col-md-8.ani {
+    transition: width 1s;
+    -moz-transition: width 1s;
+    -webkit-transition: width 1s;
+    -o-transition: width 1s;
+}

@@ -1107,7 +1107,7 @@ namespace EChartsWeb.Apis
 
             var pie = new Pie("访问来源");
 
-            pie.Radius("55%").Center(new List<object>() { "50%", "60%" });
+            pie.Radius("55%").Center(new List<string>() { "50%", "60%" });
             pie.Data(new PieData<int>(345, ads[0]), new PieData<int>(310, ads[1]), new PieData<int>(234, ads[2]),
                 new PieData<int>(135, ads[3]), new PieData<int>(1543, ads[4]));
 
@@ -1158,7 +1158,7 @@ namespace EChartsWeb.Apis
 
             var pie = new Pie("访问来源");
 
-            pie.Radius("55%").Center(new List<object>() { "50%", "60%" });
+            pie.Radius("55%").Center(new List<string>() { "50%", "60%" });
             pie.Data(new PieData<int>(345, ads[0]), new PieData<int>(310, ads[1]), new PieData<int>(234, ads[2]),
                 new PieData<int>(135, ads[3]), new PieData<int>(1543, ads[4]));
 

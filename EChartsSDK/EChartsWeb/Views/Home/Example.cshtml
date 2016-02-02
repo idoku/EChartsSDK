@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+
+@Scripts.Render("~/bundles/echarts")
+<script src="~/Scripts/charts/example.js"></script>
+
+<script src="~/Scripts/code/codemirror.js"></script>
+<link href="~/Scripts/code/codemirror.css" rel="stylesheet" />
+<link href="~/Scripts/code/monokai.css" rel="stylesheet" />
+<script src="~/Scripts/code/javascript.js"></script>
+
+<input id="hidApi" type="hidden" value="@ViewBag.API" />
+<div id="sidebar-code" class="col-md-4 ani">
+    <div class="well sidebar-nav">
+        <div class="nav-header">
+            <a href="#" onclick="autoResize()" class="glyphicon glyphicon-resize-full" id="icon-resize"></a>option
+        </div>
+        <textarea id="code" name="code" style="display: none;"></textarea>        
+    </div>
+ </div>
+
+
+
+<div id="graphic" class="col-md-8 ani" >
+    <div id="main"  style="height:400px" class="main">
+
+    </div>
+    <button type="button" class="btn btn-sm btn-success" onclick="refresh(true)">刷 新</button>
+    <span class="text-primary">切换主题</span>
+    <select id="theme-select">
+        <option selected="true" name="macarons">macarons</option>
+    </select>
+</div>
+
