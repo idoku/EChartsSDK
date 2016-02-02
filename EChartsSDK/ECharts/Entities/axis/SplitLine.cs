@@ -26,5 +26,13 @@ namespace ECharts.Entities.axis
             this.onGap = onGap;
             return this;
         }
+
+
+        public LineStyle LineStyle()
+        {
+            if (this.lineStyle == null)
+                this.lineStyle = new style.LineStyle();
+            return this.lineStyle;
+        }
     }
 }

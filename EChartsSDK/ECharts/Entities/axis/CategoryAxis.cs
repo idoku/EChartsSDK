@@ -9,15 +9,11 @@ namespace ECharts.Entities.axis
     public class CategoryAxis : ChartAxis<CategoryAxis>
     {
         public bool? boundaryGap { get; set; }
-
-       
-
+      
         public CategoryAxis()
         {
             type = AxisType.category;
         }
-
-
 
         public CategoryAxis BoundaryGap(bool boundaryGap)
         {

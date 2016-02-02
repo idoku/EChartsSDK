@@ -148,9 +148,23 @@
     <Compile Include="Entities\Title.cs" />
     <Compile Include="Json\JsonTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="T4\entity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>entity.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\feature\data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="T4\entity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>entity.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

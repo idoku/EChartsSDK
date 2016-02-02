@@ -12,6 +12,13 @@ namespace ECharts.Entities.axis
         public T value { get; set; }
 
         public TextStyle textStyle { get; set; }
+
+        public TextStyle TextStyle()
+        {
+            if (this.textStyle == null)
+                textStyle = new style.TextStyle();
+            return textStyle;
+        }
     }
 
     

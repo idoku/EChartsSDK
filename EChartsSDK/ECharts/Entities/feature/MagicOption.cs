@@ -22,5 +22,51 @@ namespace ECharts.Entities.feature
         public Pie pie { get; set; }
 
         public Funnel funnel { get; set; }
+
+        public Chord Chord()
+        {
+            if (chord == null)
+                chord = new series.Chord();
+            return chord;
+        }
+
+        public Pie Pie()
+        {
+            if (pie == null)
+                pie = new series.Pie();
+            return pie;
+        }
+
+        public Funnel Funnel()
+        {
+            if (funnel == null)
+                funnel = new series.Funnel();
+            return funnel;
+        }
+
+
+        public Line Line()
+        {
+            if (line == null)
+                line = new series.Line();
+            return line;
+        }
+
+
+        public Bar Bar()
+        {
+            if (bar == null)
+                bar = new series.Bar();
+            return bar;
+        }
+
+        public Force Force()
+        {
+            if (force == null)
+                force = new series.Force();
+            return force;
+        }
+
+      
     }
 }

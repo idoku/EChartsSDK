@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.data
 {
-    public class Data:BasicData<Data>
-    {          
+    public class Data : BasicData<Data>
+    {
         public string extra { get; set; }
     }
 }

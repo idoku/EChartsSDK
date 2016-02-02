@@ -8,7 +8,8 @@ namespace ECharts.Entities.axis
 {
     public class TimeAxis : ChartAxis<TimeAxis>
     {
-        public TimeAxis() {
+        public TimeAxis()
+        {
             this.type = AxisType.time;
         }
     }

@@ -9,17 +9,13 @@ namespace ECharts.Entities.axis
 {
     public class ValueAxis: ChartAxis<ValueAxis>
     {
-     
-
 
         public IList<double> boundaryGap { get; set; }
-
 
         public ValueAxis()
         {
             type = AxisType.value;
         }
-
 
         public ValueAxis BoundaryGap(IList<double> boundaryGap)
         {
@@ -27,10 +23,6 @@ namespace ECharts.Entities.axis
             return this;
         }
 
-     
-
-
-     
 
 
     }

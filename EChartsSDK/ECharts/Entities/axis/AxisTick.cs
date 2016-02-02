@@ -18,7 +18,42 @@ namespace ECharts.Entities.axis
         public bool? inside { get; set; }
 
         public int? length { get; set; }
-
+        
         public LineStyle lineStyle { get; set; }
+
+        public AxisTick Inside(bool inside)
+        {
+            this.inside = inside;
+            return this;
+        }
+
+        public AxisTick OnGap(bool onGap)
+        {
+            this.onGap = onGap;
+            return this;
+        }
+
+        public LineStyle LineStyle()
+        {
+            if (this.lineStyle == null)
+                this.lineStyle = new style.LineStyle();
+            return this.lineStyle;
+        }
+
+        public AxisTick Show(bool show)
+        {
+            this.show = show;
+            return this;
+        }
+
+        public AxisTick Interval(object interval)
+        {
+            this.interval = interval;
+            return this;
+        }
+
+
+      
+
     }
 }

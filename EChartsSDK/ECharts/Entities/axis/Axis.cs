@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.axis
 {
-    
+
     public abstract class Axis : AbstractData<Axis>
     {
         public TextStyle nameTextStyle { get; set; }
@@ -35,22 +35,26 @@ namespace ECharts.Entities.axis
             return axisLabel;
         }
 
-        public AxisLine AxisLine() {
+        public AxisLine AxisLine()
+        {
             axisLine = new AxisLine();
             return axisLine;
         }
 
-        public AxisTick AxisTick() {
+        public AxisTick AxisTick()
+        {
             axisTick = new AxisTick();
             return axisTick;
         }
 
-        public SplitLine SplitLine() {
+        public SplitLine SplitLine()
+        {
             splitLine = new SplitLine();
             return splitLine;
         }
 
-        public SplitArea SplitArea() {
+        public SplitArea SplitArea()
+        {
             splitArea = new SplitArea();
             return splitArea;
         }

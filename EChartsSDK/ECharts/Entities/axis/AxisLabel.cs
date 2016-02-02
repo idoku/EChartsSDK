@@ -23,6 +23,40 @@ namespace ECharts.Entities.axis
 
         public TextStyle textStyle { get; set; }
 
+        public TextStyle TextStyle()
+        {
+            if (textStyle == null)
+                textStyle = new style.TextStyle();
+            return textStyle;
+        }
+
+        public AxisLabel Rotate(int rotate)
+        {
+            this.rotate = rotate;
+            return this;
+        }
+        public AxisLabel Margin(int margin)
+        {
+            this.margin = margin;
+            return this;
+        }
+        public AxisLabel Clickable(bool clickable)
+        {
+            this.clickable = clickable;
+            return this;
+        }
+
+        public AxisLabel Show(bool show)
+        {
+            this.show = show;
+            return this;
+        }
+
+        public AxisLabel Interval(object interval)
+        {
+            this.interval = interval;
+            return this;
+        }
 
 
         public AxisLabel Formatter(object formatter)

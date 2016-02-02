@@ -23,5 +23,7 @@ namespace ECharts.Entities.feature
         public string pie { get; set; }
 
         public string funnel { get; set; }
+
+
     }
 }
