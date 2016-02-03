@@ -151,7 +151,7 @@ namespace EChartsWeb.Apis
         #endregion
         
         #region line data
-        [AcceptVerbs("GET", "POST")]
+        [AcceptVerbs("GET", "POST")]        
         public string Line()
         {
             IList<string> ads = ChartsUtil.Ads();
@@ -251,6 +251,7 @@ namespace EChartsWeb.Apis
         }
 
         [AcceptVerbs("GET", "POST")]
+        [ActionName("line1")]
         public string StdLine()
         {
             IList<string> weeks = ChartsUtil.Weeks();
@@ -371,6 +372,7 @@ namespace EChartsWeb.Apis
         }
 
         [AcceptVerbs("GET", "POST")]
+        [ActionName("line2")]
         public string HeapLine()
         {
             IList<string> ads = ChartsUtil.Ads();
@@ -435,6 +437,7 @@ namespace EChartsWeb.Apis
 
 
         [AcceptVerbs("GET", "POST")]
+        [ActionName("line3")]
         public string StdArea()
         {
             IList<string> weeks = ChartsUtil.Weeks();
@@ -503,6 +506,7 @@ namespace EChartsWeb.Apis
         }
 
         [AcceptVerbs("GET", "POST")]
+        [ActionName("line4")]
         public string HeapArea()
         {
             IList<string> ads = ChartsUtil.Ads();
@@ -574,6 +578,7 @@ namespace EChartsWeb.Apis
         }
 
         [AcceptVerbs("GET", "POST")]
+        [ActionName("line5")]
         public string StdLine2()
         {
             IList<int> temp = ChartsUtil.Steps(6, -80, 20);
@@ -607,6 +612,7 @@ namespace EChartsWeb.Apis
         }
 
         [AcceptVerbs("GET", "POST")]
+        [ActionName("line6")]
         public string Area()
         {
 
@@ -663,6 +669,7 @@ namespace EChartsWeb.Apis
         }
 
         [AcceptVerbs("GET", "POST")]
+        [ActionName("line7")]
         public string UnequalLine()
         {
             ChartOption option = new ChartOption();
@@ -725,6 +732,7 @@ namespace EChartsWeb.Apis
         }
 
         [AcceptVerbs("GET", "POST")]
+        [ActionName("line8")]
         public string TimeLine()
         {
             ChartOption option = new ChartOption();
@@ -772,8 +780,8 @@ namespace EChartsWeb.Apis
             return result;
         }
 
-
         [AcceptVerbs("GET", "POST")]
+        [ActionName("line9")]
         public string LogLine()
         {
 

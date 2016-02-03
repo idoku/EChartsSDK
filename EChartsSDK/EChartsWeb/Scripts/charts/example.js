@@ -86,16 +86,16 @@ if (themeSelector) {
         }
     }
 
-    function refreshTheme() {
-        myChart.hideLoading();
-        myChart.setTheme(curTheme);
-    }
+    //function refreshTheme() {
+    //    myChart.hideLoading();
+    //    myChart.setTheme(curTheme);
+    //}
 
-    if ($(themeSelector).val(hash.replace('-en', '')).val() != hash.replace('-en', '')) {
-        $(themeSelector).val('macarons');
-        hash = 'macarons' + enVersion ? '-en' : '';
-        window.location.hash = hash;
-    }
+    //if ($(themeSelector).val(hash.replace('-en', '')).val() != hash.replace('-en', '')) {
+    //    $(themeSelector).val('macarons');
+    //    hash = 'macarons' + enVersion ? '-en' : '';
+    //    window.location.hash = hash;
+    //}
 }
 
 function autoResize() {
