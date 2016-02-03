@@ -1,9 +1,9 @@
 ﻿var myChart;
 var editor;
-var domCode = document.getElementById('sidebar-code');
-var domGraphic = document.getElementById('graphic');
-var domMain = document.getElementById('main');
-var iconResize = document.getElementById('icon-resize');
+var domMain;
+var domCode;
+var domGraphic;
+var iconResize;
 var needRefresh = false;
 
 var curTheme;
@@ -37,11 +37,11 @@ $(function () {
         }
         ]
     });
-
-    launchExample();
+  
 
     var api = $('#hidApi').val();
     lunch(api);
+    
 });
 
 
@@ -86,16 +86,16 @@ if (themeSelector) {
         }
     }
 
-    //function refreshTheme() {
-    //    myChart.hideLoading();
-    //    myChart.setTheme(curTheme);
-    //}
+    function refreshTheme() {
+        myChart.hideLoading();
+        myChart.setTheme(curTheme);
+    }
 
-    //if ($(themeSelector).val(hash.replace('-en', '')).val() != hash.replace('-en', '')) {
-    //    $(themeSelector).val('macarons');
-    //    hash = 'macarons' + enVersion ? '-en' : '';
-    //    window.location.hash = hash;
-    //}
+    if ($(themeSelector).val(hash.replace('-en', '')).val() != hash.replace('-en', '')) {
+        $(themeSelector).val('macarons');
+        hash = 'macarons' + enVersion ? '-en' : '';
+        window.location.hash = hash;
+    }
 }
 
 function autoResize() {
@@ -116,7 +116,11 @@ function focusCode() {
 
 function focusGraphic() {
     domCode.className = 'col-md-4 ani';
-    domGraphic.className = 'col-md-8 ani';   
+    domGraphic.className = 'col-md-8 ani';
+    if (needRefresh) {
+        myChart.showLoading();
+        setTimeout(refresh, 1000);
+    }
 }
 
 function lunch(api) {
@@ -124,19 +128,21 @@ function lunch(api) {
         url: "/api/ChartsData/" + api,
         type: "POST",
         success: function (data) {
-            
-            $('#code').val(data);
-            editor = CodeMirror.fromTextArea(
-              document.getElementById("code"),
-              {
-                  lineNumbers: true,
-                  mode: "javascript"
-              }
-          );
-            editor.setOption("theme", 'monokai');
-
-            editor.on('change', function () { needRefresh = true; });
-
+              $('#code').val(data);
+              editor = CodeMirror.fromTextArea(
+                document.getElementById("code"),
+                {
+                    lineNumbers: true,
+                    mode: "javascript"
+                }
+            );
+              editor.setOption("theme", 'monokai');
+              editor.on('change', function () { needRefresh = true; });
+              domMain = document.getElementById('main');
+              domCode = document.getElementById('sidebar-code');
+              domGraphic = document.getElementById('graphic');
+              iconResize = document.getElementById('icon-resize');
+              launchExample();
         },
         error: function (msg) {
             alert("系统发生错误");
