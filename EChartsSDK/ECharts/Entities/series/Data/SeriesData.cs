@@ -47,6 +47,7 @@ namespace ECharts.Entities.series.data
             this.itemStyle = itemStyle;           
         }
         #endregion
+
         public StyleLabel Label()
         {
             if (this.label == null)

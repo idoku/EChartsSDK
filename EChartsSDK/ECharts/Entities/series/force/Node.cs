@@ -24,5 +24,58 @@ namespace ECharts.Entities.series
         public int? category { get; set; }
 
         public ItemStyle itemStyle { get; set; }
+
+        public Node Ignore(bool ignore)
+        {
+            this.ignore = ignore;
+            return this;
+        }
+
+        public Node Label(string label)
+        {
+            this.label = label;
+            return this;
+        }
+
+
+        public Node Category(int category)
+        {
+            this.category = category;
+            return this;
+        }
+
+        public Node Value(int value)
+        {
+            this.value = value;
+            return this;
+        }
+
+
+        public Node Name(string name)
+        {
+            this.name = name;
+            return this;
+        }
+
+        public Node SymbolSize(object symbolSize)
+        {
+            this.symbolSize = symbolSize;
+            return this;
+        }
+
+        public Node Symbol(string symbol)
+        {
+            this.symbol = symbol;
+            return this;
+        }
+
+
+        public ItemStyle ItemStyle()
+        {
+            if (itemStyle == null)
+                this.itemStyle = new style.ItemStyle();
+            return this.itemStyle;
+        }
+
     }
 }

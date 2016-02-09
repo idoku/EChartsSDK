@@ -10,9 +10,7 @@ namespace ECharts.Entities.feature
     {
         public bool? show { get; set; }
 
-
         public MagicTitle title { get; set; }
-
 
         public MagicOption option { get; set; }
 

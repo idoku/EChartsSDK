@@ -24,6 +24,56 @@ namespace ECharts.Entities.feature
 
         public string funnel { get; set; }
 
+        public MagicTitle Funnel(string funnel)
+        {
+            this.funnel = funnel;
+            return this;
+        }
+
+        public MagicTitle Pie(string pie)
+        {
+            this.pie = pie;
+            return this;
+        }
+
+        public MagicTitle Chord(string chord)
+        {
+            this.chord = chord;
+            return this;
+        }
+
+        public MagicTitle Force(string force)
+        {
+            this.force = force;
+            return this;
+        }
+
+        public MagicTitle Tiled(string tiled)
+        {
+            this.tiled = tiled;
+            return this;
+        }
+
+
+        public MagicTitle Stack(string stack)
+        {
+            this.stack = stack;
+            return this;
+        }
+
+        public MagicTitle Bar(string bar)
+        {
+            this.bar = bar;
+            return this;
+        }
+
+        public MagicTitle Line(string line)
+        {
+            this.line = line;
+            return this;
+        }
+
+
 
     }
 }

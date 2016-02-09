@@ -16,5 +16,30 @@ namespace ECharts.Entities.series
         public int? weight { get; set; }
 
         public ItemStyle itemStyle { get; set; }
+
+        public Link Source(object source)
+        {
+            this.source = source;
+            return this;
+        }
+
+        public Link Target(object target)
+        {
+            this.target = target;
+            return this;
+        }
+
+        public Link Weight(int weight)
+        {
+            this.weight = weight;
+            return this;
+        }
+
+        public ItemStyle ItemStyle()
+        {
+            if (itemStyle == null)
+                this.itemStyle = new style.ItemStyle();
+            return this.itemStyle;
+        }
     }
 }

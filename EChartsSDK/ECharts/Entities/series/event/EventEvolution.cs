@@ -14,6 +14,23 @@ namespace ECharts.Entities.series
 
         public EventDetail detail { get; set; }
 
+        public EventEvolution Time(DateTime time)
+        {
+            this.time = time;
+            return this;
+        }
 
+        public EventEvolution Value(int value)
+        {
+            this.value = value;
+            return this;
+        }
+
+        public EventDetail Detail(EventDetail detail)
+        {
+            if(this.detail==null)
+              this.detail = new EventDetail();
+            return this.detail;
+        }
     }
 }

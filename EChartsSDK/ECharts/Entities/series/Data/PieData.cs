@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series.data
 {
-    public class PieData<T>
+    public class PieData<T> where T :class
     {
         public T value { get; set; }
         public string name { get; set; }
@@ -16,5 +16,19 @@ namespace ECharts.Entities.series.data
             this.value = value;
             this.name = name;
         }
+
+        public T Value(T value)
+        {
+            this.value = value;
+            return this as T;
+        }
+
+        public T Name(string name)
+        {
+            this.name = name;
+            return this as T;
+        }
+
+
     }
 }

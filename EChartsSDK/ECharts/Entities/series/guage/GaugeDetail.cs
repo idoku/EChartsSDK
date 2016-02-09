@@ -26,5 +26,7 @@ namespace ECharts.Entities
         public object formatter { get; set; }
 
         public TextStyle textStyle { get; set; }
+
+
     }
 }

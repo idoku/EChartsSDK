@@ -14,6 +14,16 @@ namespace ECharts.Entities.series
 
         public IList<EventEvolution> evolution { get; set; }
 
-        
+        public Event Name(string name)
+        {
+            this.name = name;
+            return this;
+        }
+
+        public Event Weight(int weight)
+        {
+            this.weight = weight;
+            return this;
+        }
     }
 }
