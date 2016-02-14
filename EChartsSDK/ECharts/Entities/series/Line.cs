@@ -22,6 +22,18 @@ namespace ECharts.Entities.series
             this.name = name;
         }
 
+        public Line ShowAllSymbol(bool showAllSymbol)
+        {
+            this.showAllSymbol = showAllSymbol;
+            return this;
+        }
+
+        public Line DataFilter(object dataFilter)
+        {
+            this.dataFilter = dataFilter;
+            return this;
+        }
+
         public Line Smooth(bool smooth) {
             this.smooth = smooth;
             return this;

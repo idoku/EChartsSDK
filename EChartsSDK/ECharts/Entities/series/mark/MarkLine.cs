@@ -27,11 +27,51 @@ namespace ECharts.Entities.series
 
         public Bound bounding { get; set; }
      
-
         public Effect effect { get; set; }
 
         public ItemStyle itemStyle { get; set; }
 
+        public MarkLine Precision(int precision)
+        {
+            this.precision = precision;
+            return this;
+        }
+
+        public MarkLine Ssmooth(double smoothness)
+        {
+            this.smoothness = smoothness;
+            return this;
+        }
+
+        public MarkLine Smooth(bool smooth)
+        {
+            this.smooth = smooth;
+            return this;
+        }
+
+        public MarkLine Large(bool large)
+        {
+            this.large = large;
+            return this;
+        }
+
+        public MarkLine SymbolRotate(object symbolRotate)
+        {
+            this.symbolRotate = symbolRotate;
+            return this;
+        }
+
+        public MarkLine Symbol(object symbol)
+        {
+            this.symbol = symbol;
+            return this;
+        }
+
+        public MarkLine Clickable(bool clickable)
+        {
+            this.clickable = clickable;
+            return this;
+        }
 
         public Bound Bound()
         {

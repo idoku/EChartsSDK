@@ -26,6 +26,48 @@ namespace ECharts.Entities.series
 
         public bool? legendHoverLink { get; set; }
 
+        public Pie LegendHoverLink(bool legendHoverLink)
+        {
+            this.legendHoverLink = legendHoverLink;
+            return this;
+        }
+
+        public Pie SelectedMode(SelectedModeType selectedMode)
+        {
+            this.selectedMode = selectedMode;
+            return this;
+        }
+    
+        public Pie SelectedOffset(int selectedOffset)
+        {
+            this.selectedOffset = selectedOffset;
+            return this;
+        }
+
+        public Pie RoseType(NigRoseType roseType)
+        {
+            this.roseType = roseType;
+            return this;
+        }
+
+        public Pie ClockWise(bool clockWise)
+        {
+            this.clockWise = clockWise;
+            return this;
+        }
+
+        public Pie MinAngle(int minAngle)
+        {
+            this.minAngle = minAngle;
+            return this;
+        }
+
+        public Pie StartAngle(int startAngle)
+        {
+            this.startAngle = startAngle;
+            return this;
+        }
+
         public Pie Radius(string radius)
         {
             this.radius = radius;

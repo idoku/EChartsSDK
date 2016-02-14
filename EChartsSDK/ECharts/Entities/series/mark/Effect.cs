@@ -26,5 +26,62 @@ namespace ECharts.Entities.series
 
         public int? shadowBlur { get; set; }
 
+       
+
+        public Effect Loop(bool loop)
+        {
+            this.loop = loop;
+            return this;
+        }
+
+        public Effect Type(string type)
+        {
+            this.type = type;
+            return this;
+        }
+
+        public Effect Show(bool show)
+        {
+            this.show = show;
+            return this;
+        }
+
+        public Effect ShadowBlur(int shadowBlur)
+        {
+            this.shadowBlur = shadowBlur;
+            return this;
+        }
+
+        public Effect ShadowColor(object shadowColor)
+        {
+            this.shadowColor = shadowColor;
+            return this;
+        }
+
+        public Effect Color(object color)
+        {
+            this.color = color;
+            return this;
+        }
+
+        public Effect BounceDistance(int bounceDistance)
+        {
+            this.bounceDistance = bounceDistance;
+            return this;
+        }
+
+        public Effect ScaleSize(int scaleSize)
+        {
+            this.scaleSize = scaleSize;
+            return this;
+        }
+
+        public Effect Period(int loop)
+        {
+            this.period = period;
+            return this;
+        }       
+
+
     }
 }

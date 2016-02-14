@@ -36,6 +36,8 @@ namespace ECharts.Entities.series
 
         public bool? legendHoverLink { get; set; }
 
+
+
         public Funnel()
         {
             this.type = ChartType.funnel;

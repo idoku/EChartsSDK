@@ -25,6 +25,9 @@ namespace ECharts.Entities.series
 
         public MarkLine markLine { get; set; }
    
+
+
+
         public ItemStyle SetItemStyle(ItemStyle itemStyle)
         {
             this.itemStyle = itemStyle;

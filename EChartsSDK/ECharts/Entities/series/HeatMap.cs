@@ -18,6 +18,29 @@ namespace ECharts.Entities.series
 
         public int? opacity { get; set; }
 
+        public HeatMap Opacity(int opacity)
+        {
+            this.opacity = opacity;
+            return this;
+        }
+
+        public HeatMap ValueScale(int valueScale)
+        {
+            this.valueScale = valueScale;
+            return this;
+        }
+
+        public HeatMap BlurSize(int blurSize)
+        {
+            this.blurSize = blurSize;
+            return this;
+        }
+
+        public HeatMap MinAlpha(double minAlpha)
+        {
+            this.minAlpha = minAlpha;
+            return this;
+        }
 
         public HeatMap() {
             this.type = ChartType.heatmap;

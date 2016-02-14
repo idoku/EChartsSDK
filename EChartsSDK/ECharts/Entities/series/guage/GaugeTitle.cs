@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECharts.Entities.series
+namespace ECharts.Entities
 {
     public class GaugeTitle
     {
@@ -14,5 +14,19 @@ namespace ECharts.Entities.series
         public IList<object> offsetCenter { get; set; }
       
         public TextStyle textStyle { get; set; }
+
+
+        public TextStyle TextStyle()
+        {
+            if (this.textStyle == null)
+                textStyle = new style.TextStyle();
+            return textStyle;
+        }
+
+        public GaugeTitle Show(bool show)
+        {
+            this.show = show;
+            return this;
+        }
     }
 }

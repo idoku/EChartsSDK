@@ -46,6 +46,89 @@ namespace ECharts.Entities.series
 
         public object roam { get; set; }
 
+        public Force Roam(object roam)
+        {
+            this.roam = roam;
+            return this;
+        }
+
+        public Force Steps(int steps)
+        {
+            this.steps = steps;
+            return this;
+        }
+
+        public Force UseWorker(bool useWorker)
+        {
+            this.large = useWorker;
+            return this;
+        }
+
+        public Force Large(bool large)
+        {
+            this.large = large;
+            return this;
+        }
+
+        public Force Draggable(bool draggable)
+        {
+            this.draggable = draggable;
+            return this;
+        }
+
+        public Force Gravity(int gravity)
+        {
+            this.gravity = gravity;
+            return this;
+        }
+
+        public Force Scaling(int scaling)
+        {
+            this.scaling = scaling;
+            return this;
+        }
+
+        public Force LinkSymbol(object linkSymbol)
+        {
+            this.linkSymbol = linkSymbol;
+            return this;
+        }
+
+        public Force Center(object center)
+        {
+            this.center = center;
+            return this;
+        }
+
+        public Force Size(int size)
+        {
+            this.size = size;
+            return this;
+        }
+
+        public Force MaxRadius(int maxRadius)
+        {
+            this.maxRadius = maxRadius;
+            return this;
+        }
+
+        public Force MinRadius(int minRadius)
+        {
+            this.minRadius = minRadius;
+            return this;
+        }
+
+        public Force SymbolSize(int symbolSize)
+        {
+            this.symbolSize = symbolSize;
+            return this;
+        }
+
+        public Force Symbol(string symbol)
+        {
+            this.symbol = symbol;
+            return this;
+        }
 
         public Force() {
             this.type = ChartType.force;

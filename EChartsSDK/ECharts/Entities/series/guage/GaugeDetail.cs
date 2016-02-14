@@ -27,6 +27,55 @@ namespace ECharts.Entities
 
         public TextStyle textStyle { get; set; }
 
+        public TextStyle TextStyle()
+        {
+            if (this.textStyle == null)
+                textStyle = new style.TextStyle();
+            return textStyle;
+        }
+
+        public GaugeDetail Formatter(object formatter)
+        {
+            this.formatter = formatter;
+            return this;
+        }
+
+        public GaugeDetail Height(int height)
+        {
+            this.height = height;
+            return this;
+        }
+
+        public GaugeDetail Width(int width)
+        {
+            this.width = width;
+            return this;
+        }
+
+        public GaugeDetail Show(bool show)
+        {
+            this.show = show;
+            return this;
+        }
+
+        public GaugeDetail BackgroundColor(string backgroundColor)
+        {
+            this.backgroundColor = backgroundColor;
+            return this;
+        }
+
+        public GaugeDetail BorderWidth(int borderWidth)
+        {
+            this.borderWidth = borderWidth;
+            return this;
+        }
+
+        public GaugeDetail BorderColor(string borderWidth)
+        {
+            this.borderColor = borderColor;
+            return this;
+        }
+
 
     }
 }
