@@ -28,6 +28,44 @@ namespace ECharts.Entities
 
         public Feature feature { get; set; }
 
+        public Feature TextStyle()
+        {
+            if (feature == null)
+                this.feature = new Feature();
+            return this.feature;
+        }
+
+        public ToolBox ShowTitle(bool showTitle)
+        {
+            this.showTitle = showTitle;
+            return this;
+        }
+
+        public ToolBox EffectiveColor(string effectiveColor)
+        {
+            this.effectiveColor = effectiveColor;
+            return this;
+        }
+
+
+        public ToolBox DisableColor(string disableColor)
+        {
+            this.disableColor = disableColor;
+            return this;
+        }
+
+        public ToolBox ItemSize(int itemSize)
+        {
+            this.itemSize = itemSize;
+            return this;
+        }
+
+        public ToolBox ItemGap(int itemGap)
+        {
+            this.itemGap = itemGap;
+            return this;
+        }
+
         public ToolBox Orient(OrientType orient)
         {
             this.orient = orient;

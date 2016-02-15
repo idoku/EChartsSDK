@@ -36,6 +36,69 @@ namespace ECharts.Entities
 
         public TextStyle textStyle { get; set; }
 
+        public TextStyle TextStyle()
+        {
+            if (this.textStyle == null)
+            {
+                this.textStyle = new TextStyle();
+            }
+            return this.textStyle;
+        }
+
+        public ToolTip BorderWidth(int borderWidth)
+        {
+            this.borderWidth = borderWidth;
+            return this;
+        }
+
+        public ToolTip BorderRadius(int borderRadius)
+        {
+            this.borderRadius = borderRadius;
+            return this;
+        }
+
+        public ToolTip Enterable(bool enterable)
+        {
+            this.enterable = enterable;
+            return this;
+        }
+
+        public ToolTip TransitionDuration(double transitionDuration)
+        {
+            this.transitionDuration = transitionDuration;
+            return this;
+        }
+
+        public ToolTip HideDelay(int hideDelay)
+        {
+            this.hideDelay = hideDelay;
+            return this;
+        }
+
+        public ToolTip IslandFormatter(object islandFormatter)
+        {
+            this.islandFormatter = islandFormatter;
+            return this;
+        }
+
+        public ToolTip Formatter(object formatter)
+        {
+            this.formatter = formatter;
+            return this;
+        }
+
+        public ToolTip Position(object position)
+        {
+            this.position = position;
+            return this;
+        }
+
+        public ToolTip ShowContent(bool showContent)
+        {
+            this.showContent = showContent;
+            return this;
+        }
+
         public ToolTip ShowDelay(int showDelay)
         {
             this.showDelay = showDelay;
@@ -47,12 +110,7 @@ namespace ECharts.Entities
         {
             this.trigger = trigger;
             return this;
-        }
-
-        public ToolTip Formatter(object formatter) {
-            this.formatter = formatter;
-            return this;
-        }
+        }        
 
         public AxisPointer AxisPointer()
         {

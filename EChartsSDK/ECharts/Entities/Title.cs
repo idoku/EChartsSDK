@@ -35,6 +35,67 @@ namespace ECharts.Entities
         #endregion
 
         #region method
+        public TextStyle TextStyle()
+        {
+            if (this.textStyle == null)
+                textStyle = new style.TextStyle();
+            return textStyle;
+        }
+
+        public TextStyle SubtextStyle()
+        {
+            if (this.subtextStyle == null)
+                subtextStyle = new style.TextStyle();
+            return subtextStyle;
+        }
+
+        public Title ItemGap(int itemGap)
+        {
+            this.itemGap = itemGap;
+            return this;
+        }
+
+        public Title BorderWidth(int borderWidth)
+        {
+            this.borderWidth = borderWidth;
+            return this;
+        }
+
+        public Title TextAlign(HorizontalType textAlign)
+        {
+            this.textAlign = textAlign;
+            return this;
+        }
+
+        public Title Subtarget(TargetType subtarget)
+        {
+            this.subtarget = subtarget;
+            return this;
+        }
+
+        public Title Sublink(string sublink)
+        {
+            this.sublink = sublink;
+            return this;
+        }
+
+        public Title Subtext(string subtext)
+        {
+            this.subtext = subtext;
+            return this;
+        }
+
+        public Title Target(TargetType target)
+        {
+            this.target = target;
+            return this;
+        }
+
+        public Title Link(string link)
+        {
+            this.link = link;
+            return this;
+        }
 
         public Title Text(string text) {
             this.text = text;
