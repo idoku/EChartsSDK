@@ -24,8 +24,31 @@ namespace ECharts.Entities.series
         public MarkPoint markPoint { get; set; }
 
         public MarkLine markLine { get; set; }
-   
 
+        public Series Name(string name)
+        {
+            this.type = type;
+            return this;
+        }
+
+
+        public Series Type(ChartType type)
+        {
+            this.type = type;
+            return this;
+        }
+
+        public Series Z(int z)
+        {
+            this.z = z;
+            return this;
+        }
+
+        public Series Zlevel(int zlevel)
+        {
+            this.zlevel = zlevel;
+            return this;
+        }
 
 
         public ItemStyle SetItemStyle(ItemStyle itemStyle)

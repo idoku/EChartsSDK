@@ -34,6 +34,37 @@ namespace ECharts.Entities.style
 
         public LabelLine labelLine { get; set; }
 
+        public T BarBorderRadius(string barBorderRadius)
+        {
+            this.barBorderRadius = barBorderRadius;
+            return this as T;
+        }
+
+        public T BarBorderColor(string barBorderColor)
+        {
+            this.barBorderColor = barBorderColor;
+            return this as T;
+        }
+
+        public T BarBorderWidth(int barBorderWidth)
+        {
+            this.barBorderWidth = barBorderWidth;
+            return this as T;
+        }
+
+        public T BorderWidth(int borderWidth)
+        {
+            this.borderWidth = borderWidth;
+            return this as T;
+        }
+
+        public T BorderColor(string borderColor)
+        {
+            this.borderColor = borderColor;
+            return this as T;
+        }
+
+
         public T Color(object color) {
             this.color = color;
             return this as T;

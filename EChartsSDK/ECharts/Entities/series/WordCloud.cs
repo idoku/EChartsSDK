@@ -17,6 +17,30 @@ namespace ECharts.Entities.series
 
         public AutoSizeConfig autoSize { get; set; }
 
+        public AutoSizeConfig AutoSize()
+        {
+            if (autoSize == null)
+                autoSize = new AutoSizeConfig();            
+            return autoSize;
+        }
+
+        public WordCloud Center(string center)
+        {
+            this.center = center;
+            return this;
+        }
+
+        public WordCloud Size(object size)
+        {
+            this.size = size;
+            return this;
+        }
+
+        public WordCloud TextRotation(object textRotation)
+        {
+            this.textRotation = textRotation;
+            return this;
+        }
 
         public WordCloud() {
             this.type = ChartType.wordCloud;

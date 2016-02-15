@@ -13,5 +13,25 @@ namespace ECharts.Entities.style
         public TextStyle textStyle { get; set; }
 
         public string icon { get; set; }
+
+        public TextStyle TextStyle()
+        {
+            if (textStyle == null)
+                this.textStyle = new TextStyle();
+            return this.textStyle;
+        }
+
+        public IconStyle Name(string name)
+        {
+            this.name = name;
+            return this;
+        }
+
+        public IconStyle Icon(string icon)
+        {
+            this.icon = icon;
+            return this;
+        }
+
     }
 }

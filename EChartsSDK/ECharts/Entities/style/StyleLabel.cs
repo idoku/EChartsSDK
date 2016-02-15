@@ -25,6 +25,9 @@ namespace ECharts.Entities.style
 
         public int? y { get; set; }
 
+
+
+
         public StyleLabel Show(bool show)
         {
             this.show = show;

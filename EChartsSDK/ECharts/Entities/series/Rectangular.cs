@@ -22,6 +22,24 @@ namespace ECharts.Entities.series
 
         public bool? legendHoverLink { get; set; }
 
+        public T Stack(string stack)
+        {
+            this.stack = stack;
+            return this as T;
+        }
+
+        public T XAxisIndex(int xAxisIndex)
+        {
+            this.xAxisIndex = xAxisIndex;
+            return this as T;
+        }
+
+        public T YAxisIndex(int yAxisIndex)
+        {
+            this.yAxisIndex = yAxisIndex;
+            return this as T;
+        }
+
         public T SymbolRotate(double symbolRotate)
         {
             this.symbolRotate = symbolRotate;
@@ -46,16 +64,8 @@ namespace ECharts.Entities.series
             return this as T;
         }
 
-        public T Stack(string stack)
-        {
-            this.stack = stack;
-            return this as T;
-        }
+   
 
-        public T YAxisIndex(int yAxisIndex)
-        {
-            this.yAxisIndex = yAxisIndex;
-            return this as T;
-        }
+       
     }
 }

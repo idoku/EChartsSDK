@@ -70,7 +70,7 @@ namespace ECharts.Entities
             return this;
         }
 
-        public GaugeDetail BorderColor(string borderWidth)
+        public GaugeDetail BorderColor(string borderColor)
         {
             this.borderColor = borderColor;
             return this;

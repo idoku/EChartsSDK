@@ -13,6 +13,19 @@ namespace ECharts.Entities.series
 
         public int? largeThreshold { get; set; }
 
+        public Scatter LargeThreshold(int largeThreshold)
+        {
+            this.largeThreshold = largeThreshold;
+            return this;
+        }
+
+        public Scatter Large(bool large)
+        {
+            this.large = large;
+            return this;
+        }
+
+
         public Scatter() {
             this.type = ChartType.scatter;
         }
