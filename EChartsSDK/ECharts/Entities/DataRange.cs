@@ -44,5 +44,11 @@ namespace ECharts.Entities
 
         public TextStyle textStyle { get; set; }
 
+        public DataRange ItemGap(int itemGap)
+        {
+            this.itemGap = itemGap;
+            return this;
+        }
+
     }
 }

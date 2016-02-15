@@ -8,8 +8,8 @@ namespace ECharts.Entities
 {
     public class Grid:Basic<Grid>
     {
-        //public string type { get; set; }
-      
+        public string type { get; set; }
+
         public object x2 { get; set; }
 
         public object y2 { get; set; }
@@ -18,21 +18,21 @@ namespace ECharts.Entities
 
         public object height { get; set; }
 
-        //public object getX { get; set; }
+        public object getX { get; set; }
 
-        //public object getXend { get; set; }
+        public object getXend { get; set; }
 
-        //public object getY { get; set; }
+        public object getY { get; set; }
 
-        //public object getYend { get; set; }
+        public object getYend { get; set; }
 
-        //public object getWidth { get; set; }
+        public object getWidth { get; set; }
 
-        //public object getHeight { get; set; }
+        public object getHeight { get; set; }
 
-        //public object getArea { get; set; }
+        public object getArea { get; set; }
 
-      
+
 
         public Grid X2(object x2) {
             this.x2 = x2;

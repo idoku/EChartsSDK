@@ -24,6 +24,24 @@ namespace ECharts.Entities
 
         public int? z { get; set; }
 
+        public T Padding(string padding)
+        {
+            this.padding = padding;
+            return this as T;
+        }
+
+        public T BorderColor(string borderColor)
+        {
+            this.borderColor = borderColor;
+            return this as T;
+        }
+
+        public T BackgroundColor(string backgroundColor)
+        {
+            this.backgroundColor = backgroundColor;
+            return this as T;
+        }
+
         public T Show(bool show)
         {
             this.show = show;
@@ -54,5 +72,10 @@ namespace ECharts.Entities
             return this as T;
         }
 
+        public T Z(int z)
+        {
+            this.z = z;
+            return this as T;
+        }
     }
 }

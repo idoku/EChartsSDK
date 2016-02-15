@@ -14,6 +14,19 @@ namespace ECharts.Entities
 
         private bool hoverable;
 
+        public T Clickable(bool clickable)
+        {
+            this.clickable = clickable;
+            return this as T;
+        }
+
+        public T Hoverable(bool hoverable)
+        {
+            this.hoverable = hoverable;
+            return this as T;
+        }
+
+
         public T Data()
         {
             if (data == null) {

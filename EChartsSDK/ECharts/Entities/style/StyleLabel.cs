@@ -25,8 +25,35 @@ namespace ECharts.Entities.style
 
         public int? y { get; set; }
 
+        public StyleLabel Y(int y)
+        {
+            this.y = y;
+            return this;
+        }
 
+        public StyleLabel X(int x)
+        {
+            this.x = x;
+            return this;
+        }
 
+        public StyleLabel Formatter(object formatter)
+        {
+            this.formatter = formatter;
+            return this;
+        }
+
+        public StyleLabel Rotate(bool rotate)
+        {
+            this.rotate = rotate;
+            return this;
+        }
+
+        public StyleLabel Distance(int distance)
+        {
+            this.distance = distance;
+            return this;
+        }
 
         public StyleLabel Show(bool show)
         {
