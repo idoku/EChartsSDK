@@ -22,6 +22,43 @@ namespace ECharts.Entities
         public object effectOption { get; set; }
 
         public double? progress { get; set; }
+
+        public LoadingOption Progress(double progress)
+        {
+            this.progress = progress;
+            return this;
+        }
+
+        public LoadingOption EffectOption(object effectOption)
+        {
+            this.effectOption = effectOption;
+            return this;
+        }
+
+        public LoadingOption Effect(object effect)
+        {
+            this.effect = effect;
+            return this;
+        }
+
+        public LoadingOption Y(object y)
+        {
+            this.y = y;
+            return this;
+        }
+
+        public LoadingOption X(object x)
+        {
+            this.x = x;
+            return this;
+        }
+
+        public LoadingOption Text(string text)
+        {
+            this.text = text;
+            return this;
+        }
+
     }
 
    

@@ -16,5 +16,31 @@ namespace ECharts.Entities
         public int? max { get; set; }
 
         public AxisLabel axisLabel { get; set; }
+
+        public AxisLabel AxisLabel()
+        {
+            if (axisLabel == null)
+                axisLabel = new axis.AxisLabel();
+            return this.axisLabel;
+        }
+
+        public IndicatorData Text(string text)
+        {
+            this.text = text;
+            return this;
+        }
+
+        public IndicatorData Min(int min)
+        {
+            this.min = min;
+            return this;
+        }
+
+        public IndicatorData Max(int max)
+        {
+            this.max = max;
+            return this;
+        }
+
     }
 }

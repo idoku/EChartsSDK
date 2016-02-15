@@ -31,6 +31,55 @@ namespace ECharts.Entities
 
         public IList<IndicatorData> indicator { get; set; }
 
+        public AxisLabel AxisLabel()
+        {
+            axisLabel = new AxisLabel();
+            return axisLabel;
+        }
+
+        public AxisLine AxisLine()
+        {
+            axisLine = new AxisLine();
+            return axisLine;
+        }
+       
+        public SplitLine SplitLine()
+        {
+            splitLine = new SplitLine();
+            return splitLine;
+        }
+
+        public SplitArea SplitArea()
+        {
+            splitArea = new SplitArea();
+            return splitArea;
+        }        
+
+        public AxisName Name()
+        {
+            if (name == null)
+                this.name = new AxisName();
+            return this.name;
+        }
+
+        public Polar SplitNumber(int splitNumber)
+        {
+            this.splitNumber = splitNumber;
+            return this;
+        }
+
+        public Polar StartAngle(int radius)
+        {
+            this.startAngle = startAngle;
+            return this;
+        }
+
+        public Polar Radius(string radius)
+        {
+            this.radius = radius;
+            return this;
+        }
+
 
 
     }

@@ -8,15 +8,12 @@ using System.Threading.Tasks;
 namespace ECharts.Entities
 {
     public class TimeLine  :Basic<TimeLine>,IData<TimeLine>
-    {
-        
+    {        
         public TimeType? type { get; set; }
 
         public bool? notMerge { get; set; }
 
-        public bool? realtime { get; set; }
-
-       
+        public bool? realtime { get; set; }       
 
         public object x2 { get; set; }
 

@@ -25,7 +25,53 @@ namespace ECharts.Entities
 
         public object selectedMode { get; set; }        
 
-        public IList<object> data { get; set; }        
+        public IList<object> data { get; set; }
+
+        public TextStyle TextStyle()
+        {
+            if (textStyle == null)
+                textStyle = new style.TextStyle();
+            return this.textStyle;
+        }
+
+        public Legend SelectedMode(object selectedMode)
+        {
+            this.selectedMode = selectedMode;
+            return this;
+        }
+
+        public Legend Formatter(object formatter)
+        {
+            this.formatter = formatter;
+            return this;
+        }
+
+
+        public Legend ItemHeight(int itemHeight)
+        {
+            this.itemHeight = itemHeight;
+            return this;
+        }
+
+        public Legend ItemWidth(int itemWidth)
+        {
+            this.itemWidth = itemWidth;
+            return this;
+        }
+
+        public Legend BorderWidth(int borderWidth)
+        {
+            this.borderWidth = borderWidth;
+            return this;
+        }
+
+        public Legend ItemGap(int itemGap)
+        {
+            this.itemGap = itemGap;
+            return this;
+        }
+
+       
 
         public Legend SetData(IList<object> data)
         {
