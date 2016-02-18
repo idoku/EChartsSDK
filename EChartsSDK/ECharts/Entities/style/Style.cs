@@ -40,6 +40,12 @@ namespace ECharts.Entities.style
             return this as T;
         }
 
+        public T BarBorderRadius(int barBorderRadius)
+        {
+            this.barBorderRadius = barBorderRadius;
+            return this as T;
+        }
+
         public T BarBorderColor(string barBorderColor)
         {
             this.barBorderColor = barBorderColor;
@@ -89,6 +95,12 @@ namespace ECharts.Entities.style
             if (lineStyle == null)
                 this.lineStyle = new LineStyle();
             return this.lineStyle;
+        }
+
+        public T SetLineStyle(LineStyle lineStyle)
+        {
+            this.lineStyle = lineStyle;
+            return this as T;
         }
 
         public AreaStyle AreaStyle()

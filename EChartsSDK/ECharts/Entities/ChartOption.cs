@@ -35,17 +35,15 @@ namespace ECharts.Entities
 
         public DataZoom dataZoom { get; set; }
 
-        public Grid grid { get; set; }
-
-     
-
-       
+        public Grid grid { get; set; }            
 
         public IList<Axis> xAxis { get; set; }
 
         public IList<Axis> yAxis { get; set; }
 
         public IList<object> series { get; set; }
+
+        public IList<ChartOption> options { get; set; }
 
 
         public ToolBox ToolBox()
@@ -149,6 +147,11 @@ namespace ECharts.Entities
             return this;
         }
 
+        public ChartOption Calculable(bool calculable)
+        {
+            this.calculable = calculable;
+            return this;
+        }
 
         public ChartOption Legend(IList<object> values)
         {

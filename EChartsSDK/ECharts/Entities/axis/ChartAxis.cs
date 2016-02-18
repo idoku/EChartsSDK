@@ -72,12 +72,11 @@ namespace ECharts.Entities.axis
             return this as T;
         }
 
-        public T Position(PositionType x, PositionType y)
+        public T Position(PositionType p)
         {
-            this.position = string.Format("{0}|{1}", x, y);
+            this.position = p.ToString();
             return this as T;
-        }
-
+        } 
 
         public T NameLocation(NameLocationType nameLocation)
         {

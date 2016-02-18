@@ -38,10 +38,13 @@ $(function () {
         ]
     });
   
+    var extJs = $('#hidExtJs').val();
+    launchJs(extJs);
 
     var api = $('#hidApi').val();
-    lunch(api);
-    
+    launch(api);
+
+  
 });
 
 
@@ -123,11 +126,11 @@ function focusGraphic() {
     }
 }
 
-function lunch(api) {
+function launch(api) {
     $.ajax({
         url: "/api/ChartsData/" + api,
         type: "POST",
-        success: function (data) {
+        success: function (data) {             
               $('#code').val(data);
               editor = CodeMirror.fromTextArea(
                 document.getElementById("code"),
@@ -149,7 +152,6 @@ function lunch(api) {
         }
     });
 }
-
 
 function needMap() {
     var href = location.href;
@@ -177,8 +179,6 @@ function refresh(isBtnRefresh) {
     myChart.setOption(option)
    // domMessage.innerHTML = '';
 }
-
-
 
 var isExampleLaunched;
 function launchExample() {
@@ -212,4 +212,12 @@ function launchExample() {
         ],
         requireCallback
     );
+}
+
+function launchJs(url)
+{
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = url;
+    document.body.appendChild(script);
 }

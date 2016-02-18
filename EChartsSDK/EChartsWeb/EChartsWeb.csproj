@@ -171,6 +171,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\charts\bar.js" />
     <Content Include="Scripts\charts\example.js" />
+    <Content Include="Scripts\charts\timelineOption.js" />
     <Content Include="Scripts\charts\line.js" />
     <Content Include="Scripts\charts\pie.js" />
     <Content Include="Scripts\charts\scatter.js" />
@@ -318,7 +319,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

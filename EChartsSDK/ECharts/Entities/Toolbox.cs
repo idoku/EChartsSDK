@@ -28,12 +28,7 @@ namespace ECharts.Entities
 
         public Feature feature { get; set; }
 
-        public Feature TextStyle()
-        {
-            if (feature == null)
-                this.feature = new Feature();
-            return this.feature;
-        }
+        
 
         public ToolBox ShowTitle(bool showTitle)
         {

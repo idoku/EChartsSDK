@@ -67,17 +67,25 @@ namespace ECharts.Entities.series
             return this;
         }
 
-        public MarkLine Clickable(bool clickable)
+        public MarkLine SymbolSize(object symbolSize)
         {
-            this.clickable = clickable;
+            this.symbolSize = symbolSize;
             return this;
         }
+
+
 
         public Bound Bound()
         {
             if (bounding == null)
                 bounding = new series.Bound();
             return bounding;
+        }
+
+        public MarkLine SetItemStyle(ItemStyle itemStyle)
+        {
+            this.itemStyle = itemStyle;
+            return this;
         }
 
         public ItemStyle ItemStyle()

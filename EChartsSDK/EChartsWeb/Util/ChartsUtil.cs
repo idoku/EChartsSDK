@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ECharts.Entities.series;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,7 +22,6 @@ namespace EChartsWeb.Util
             };
             return weeks;
         }
-
 
         public static IList<string> Months()
         {
@@ -170,7 +171,6 @@ namespace EChartsWeb.Util
             return result;
         }
 
-
         public static IList<int> Steps(int len, int start, int step) {
             IList<int> datas = new List<int>();
             for (int i = 0; i < len; i++)
@@ -180,5 +180,16 @@ namespace EChartsWeb.Util
             return datas;
         }
 
+        public static IList<Bar> EconDatas(int year,IList<string> provider)
+        {
+            IList<Bar> bars = new List<Bar>();
+            foreach (var data in provider)
+            {
+                var bar = new Bar();
+                bar.data = new JRaw(string.Format("{0}[{1}]", data, year));
+                bars.Add(bar);
+            }
+            return bars;
+        }   
     }
 }

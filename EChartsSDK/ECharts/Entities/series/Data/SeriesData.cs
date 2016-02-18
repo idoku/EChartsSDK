@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series.data
 {
+
     public class SeriesData<T>
     {
         public T value { get; set; }

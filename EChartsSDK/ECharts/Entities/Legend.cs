@@ -13,7 +13,7 @@ namespace ECharts.Entities
             
         public int? borderWidth { get; set; }
        
-        public int? itemGap { get; set; }
+        public object itemGap { get; set; }
 
         public int? itemWidth { get; set; }
 
@@ -23,9 +23,17 @@ namespace ECharts.Entities
 
         public object formatter { get; set; }
 
-        public object selectedMode { get; set; }        
+        public object selectedMode { get; set; }
+
+        public Dictionary<string, bool> selected { get; set; }
 
         public IList<object> data { get; set; }
+
+        public Legend SetSelected(Dictionary<string, bool> selected)
+        {
+            this.selected = selected;
+            return this;
+        }
 
         public TextStyle TextStyle()
         {
@@ -71,7 +79,11 @@ namespace ECharts.Entities
             return this;
         }
 
-       
+        public Legend ItemGap(object itemGap)
+        {
+            this.itemGap = itemGap;
+            return this;
+        }
 
         public Legend SetData(IList<object> data)
         {

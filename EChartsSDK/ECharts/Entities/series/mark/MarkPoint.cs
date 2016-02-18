@@ -35,11 +35,7 @@ namespace ECharts.Entities.series
             return this;
         }
 
-        public MarkPoint Clickable(bool clickable)
-        {
-            this.clickable = clickable;
-            return this;
-        }
+       
    
         public ItemStyle ItemStyle()
         {

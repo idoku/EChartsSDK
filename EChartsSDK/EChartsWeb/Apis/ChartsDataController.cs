@@ -1290,7 +1290,179 @@ namespace EChartsWeb.Apis
             return result;
         }
 
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("bar11")]
+        public string TimeColumn()
+        {
+            TimeLine time = new ECharts.Entities.TimeLine();
+            time.Data("2002-01-01", "2003-01-01", "2004-01-01", "2005-01-01", "2006-01-01",
+            "2007-01-01", "2008-01-01", "2009-01-01", "2010-01-01")
+            .AutoPlay(true).PlayInterval(1000);
+            time.Label().Formatter(new JRaw(@" function(s) {
+                return s.slice(0, 4);
+            }"));
 
+
+          
+
+            ChartOption option = new ChartOption();
+            option.timeline = time;            
+
+            ChartOption option1 = new ChartOption();
+            option1.Title().Text("2002全国宏观经济指标").Subtext("数据来自国家统计局");
+            option1.ToolTip().Trigger(TriggerType.axis);
+
+            Dictionary<string, bool> selected = new Dictionary<string, bool>();
+            selected.Add("GDP", true);
+            selected.Add("金融", false);
+            selected.Add("房地产", true);
+            selected.Add("第一产业", false);
+            selected.Add("第二产业", false);
+            selected.Add("第三产业", false);
+            option1.Legend().Data("GDP", "金融", "房地产", "第一产业", "第二产业", "第三产业")
+                .X(HorizontalType.left).SetSelected(selected).X(HorizontalType.right);
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            feature.MagicType().Show(true).Type("line", "bar", "stack", "tiled");
+            option1.ToolBox().Show(true).Orient(OrientType.vertical)
+                .X(HorizontalType.right).Y(HorizontalType.center).SetFeature(feature);                      
+            option1.Grid().Y(80).Y2(100);
+
+            CategoryAxis x = new CategoryAxis();
+            x.Data("北京", "\n天津", "河北", "\n山西", "内蒙古", "\n辽宁", "吉林", "\n黑龙江",
+                    "上海", "\n江苏", "浙江", "\n安徽", "福建", "\n江西", "山东", "\n河南",
+                    "湖北", "\n湖南", "广东", "\n广西", "海南", "\n重庆", "四川", "\n贵州",
+                    "云南", "\n西藏", "陕西", "\n甘肃", "青海", "\n宁夏", "新疆");
+            x.AxisLabel().Interval(0);
+            option1.XAxis(x);
+
+            option1.Calculable(true);
+
+            ValueAxis y1 = new ValueAxis();
+            y1.Name("GDP(亿元)").Max(53500);
+            ValueAxis y2 = new ValueAxis();
+            y2.Name("其他(亿元)");            
+            option1.YAxis(y1,y2);
+
+            var lStyle = new LineStyle();
+            lStyle.Color("orange");
+
+            var mlStyle = new ItemStyle();            
+            mlStyle.Normal().SetLineStyle(lStyle)
+                .BarBorderColor("orange")
+                .Label().Show(true).Position(StyleLabelTyle.left)
+                .Formatter(new JRaw(@"function(params){
+                                        return Math.round(params.value);
+                                    }")).TextStyle().Color("orange");
+            var ml = new MarkLine();
+            ml.Symbol(new List<string>() { "arrow", "none" })
+                .SetItemStyle(mlStyle);
+            ml.symbolSize = new List<int> { 4, 2 };           
+            ml.Data(new MarkData() { type = MarkType.average, name = "平均值" });
+
+            Bar b1 = new Bar("GDP");            
+            b1.markLine = ml;
+            b1.data = new JRaw(@"dataMap.dataGDP['2002']");                       
+
+            Bar b2 = new Bar("金融");
+            b2.yAxisIndex = 1;         
+            b2.data = new JRaw(@"dataMap.dataFinancial['2002']");
+
+
+            Bar b3 = new Bar("房地产");
+            b3.yAxisIndex = 1;
+            b3.data =new JRaw(@"dataMap.dataEstate['2002']");
+
+
+            Bar b4 = new Bar("第一产业");
+            b4.yAxisIndex = 1;
+            b4.data = new JRaw(@"dataMap.dataPI['2002']");
+
+
+            Bar b5 = new Bar("第二产业");
+            b5.yAxisIndex = 1;
+            b5.data = new JRaw(@"dataMap.dataSI['2002']");
+
+
+            Bar b6 = new Bar("第三产业");
+            b6.yAxisIndex = 1;
+            b6.data = new JRaw(@"dataMap.dataTI['2002']");
+
+            option1.Series(b1, b2, b3, b4, b5, b6);
+
+            IList<string> providers = new List<string>() {
+                "dataMap.dataGDP",
+                "dataMap.dataFinancial",
+                "dataMap.dataEstate",
+                "dataMap.dataPI",
+                "dataMap.dataSI",
+                "dataMap.dataTI"
+            };
+
+
+            ChartOption option2 = new ChartOption();
+            option2.Title().Text("2003全国宏观经济指标");
+            var d1 = ChartsUtil.EconDatas(2003, providers);
+
+            option2.series = d1.Cast<object>().ToList();
+
+            ChartOption option3 = new ChartOption();
+            option3.Title().Text("2004全国宏观经济指标");
+            var d2 = ChartsUtil.EconDatas(2004, providers);
+                        
+            option3.series = d2.Cast<object>().ToList(); 
+
+            ChartOption option4 = new ChartOption();
+            option4.Title().Text("2005全国宏观经济指标");
+
+            var d3 = ChartsUtil.EconDatas(2005, providers);
+
+            option4.series = d3.Cast<object>().ToList();
+
+            ChartOption option5 = new ChartOption();
+            option5.Title().Text("2006全国宏观经济指标");
+            var d4 = ChartsUtil.EconDatas(2006, providers);
+
+            option5.series = d4.Cast<object>().ToList();
+
+            ChartOption option6 = new ChartOption();
+            option6.Title().Text("2007全国宏观经济指标");
+            var d5 = ChartsUtil.EconDatas(2007, providers);
+
+            option6.series = d5.Cast<object>().ToList();
+
+            ChartOption option7 = new ChartOption();
+            option7.Title().Text("2008全国宏观经济指标");
+            var d6 = ChartsUtil.EconDatas(2008, providers);
+
+            option7.series = d6.Cast<object>().ToList();
+
+            ChartOption option8 = new ChartOption();
+            option8.Title().Text("2009全国宏观经济指标");
+            var d7 = ChartsUtil.EconDatas(2009, providers);
+
+            option8.series = d7.Cast<object>().ToList();
+
+            ChartOption option9 = new ChartOption();
+            option9.Title().Text("2010全国宏观经济指标");
+            var d8 = ChartsUtil.EconDatas(2010, providers);
+
+            option9.series = d8.Cast<object>().ToList();
+
+            var options = new List<ChartOption>() {
+                 option1,option2,option3,option4,option5,option7,
+                 option8,option9
+            };
+
+            option.options = options;
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
 
         [AcceptVerbs("GET", "POST")]
         

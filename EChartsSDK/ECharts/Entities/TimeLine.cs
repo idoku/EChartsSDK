@@ -25,7 +25,7 @@ namespace ECharts.Entities
      
         public int? borderWidth { get; set; }      
 
-        public PositionType controlPosition { get; set; }
+        public PositionType? controlPosition { get; set; }
 
         public bool? autoPlay { get; set; }
 
@@ -46,6 +46,25 @@ namespace ECharts.Entities
         public int? currentIndex { get; set; }
 
         public IList<object> data { get; set; }
+
+        public TimeLine AutoPlay(bool autoPlay)
+        {
+            this.autoPlay = autoPlay;
+            return this;
+        }
+
+        public TimeLine PlayInterval(int playInterval)
+        {
+            this.playInterval = playInterval;
+            return this;
+        }
+
+        public StyleLabel Label()
+        {
+            if (label == null)
+                label = new StyleLabel();
+            return label;
+        }
 
         public TimeLine Data(params object[] values)
         {

@@ -16,6 +16,9 @@ namespace EChartsWeb.Controllers
         public ActionResult Example(string api)
         {
             ViewBag.API = api;
+            if (api == "bar11") {
+                ViewBag.ExtJs = "../Scripts/charts/timelineOption.js";
+            }
             return View();
         }
     }

@@ -8,7 +8,7 @@ namespace ECharts.Entities
 {
     public abstract class AbstractData<T> : IData<T> where T:class
     {
-        public IList<object> data;
+        public object data;
 
         private bool clickable;
 
@@ -50,7 +50,7 @@ namespace ECharts.Entities
             if (data == null) {
                 data = new List<object>();
             }
-            values.ToList().ForEach(v => data.Add(v));
+            data = values;
             return this as T;
         }
     }
