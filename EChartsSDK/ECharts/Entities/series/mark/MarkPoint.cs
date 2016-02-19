@@ -37,6 +37,12 @@ namespace ECharts.Entities.series
             return this;
         }
 
+        public MarkPoint SymbolSize(object symbolSize)
+        {
+            this.symbolSize = symbolSize;
+            return this;
+        }
+
         public ItemStyle ItemStyle()
         {
             if (itemStyle == null)

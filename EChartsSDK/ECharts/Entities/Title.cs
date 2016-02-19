@@ -25,7 +25,7 @@ namespace ECharts.Entities
        
         public HorizontalType? textAlign { get; set; }
      
-        public int? borderWidth { get; set; }
+        
 
         public int? itemGap { get; set; }
 

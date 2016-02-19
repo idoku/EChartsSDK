@@ -23,7 +23,7 @@ namespace ECharts.Entities
 
         public int? height { get; set; }
      
-        public int? borderWidth { get; set; }      
+       
 
         public PositionType? controlPosition { get; set; }
 

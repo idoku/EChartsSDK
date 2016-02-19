@@ -30,7 +30,7 @@ namespace ECharts.Entities
 
         public int? borderRadius { get; set; }
 
-        public int? borderWidth { get; set; }
+        
 
         public AxisPointer axisPointer { get; set; }    
 

@@ -11,7 +11,7 @@ namespace ECharts.Entities
     {      
         public OrientType? orient { get; set; }
             
-        public int? borderWidth { get; set; }
+     
        
         public object itemGap { get; set; }
 

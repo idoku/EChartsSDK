@@ -190,6 +190,18 @@ namespace EChartsWeb.Util
                 bars.Add(bar);
             }
             return bars;
-        }   
+        }
+
+        public static IList<Scatter> EconDatas2(int year, IList<string> provider)
+        {
+            IList<Scatter> scatters = new List<Scatter>();
+            foreach (var data in provider)
+            {
+                var scatter = new Scatter();
+                scatter.data = new JRaw(string.Format("{0}[{1}]", data, year));
+                scatters.Add(scatter);
+            }
+            return scatters;
+        }
     }
 }

@@ -1849,6 +1849,7 @@ namespace EChartsWeb.Apis
 
         #region scatter data
         [AcceptVerbs("GET", "POST")]
+        [ActionName("Sactter1")]
         public string StdScatter()
         {
             ChartOption option = new ChartOption();
@@ -1894,6 +1895,269 @@ namespace EChartsWeb.Apis
             var result = JsonTools.ObjectToJson2(option);
             return result;
         }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("scatter2")]
+        public string BufferScatter()
+        {
+            ChartOption option = new ChartOption();          
+            option.ToolTip().Trigger(TriggerType.axis)
+               .ShowDelay(0)
+            .AxisPointer().Show(true).Type(AxisPointType.cross)
+            .LineStyle().Type(LineStyleType.dashed).Width(1);
+
+            option.Legend().Data("scatter1", "scatter2");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+           
+
+            var x = new ValueAxis();
+            x.SplitNumber(4).Scale(true);
+            option.XAxis(x);
+            var y = new ValueAxis();
+            y.SplitNumber(4).Scale(true);
+            option.YAxis(y);
+            var s1 = new Scatter("scatter1");
+            s1.SymbolSize(new JRaw(@"function (value){
+                return Math.round(value[2] / 5);
+            }"));
+            s1.data = new JRaw("randomDataArray()");
+
+            var s2 = new Scatter("scatter2");
+            s2.SymbolSize(new JRaw(@"function (value){
+                return Math.round(value[2] / 5);
+            }"));
+            s2.data = new JRaw("randomDataArray()");
+            option.Series(s1, s2);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("scatter3")]
+        public string LargeScatter()
+        {
+            ChartOption option = new ChartOption();
+            option.ToolTip().Trigger(TriggerType.axis)
+               .ShowDelay(0)
+            .AxisPointer().Show(true).Type(AxisPointType.cross)
+            .LineStyle().Type(LineStyleType.dashed).Width(1);
+
+            option.Legend().Data("sin", "cos");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+
+            var x = new ValueAxis();
+            x.SplitNumber(4).Scale(true);
+            option.XAxis(x);
+            var y = new ValueAxis();
+            y.SplitNumber(4).Scale(true);
+            option.YAxis(y);
+            var s1 = new Scatter("sin");
+            s1.Large(true);
+
+            s1.data = new JRaw(@"(function () {
+                var d = [];
+                var len = 10000;
+                var x = 0;
+                while (len--) {
+                    x = (Math.random() * 10).toFixed(3) - 0;
+                    d.push([
+                        x,
+                        //Math.random() * 10
+                        (Math.sin(x) - x * (len % 2 ? 0.1 : -0.1) * Math.random()).toFixed(3) - 0
+                    ]);
+                }
+                //console.log(d)
+                return d;
+            })()");
+
+            var s2 = new Scatter("cos");
+            s2.Large(true);
+            s2.data = new JRaw(@"(function () {
+                var d = [];
+                var len = 10000;
+                var x = 0;
+                while (len--) {
+                    x = (Math.random() * 10).toFixed(3) - 0;
+                    d.push([
+                        x,
+                        //Math.random() * 10
+                        (Math.cos(x) - x * (len % 2 ? 0.1 : -0.1) * Math.random()).toFixed(3) - 0
+                    ]);
+                }
+                //console.log(d)
+                return d;
+            })()");
+            option.Series(s1, s2);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("scatter4")]
+        public string TimeScatter()
+        {
+
+            var timeline = new TimeLine();
+            timeline.Data("2002-01-01", "2003-01-01", "2004-01-01", "2005-01-01", "2006-01-01",
+            "2007-01-01", "2008-01-01", "2009-01-01", "2010-01-01", "2011-01-01")
+            .AutoPlay(true).PlayInterval(1000);
+            timeline.Label().Formatter(new JRaw(@"function(s) {
+                return s.slice(0, 4);
+            }"));
+
+            ChartOption option = new ChartOption();
+            option.timeline = timeline;
+
+            ChartOption option1 = new ChartOption();
+            option1.Title().Text("2002全国宏观经济关联分析（GDP vs 房地产）")
+                .Subtext("数据来自国家统计局");
+           
+            option1.ToolTip().Trigger(TriggerType.axis)
+               .ShowDelay(0)
+            .AxisPointer().Show(true).Type(AxisPointType.cross)
+            .LineStyle().Type(LineStyleType.dashed).Width(1);
+
+            
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option1.ToolBox().Show(true).Orient(OrientType.vertical).X(HorizontalType.right)
+                .Y(HorizontalType.center)
+                .SetFeature(feature);
+
+            option1.Grid().Y(80).Y2(100);
+
+            var x = new ValueAxis();
+            x.Name("房地产（亿元）").Max(3400);
+            option1.XAxis(x);
+            var y = new ValueAxis();
+            y.Name("房地产（亿元）").Max(53500);
+            option1.YAxis(y);
+
+            var md1 = new MarkData("y平均值", MarkType.average);
+            md1.ItemStyle().Normal().BorderColor("red");
+            var md2 = new MarkData("x平均值", MarkType.average);
+            md2.ValueIndex(0).ItemStyle().Normal().BorderColor("red");
+            var ml = new MarkLine();
+            ml.Data(md1, md2);
+            
+           
+            var s1 = new Scatter("GDP");           
+            s1.SymbolSize(5).ItemStyle().Normal().Label().Show(true).Formatter("{b}");
+            s1.markLine = ml;
+            s1.data = new JRaw("dataMap.dataGDP_Estate['2002']");
+            option1.Series(s1);
+            var provider = new List<string>() { "dataMap.dataGDP_Estate" };
+            var data2 = ChartsUtil.EconDatas2(2003, provider);
+            var option2= new ChartOption();
+            option2.Title().Text("2003全国宏观经济关联分析（GDP vs 房地产）");
+            option2.series = data2.Cast<object>().ToList();
+
+            var option3 = new ChartOption();
+            option3.Title().Text("2004全国宏观经济关联分析（GDP vs 房地产）");
+            var data3 = ChartsUtil.EconDatas2(2004, provider);
+            option3.series = data3.Cast<object>().ToList();
+
+            var option4 = new ChartOption();
+            option4.Title().Text("2005全国宏观经济关联分析（GDP vs 房地产）");
+            var data4 = ChartsUtil.EconDatas2(2005, provider);
+            option4.series = data4.Cast<object>().ToList();
+
+            var option5 = new ChartOption();
+            option5.Title().Text("2006全国宏观经济关联分析（GDP vs 房地产）");
+             var data5 = ChartsUtil.EconDatas2(2006, provider);
+            option5.series = data5.Cast<object>().ToList();
+
+            var option6 = new ChartOption();
+            option6.Title().Text("2007全国宏观经济关联分析（GDP vs 房地产）");
+             var data6 = ChartsUtil.EconDatas2(2007, provider);
+            option6.series = data6.Cast<object>().ToList();
+
+            var option7 = new ChartOption();
+            option7.Title().Text("2008全国宏观经济关联分析（GDP vs 房地产）");
+            var data7 = ChartsUtil.EconDatas2(2008, provider);
+            option7.series = data7.Cast<object>().ToList();
+
+            var option8 = new ChartOption();
+            option8.Title().Text("2009全国宏观经济关联分析（GDP vs 房地产）");
+            var data8 = ChartsUtil.EconDatas2(2009, provider);
+            option8.series = data8.Cast<object>().ToList();
+
+            var option9 = new ChartOption();
+            option9.Title().Text("2010全国宏观经济关联分析（GDP vs 房地产）");
+          var data9 = ChartsUtil.EconDatas2(2010, provider);
+            option9.series = data9.Cast<object>().ToList();
+
+            var options = new List<ChartOption>() {
+                 option1,option2,option3,option4,option5,option7,
+                 option8,option9
+            };
+
+            option.options = options;
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("DataRange1")]
+        public string RangeScatter()
+        { 
+            ChartOption option = new ChartOption();
+
+            option.ToolTip().Trigger(TriggerType.item);               
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true)
+                .SetFeature(feature);
+
+          
+
+            option.Grid().Y(80).Y2(100);
+
+            var x = new ValueAxis();
+            x.Name("房地产（亿元）").Max(3400);
+            option.XAxis(x);
+            var y = new ValueAxis();
+            y.Name("房地产（亿元）").Max(53500);
+            option.YAxis(y);
+
+           
+ 
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
         #endregion
 
         #region pie data

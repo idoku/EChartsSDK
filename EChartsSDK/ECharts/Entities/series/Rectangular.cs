@@ -57,15 +57,14 @@ namespace ECharts.Entities.series
             this.symbol = icon;
             return this as T;
         }
+ 
 
-        public T SymbolSize(int symbolSize)
+        public T SymbolSize(object symbolSize)
         {
             this.symbolSize = symbolSize;
             return this as T;
         }
 
-   
 
-       
     }
 }
