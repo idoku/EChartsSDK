@@ -40,7 +40,11 @@ namespace ECharts.Entities.data
             return this as T;
         }
 
-
+        public T X(object x)
+        {
+            this.x = x;
+            return this as T;
+        }
 
         public T XAxis(object xAxis)
         {
@@ -48,6 +52,11 @@ namespace ECharts.Entities.data
             return this as T;
         }
 
+        public T Y(object y)
+        {
+            this.y = y;
+            return this as T;
+        }
 
         public T YAxis(object yAxis)
         {

@@ -1465,29 +1465,380 @@ namespace EChartsWeb.Apis
         }
 
         [AcceptVerbs("GET", "POST")]
+        [ActionName("bar12")]
+        public string MultiLayerColumn()
+        {
+            ChartOption option = new ChartOption();
+            option.Title().Text("ECharts2 vs ECharts1").SubText("Chrome下测试数据");
+            option.ToolTip().Trigger(TriggerType.axis);             
+            option.Legend().Data("ECharts1 - 2k数据", "ECharts1 - 2w数据", "ECharts1 - 20w数据", "",
+            "ECharts2 - 2k数据", "ECharts2 - 2w数据", "ECharts2 - 20w数据");
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            feature.MagicType().Show(true).Type("line", "bar");
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.calculable = true;
+            option.Grid().Y(70).Y2(30).X2(20);
+
+            var x1 = new CategoryAxis();
+            x1.Data("Line", "Bar", "Scatter", "K", "Map");
+            var x2 = new CategoryAxis();
+            x2.AxisLine().Show(false);
+            x2.AxisTick().Show(false);
+            x2.AxisLabel().Show(false);
+            x2.SplitArea().Show(false);
+            x2.SplitLine().Show(false);
+            x2.Data("Line", "Bar", "Scatter", "K", "Map");
+            option.XAxis(x1,x2);
+
+            var y = new ValueAxis();
+            y.AxisLabel().Formatter(@"{value} ms");
+            option.YAxis(y);
+
+            var bar1 = new Bar("ECharts2 - 2k数据");
+            bar1.ItemStyle().Normal().Color("rgba(193,35,43,1)").Label().Show(true);                
+            bar1.Data(40, 155, 95, 75, 0);
+
+            var bar2 = new Bar("ECharts2 - 2w数据");
+            bar2.ItemStyle().Normal().Color("rgba(181,195,52,1)").Label().Show(true)
+                .TextStyle().Color("#27727B");
+            bar2.Data(100, 200, 105, 100, 156);
+
+            var bar3 = new Bar("ECharts2 - 20w数据");
+            bar3.ItemStyle().Normal().Color("rgba(252,206,16,1)").Label().Show(true)
+                .TextStyle().Color("#E87C25");
+            bar3.Data(906, 911, 908, 778, 0);
+
+            var bar4 = new Bar("ECharts1 - 2k数据");
+            bar4.XAxisIndex(1);
+            bar4.ItemStyle().Normal().Color("rgba(193,35,43,0.5)").Label().Show(true)
+                .Formatter(new JRaw(@"function(p){return p.value > 0 ? (p.value +'\n'):'';}"));                
+            bar4.Data(96, 224, 164, 124, 0);
+
+            var bar5 = new Bar("ECharts1 - 2w数据");
+            bar5.XAxisIndex(1);
+            bar5.ItemStyle().Normal().Color("rgba(181,195,52,0.5)").Label().Show(true);                
+            bar5.Data(491, 2035, 389, 955, 347);
+
+            var bar6 = new Bar("ECharts1 - 20w数据");
+            bar6.XAxisIndex(1);
+            bar6.ItemStyle().Normal().Color("rgba(181,195,52,0.5)").Label().Show(true)
+                .Formatter(new JRaw(@"function(p){return p.value > 0 ? (p.value +'\n'):'';}"));
+            bar6.Data(3000, 3000, 2817, 3000, 0);
+            option.Series(bar1, bar2, bar3, bar4, bar5, bar6);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("bar13")]
+        public string UnequalBar()
+        {
+            ChartOption option = new ChartOption();
+            option.Title().Text("双数值柱形图").Subtext("纯属虚构");
+
+            option.ToolTip().Trigger(TriggerType.axis)
+                .Formatter(new JRaw(@"function (params) {
+                    return params.seriesName + ' : [ '
+                           + params.value[0] + ', ' 
+                           + params.value[1] + ' ]';
+                }"))
+               .AxisPointer().Show(true).Type(AxisPointType.cross)
+               .LineStyle().Type(LineStyleType.dashed).Width(1);
+            option.Legend("数据1","数据2");
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.MagicType().Show(true).Type("line", "bar");
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            option.ToolBox().Show(true).SetFeature(feature);
+            option.Grid().Y(80).Y2(30);
+            option.Calculable(true);
+            ValueAxis x = new ValueAxis();          
+            option.XAxis(x);
+            ValueAxis y = new ValueAxis();
+            y.AxisLine().Show(true).LineStyle().Color("#dc143c");
+            option.YAxis(y);
+
+            Bar b1 = new Bar("数据1");
+            double[,] datas = new double[,] {  {1.5, 10}, {5, 7}, {8, 8}, {12, 6}, {11, 12}, {16, 9}, {14, 6}, {17, 4}, {19, 9} };
+            b1.data = datas;
+            //纵轴
+            var md1 = new MarkData("最大值", MarkType.max);
+            md1.Symbol("emptyCircle").ItemStyle().Normal().Color("#dc143c").Label().Position(StyleLabelTyle.top);
+            var md2 = new MarkData("最小值", MarkType.min);
+            md2.Symbol("emptyCircle").ItemStyle().Normal().Color("#dc143c").Label().Position(StyleLabelTyle.bottom);
+            //横轴
+            var md3 = new MarkData("最大值", MarkType.max);
+            md3.Symbol("emptyCircle").ValueIndex(0).ItemStyle().Normal().Color("#1e90ff").Label().Position(StyleLabelTyle.left);
+            var md4 = new MarkData("最小值", MarkType.min);
+            md4.Symbol("emptyCircle").ValueIndex(0).ItemStyle().Normal().Color("#1e90ff").Label().Position(StyleLabelTyle.right);
+            b1.MarkPoint().Data(md1, md2, md3, md4);
+                      
+            var data2 = new[,] { { 1, 2 }, { 2, 3 }, { 4, 4 }, { 7, 5 }, { 11, 11 }, { 18, 15 } };
+            var b2 = new Bar("数据2");
+            b2.BarWidth(10);
+            b2.data = data2;
+            //纵轴
+            var md5 = new MarkData("最大值", MarkType.max);
+            md5.ItemStyle().Normal().Color("#dc143c");
+            var md6 = new MarkData("最小值", MarkType.min);
+            md6.ItemStyle().Normal().Color("#dc143c");
+            var md7 = new MarkData("平均值", MarkType.average);
+            md7.ItemStyle().Normal().Color("#dc143c");
+            //横轴
+            var md8 = new MarkData("最大值", MarkType.max);
+            md8.ValueIndex(0).ItemStyle().Normal().Color("#dc143c");
+            var md9 = new MarkData("最小值", MarkType.min);
+            md9.ValueIndex(0).ItemStyle().Normal().Color("#dc143c");
+            var md10 = new MarkData("平均值", MarkType.average);
+            md10.ValueIndex(0).ItemStyle().Normal().Color("#dc143c");
+            b2.MarkLine().Data(md5, md6, md7, md8, md9, md10);
+            option.Series(b1,b2);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("bar14")]
+        public string RainbowColumn()
+        {
+            ChartOption option = new ChartOption();
+            option.Title().X(HorizontalType.center)
+                .Text("ECharts例子个数统计").SubText("Rainbow bar example")
+                .Link("http://echarts.baidu.com/doc/example.html");
+            option.ToolTip().Trigger(TriggerType.item);
+          
+            Feature feature = new Feature();
+            
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+         
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.calculable = true;
+            option.Grid().Y(80).Y2(80).BorderWidth(0);
+
+            var x1 = new CategoryAxis();
+            x1.Data("Line", "Bar", "Scatter", "K", "Pie", "Radar", "Chord", "Force", "Map", "Gauge", "Funnel");
+            x1.Show(false);           
+            option.XAxis(x1);
+
+            var y = new ValueAxis();
+            y.Show(false);
+            option.YAxis(y);
+
+            var bar1 = new Bar("ECharts例子个数统计");
+            
+            bar1.Data(12, 21, 10, 4, 12, 5, 6, 5, 25, 23, 7);
+
+            var style = new ItemStyle();
+            style.Normal().Color(new JRaw(@"function(params) {                        
+                        var colorList = [
+                          '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+                           '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+                           '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                        ];
+                        return colorList[params.dataIndex]
+                    }"))
+                    .Label().Show(true).Position(StyleLabelTyle.top).Formatter(@"{b}\n{c}");
+            bar1.SetItemStyle(style);
+
+            var mp = new MarkPoint();
+            mp.ToolTip().Trigger(TriggerType.item)
+                .BackgroundColor("rgba(0,0,0,0)")
+                .Formatter(new JRaw(@"function(params){
+                        return '<img src=""' 
+                                + params.data.symbol.replace('image://', '')
+                                + '""/>';
+                }"));
+            var md = new MarkData("Line");
+            md.XAxis(0).Y(350).Symbol("image://../asset/ico/折线图.png");
+            var md1 = new MarkData("Bar");
+            md1.XAxis(1).Y(350).Symbol("image://../asset/ico/柱状图.png");
+            var md2 = new MarkData("Scatter");
+            md2.XAxis(2).Y(350).Symbol("image://../asset/ico/散点图.png");
+            var md3 = new MarkData("K");
+            md3.XAxis(3).Y(350).Symbol("image://../asset/ico/K线图.png");
+            var md4 = new MarkData("Pie");
+            md4.XAxis(4).Y(350).Symbol("image://../asset/ico/饼状图.png");
+            var md5 = new MarkData("Radar");
+            md5.XAxis(5).Y(350).Symbol("image://../asset/ico/雷达图.png");
+            var md6 = new MarkData("Chord");
+            md6.XAxis(6).Y(350).Symbol("image://../asset/ico/和弦图.png");
+            var md7 = new MarkData("Force");
+            md7.XAxis(7).Y(350).Symbol("image://../asset/ico/力导向图.png");
+            var md8 = new MarkData("Map");
+            md8.XAxis(8).Y(350).Symbol("image://../asset/ico/地图.png");
+            var md9 = new MarkData("Gauge");
+            md9.XAxis(9).Y(350).Symbol("image://../asset/ico/仪表盘.png");
+            var md10 = new MarkData("Funnel");
+            md10.XAxis(10).Y(350).Symbol("image://../asset/ico/漏斗图.png");
+            option.Series(bar1);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("bar15")]
+        public string MultiRainbowColumn()
+        {
+            ChartOption option = new ChartOption();
+
+            var colorList = new List<string> { "#ff7f50","#87cefa","#da70d6","#32cd32","#6495ed",
+                 "#ff69b4","#ba55d3","#cd5c5c","#ffa500","#40e0d0"
+            };
         
+
+            option.Title().X(HorizontalType.center)
+                .Text("2010-2013年中国城镇居民家庭人均消费构成（元）")
+                .SubText("数据来自国家统计局")
+                .Link("http://data.stats.gov.cn/search/keywordlist2?keyword=%E5%9F%8E%E9%95%87%E5%B1%85%E6%B0%91%E6%B6%88%E8%B4%B9");
+            option.ToolTip().Trigger(TriggerType.axis)
+                .BackgroundColor("rgba(255,255,255,0.7)")
+                .Formatter(new JRaw(@"function(params) {
+            // for text color
+            var color = colorList[params[0].dataIndex];
+            var res = '<div style=""color:' + color + '"">';
+            res += '<strong>' + params[0].name + '消费（元）</strong>'
+            for (var i = 0, l = params.length; i < l; i++) {
+                res += '<br/>' + params[i].seriesName + ' : ' + params[i].value 
+            }
+            res += '</div>';
+            return res;
+            }"))
+           .AxisPointer().Type(AxisPointType.shadow);
+            option.Legend().X(HorizontalType.right).Data("2010","2011","2012","2013");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            option.ToolBox().Show(true)
+                .Orient(OrientType.vertical).Y(HorizontalType.center)
+                .SetFeature(feature);
+
+            option.calculable = true;
+            option.Grid().Y(80).Y2(40).X2(40);
+
+            var x1 = new CategoryAxis();
+            x1.Data("食品", "衣着", "居住", "家庭设备及用品", "医疗保健", "交通和通信", "文教娱乐服务", "其他");            
+            option.XAxis(x1);
+
+            var y = new ValueAxis();          
+            option.YAxis(y);
+
+            var bar1 = new Bar("2010");
+            bar1.Data(4804.7, 1444.3, 1332.1, 908, 871.8, 1983.7, 1627.6, 499.2);
+
+            var bar2 = new Bar("2011");
+            bar2.Data(5506.3, 1674.7, 1405, 1023.2, 969, 2149.7, 1851.7, 581.3);
+
+            var bar3 = new Bar("2012");
+            bar3.Data(6040.9, 1823.4, 1484.3, 1116.1, 1063.7, 2455.5, 2033.5, 657.1);
+
+            var bar4 = new Bar("2013");
+            bar4.Data(6311.9, 1902, 1745.1, 1215.1, 1118.3, 2736.9, 2294, 699.4);
+
+
+            option.Series(bar1, bar2, bar3, bar4);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+
+        [AcceptVerbs("GET", "POST")]        
         public string Bar()
         {
             ChartOption option = new ChartOption();
-            option.Title().Text("世界人口总数").SubText("数据来源网络");
-            option.ToolTip().Trigger(TriggerType.axis)
-               .AxisPointer().Type(AxisPointType.shadow);
-            option.Legend().Data("2011年","2012年");
-            option.ToolBox(ToolBox());
-            option.calculable = true;
-            var x = new ValueAxis();
-            x.BoundaryGap(new List<double>() { 0, 0.01 });
-            option.XAxis(x);
-            var y = new CategoryAxis();
-            y.SetData(new List<object>(ChartsUtil.Pops()));
-            option.YAxis(y);
-            var bar1 = new Bar("2011年");
-            bar1.Data(18203, 23489, 29034, 104970, 131744, 630230);
+
+            option.ToolTip().Trigger(TriggerType.axis);               
+            option.Legend().Data("邮件营销", "联盟广告", "直接访问", "搜索引擎");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.MagicType().Show(true).Type("line", "bar", "stack", "tiled");
+            feature.SaveAsImage().Show(true);
+            option.ToolBox().Show(true)
+                .SetFeature(feature);
             
-            var bar2 = new Bar("2012年");
-            bar2.Data(19325, 23438, 31000, 121594, 134141, 681807);
+            option.calculable = true;
+            var x = new CategoryAxis();
+            x.Data("周一", "周二", "周三", "周四", "周五", "周六", "周日");
+            option.XAxis(x);
+            var y = new ValueAxis();        
+            option.YAxis(y);
+
+            var style = new ItemStyle();
+            style.Normal().BarBorderColor("red").BarBorderWidth(5)
+                .Color(new JRaw(@"(function (){
+                        var zrColor = require('zrender/tool/color');
+                        return zrColor.getLinearGradient(
+                            0, 400, 0, 300,
+                            [[0, 'green'],[1, 'yellow']]
+                        )
+                    })()"));
+            style.Emphasis().BarBorderColor("green").BarBorderWidth(5)
+                .Color(new JRaw(@"(function (){
+                        var zrColor = require('zrender/tool/color');
+                        return zrColor.getLinearGradient(
+                            0, 400, 0, 300,
+                            [[0, 'red'],[1, 'orange']]
+                        )
+                    })()"))
+                    .Label().Show(true).Position(StyleLabelTyle.top).Formatter("{a}{b}{c}")
+                    .TextStyle().Color("blue");            
+
+            var bar1 = new Bar("邮件营销");
+            bar1.SetItemStyle(style);
+            bar1.Data(220, 232, 101, 234, 190, 330, 210);
+            
+            var bar2 = new Bar("联盟广告");
+            bar2.Stack("总量");
+            bar2.Data(120, '-', 451, 134, 190, 230, 110);
+
+            var style2 = new ItemStyle();
+            style2.Normal().BarBorderColor("tomato").BarBorderWidth(6).Color("red");
+            style2.Emphasis().BarBorderColor("red").Color("blue");
+
+            var style3 = new ItemStyle();
+            style3.Normal().Color("lime");
+            style3.Emphasis().Color("skyBlue");
+            var bar3 = new Bar("直接访问");
+            bar3.Stack("总量");
+            bar3.SetItemStyle(style2);
+            var sd = new SeriesData<int>(390,style3);
+            sd.SymbolSize(10);            
+            bar3.Data(320, 332, 100, 334, sd, 330, 320);
+
+
+            var style4 = new ItemStyle();
+            style4.Normal().Label().Position(StyleLabelTyle.inside);
+            var sd2 = new SeriesData<int>(701, style4);
+            var bar4 = new Bar("搜索引擎");
+            bar4.Stack("总量");
+            bar4.BarWidth(40);
+            bar4.ItemStyle().Normal().BarBorderRadius(5).Label()
+                .Show(true).TextStyle().FontSize(20).FontFamily("微软雅黑").FontWeight("bold");
          
-            option.Series(bar1, bar2);
+            bar4.MarkLine().Data(new MarkData("平均值", MarkType.average), new MarkData(MarkType.max),
+                new MarkData(MarkType.min));
+            
+            bar4.Data(620, 732, sd2, 734, 890, 930, 820);
+
+            option.Series(bar1, bar2, bar3, bar4);
 
             var result = JsonTools.ObjectToJson2(option);
             return result;

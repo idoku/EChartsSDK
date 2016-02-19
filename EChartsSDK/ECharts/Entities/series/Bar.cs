@@ -16,6 +16,8 @@ namespace ECharts.Entities.series
 
         public int? barWidth { get; set; }
 
+        public int? barHeight { get; set; }
+
         public int? barMaxWidth { get; set; }
 
         public Bar BarMaxWidth(int barMaxWidth)
@@ -27,6 +29,12 @@ namespace ECharts.Entities.series
         public Bar BarWidth(int barWidth)
         {
             this.barWidth = barWidth;
+            return this;
+        }
+
+        public Bar BarHeight(int barHeight)
+        {
+            this.barHeight = barHeight;
             return this;
         }
 

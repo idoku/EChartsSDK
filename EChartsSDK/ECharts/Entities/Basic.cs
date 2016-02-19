@@ -16,6 +16,8 @@ namespace ECharts.Entities
 
         public object padding { get; set; }
 
+        public object borderWidth { get; set; }
+
         public string backgroundColor { get; set; }
 
         public string borderColor { get; set; }
@@ -33,6 +35,12 @@ namespace ECharts.Entities
         public T BorderColor(string borderColor)
         {
             this.borderColor = borderColor;
+            return this as T;
+        }
+
+        public T BorderWidth(object borderWidth)
+        {
+            this.borderWidth = borderWidth;
             return this as T;
         }
 

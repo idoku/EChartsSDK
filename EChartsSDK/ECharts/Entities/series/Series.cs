@@ -51,10 +51,10 @@ namespace ECharts.Entities.series
         }
 
 
-        public ItemStyle SetItemStyle(ItemStyle itemStyle)
+        public Series SetItemStyle(ItemStyle itemStyle)
         {
             this.itemStyle = itemStyle;
-            return this.itemStyle;
+            return this;
         }
 
         public ItemStyle ItemStyle()

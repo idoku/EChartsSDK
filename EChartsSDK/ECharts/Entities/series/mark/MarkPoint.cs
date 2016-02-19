@@ -9,6 +9,8 @@ namespace ECharts.Entities.series
 {
     public class MarkPoint:AbstractData<MarkPoint>
     {
+        public ToolTip toolTip { get; set; }
+
         public bool? clickable { get; set; }
 
         public string symbol { get; set; }
@@ -35,13 +37,18 @@ namespace ECharts.Entities.series
             return this;
         }
 
-       
-   
         public ItemStyle ItemStyle()
         {
             if (itemStyle == null)
                 itemStyle = new ItemStyle();
             return itemStyle;
+        }
+
+        public ToolTip ToolTip()
+        {
+            if (toolTip == null)
+                toolTip = new ToolTip();
+            return toolTip;
         }
 
         public Effect Effect()
