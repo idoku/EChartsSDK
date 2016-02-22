@@ -2274,6 +2274,139 @@ namespace EChartsWeb.Apis
 
         #endregion
 
+
+        #region k data
+        [AcceptVerbs("GET", "POST")]        
+        public string K()
+        {
+            ChartOption option = new ChartOption();
+            option.Title().Text("2013年上半年上证指数").X(HorizontalType.center);
+            option.ToolTip().Trigger(TriggerType.axis)
+                .Formatter(new JRaw(@"function (params) {
+            var res = params[0].seriesName + ' ' + params[0].name;
+            res += '<br/>  开盘 : ' + params[0].value[0] + '  最高 : ' + params[0].value[3];
+            res += '<br/>  收盘 : ' + params[0].value[1] + '  最低 : ' + params[0].value[2];
+            return res;
+              }"));
+            option.Legend().Data("上证指数");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.DataZoom().Show(true).Realtime(true).Start(0).End(50);
+
+            var x = new CategoryAxis();
+            x.BoundaryGap(true).AxisTick().OnGap(false);
+            x.SplitLine().Show(false);
+            x.Data("2013/1/24", "2013/1/25", "2013/1/28", "2013/1/29", "2013/1/30",
+                "2013/1/31", "2013/2/1", "2013/2/4", "2013/2/5", "2013/2/6",
+                "2013/2/7", "2013/2/8", "2013/2/18", "2013/2/19", "2013/2/20",
+                "2013/2/21", "2013/2/22", "2013/2/25", "2013/2/26", "2013/2/27",
+                "2013/2/28", "2013/3/1", "2013/3/4", "2013/3/5", "2013/3/6",
+                "2013/3/7", "2013/3/8", "2013/3/11", "2013/3/12", "2013/3/13",
+                "2013/3/14", "2013/3/15", "2013/3/18", "2013/3/19", "2013/3/20",
+                "2013/3/21", "2013/3/22", "2013/3/25", "2013/3/26", "2013/3/27",
+                "2013/3/28", "2013/3/29", "2013/4/1", "2013/4/2", "2013/4/3",
+                "2013/4/8", "2013/4/9", "2013/4/10", "2013/4/11", "2013/4/12",
+                "2013/4/15", "2013/4/16", "2013/4/17", "2013/4/18", "2013/4/19",
+                "2013/4/22", "2013/4/23", "2013/4/24", "2013/4/25", "2013/4/26",
+                "2013/5/2", "2013/5/3", "2013/5/6", "2013/5/7", "2013/5/8",
+                "2013/5/9", "2013/5/10", "2013/5/13", "2013/5/14", "2013/5/15",
+                "2013/5/16", "2013/5/17", "2013/5/20", "2013/5/21", "2013/5/22",
+                "2013/5/23", "2013/5/24", "2013/5/27", "2013/5/28", "2013/5/29",
+                "2013/5/30", "2013/5/31", "2013/6/3", "2013/6/4", "2013/6/5",
+                "2013/6/6", "2013/6/7", "2013/6/13");
+            option.XAxis(x);
+
+            var y = new ValueAxis();
+            y.Scale(true).BoundaryGap(0.01, 0.01);
+            option.YAxis(y);
+
+            var style = new ItemStyle();
+            style.Normal().Color("red").Color0("lightgreen")
+                .LineStyle().Width(2).Color("orange").Color0("green");
+            style.Emphasis().Color("black").Color0("white");
+            var mp = new MarkPoint();
+            mp.Symbol("star").ItemStyle().Normal().Label().Position(StyleLabelTyle.top);
+            mp.Data(new MarkData("最高") { value = 2444.8, xAxis = "2014/2/18", yAxis = 2466 });
+            
+            var k = new K("上证指数");
+            k.SetItemStyle(style);
+            k.BarMaxWidth(20);
+            k.markPoint = mp;
+            k.data = ChartsData.SSE;
+            option.Series(k);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("k1")]
+        public string StdK()
+        {
+            ChartOption option = new ChartOption();
+            option.Title().Text("2013年上半年上证指数").X(HorizontalType.center);
+            option.ToolTip().Trigger(TriggerType.axis)
+                .Formatter(new JRaw(@" function (params) {
+            var res = params[0].seriesName + ' ' + params[0].name;
+            res += '<br/>  开盘 : ' + params[0].value[0] + '  最高 : ' + params[0].value[3];
+            res += '<br/>  收盘 : ' + params[0].value[1] + '  最低 : ' + params[0].value[2];
+            return res;
+            }"));
+            option.Legend().Data("上证指数");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.DataZoom().Show(true).Realtime(true).Start(50).End(100);
+
+            var x = new CategoryAxis();
+            x.BoundaryGap(true).AxisTick().OnGap(false);
+            x.SplitLine().Show(false);
+            x.Data("2013/1/24", "2013/1/25", "2013/1/28", "2013/1/29", "2013/1/30",
+                "2013/1/31", "2013/2/1", "2013/2/4", "2013/2/5", "2013/2/6",
+                "2013/2/7", "2013/2/8", "2013/2/18", "2013/2/19", "2013/2/20",
+                "2013/2/21", "2013/2/22", "2013/2/25", "2013/2/26", "2013/2/27",
+                "2013/2/28", "2013/3/1", "2013/3/4", "2013/3/5", "2013/3/6",
+                "2013/3/7", "2013/3/8", "2013/3/11", "2013/3/12", "2013/3/13",
+                "2013/3/14", "2013/3/15", "2013/3/18", "2013/3/19", "2013/3/20",
+                "2013/3/21", "2013/3/22", "2013/3/25", "2013/3/26", "2013/3/27",
+                "2013/3/28", "2013/3/29", "2013/4/1", "2013/4/2", "2013/4/3",
+                "2013/4/8", "2013/4/9", "2013/4/10", "2013/4/11", "2013/4/12",
+                "2013/4/15", "2013/4/16", "2013/4/17", "2013/4/18", "2013/4/19",
+                "2013/4/22", "2013/4/23", "2013/4/24", "2013/4/25", "2013/4/26",
+                "2013/5/2", "2013/5/3", "2013/5/6", "2013/5/7", "2013/5/8",
+                "2013/5/9", "2013/5/10", "2013/5/13", "2013/5/14", "2013/5/15",
+                "2013/5/16", "2013/5/17", "2013/5/20", "2013/5/21", "2013/5/22",
+                "2013/5/23", "2013/5/24", "2013/5/27", "2013/5/28", "2013/5/29",
+                "2013/5/30", "2013/5/31", "2013/6/3", "2013/6/4", "2013/6/5",
+                "2013/6/6", "2013/6/7", "2013/6/13");
+            option.XAxis(x);
+
+            var y = new ValueAxis();
+            y.Scale(true).BoundaryGap(0.01, 0.01);
+            option.YAxis(y);
+
+            var k = new K("上证指数");
+            k.data = ChartsData.SSE;
+            option.Series(k);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+        #endregion
+
         #region pie data
         [AcceptVerbs("GET", "POST")]
         public string StdPie()

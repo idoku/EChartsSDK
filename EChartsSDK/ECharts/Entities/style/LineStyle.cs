@@ -10,6 +10,8 @@ namespace ECharts.Entities.style
     {
         public object color { get; set; }
 
+        public object color0 { get; set; }
+
         public LineStyleType? type { get; set; }
 
         public int? width { get; set; }
@@ -51,6 +53,12 @@ namespace ECharts.Entities.style
         public LineStyle Color(string color)
         {
             this.color = color;
+            return this;
+        }
+
+        public LineStyle Color0(string color0)
+        {
+            this.color0 = color0;
             return this;
         }
 

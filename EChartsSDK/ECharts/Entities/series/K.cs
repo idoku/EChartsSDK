@@ -17,6 +17,10 @@ namespace ECharts.Entities.series
             this.type = ChartType.k;
         }
 
+        public K(string name):this() {
+            this.name = name;
+        }
+
         public K BarWidth(int barWidth)
         {
             this.barWidth = barWidth;

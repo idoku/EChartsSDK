@@ -23,6 +23,16 @@ namespace ECharts.Entities.axis
             return this;
         }
 
+        public ValueAxis BoundaryGap(params double[] values)
+        {
+            if (boundaryGap == null)
+            {
+                boundaryGap = new List<double>();
+            }
+            values.ToList().ForEach(v => boundaryGap.Add(v));
+            return this; 
+        }
+
 
 
     }
