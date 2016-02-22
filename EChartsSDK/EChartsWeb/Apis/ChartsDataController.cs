@@ -2158,6 +2158,120 @@ namespace EChartsWeb.Apis
             return result;
         }
 
+        [AcceptVerbs("GET", "POST")]        
+        public string Scatter()
+        {
+            ChartOption option = new ChartOption();
+            option.ToolTip().Trigger(TriggerType.axis)            
+            .AxisPointer().Show(true).Type(AxisPointType.cross)
+            .LineStyle().Type(LineStyleType.dashed).Width(1);
+
+            option.Legend().Data("catter1", "cos");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            var x = new ValueAxis();           
+            option.XAxis(x);
+            var y = new ValueAxis();            
+            option.YAxis(y);
+            var s1 = new Scatter("scatter1");
+            s1.SymbolSize(new JRaw(@"function (value){
+                if (value[0] < 2) {
+                    return 2;
+                }
+                else if (value[0] < 8) {
+                    return Math.round(value[2] * 3);
+                }
+                else {
+                    return 20;
+                }
+            }"));
+            var style = new ItemStyle();
+            style.Normal().Color("lightblue").BorderWidth(4).Label().Show(true);
+            style.Emphasis().Color("lightgreen");
+
+            s1.data = new JRaw(@"(function () {
+                var d = [];
+                var len = 20;
+                while (len--) {
+                    d.push([
+                        (Math.random()*10).toFixed(2) - 0,
+                        (Math.random()*10).toFixed(2) - 0,
+                        (Math.random()*10).toFixed(2) - 0
+                    ]);
+                }
+                return d;
+            })()");
+
+            var md1 = new MarkData("y最大值",MarkType.max);
+            var md2 = new MarkData("y最小值", MarkType.min);
+            var md3 = new MarkData("x最大值", MarkType.max);
+            md3.ValueIndex(0).Symbol("arrow")
+                .ItemStyle().Normal().BorderColor("red");            
+            var md4 = new MarkData("y最大值", MarkType.max);
+            md4.ValueIndex(0).Symbol("arrow")
+                .ItemStyle().Normal().BorderColor("red");
+            s1.MarkPoint().Data(md1, md2, md3, md4);
+
+            var md5 = new MarkData("y平均值", MarkType.average);
+            var md6 = new MarkData("x平均值", MarkType.average);
+            md6.ValueIndex(1).ItemStyle().Normal().BorderColor("red");
+            s1.MarkLine().Data(md5, md6);
+
+            var s2 = new Scatter("scatter2");
+            s2.Symbol("image://../Content/img/icon/favicon.png")
+                .SymbolSize(new JRaw(@"function (value){
+                return Math.round(value[2] * 3);
+            }")).ItemStyle().Emphasis().Label().Show(true);
+
+            s2.data = new JRaw(@"(function () {
+                var d = [];
+                var len = 20;
+                while (len--) {
+                    d.push([
+                        (Math.random()*10).toFixed(2) - 0,
+                        (Math.random()*10).toFixed(2) - 0,
+                        (Math.random()*10).toFixed(2) - 0
+                    ]);
+                }
+                d.push({
+                    value : [5,5,1000],
+                    itemStyle: {
+                        normal: {
+                            borderWidth: 8,
+                            color: 'orange'
+                        },
+                        emphasis: {
+                            borderWidth: 10,
+                            color: '#ff4500'
+                        }
+                    },
+                    symbol: 'emptyTriangle',
+                    symbolRotate:90,
+                    symbolSize:30
+                })
+                return d;
+            })()");
+            var md7 = new MarkData("有个东西");
+            md7.Value(1000).XAxis(5).YAxis(5).SymbolSize(80);
+            var mp2 = new MarkPoint();
+            
+            s2.MarkPoint().Symbol("emptyCircle").Data(md7)
+                .ItemStyle().Normal().Label().Position(StyleLabelTyle.top);
+
+            option.Series(s1, s2);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
         #endregion
 
         #region pie data

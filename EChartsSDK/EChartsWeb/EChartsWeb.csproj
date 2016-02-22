@@ -150,7 +150,65 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\example\axis.png" />
+    <Content Include="Content\img\example\bar.png" />
+    <Content Include="Content\img\example\bar1.png" />
+    <Content Include="Content\img\example\bar10.png" />
+    <Content Include="Content\img\example\bar11.png" />
+    <Content Include="Content\img\example\bar12.png" />
+    <Content Include="Content\img\example\bar13.png" />
+    <Content Include="Content\img\example\bar14.png" />
+    <Content Include="Content\img\example\bar15.png" />
+    <Content Include="Content\img\example\bar2.png" />
+    <Content Include="Content\img\example\bar3.png" />
+    <Content Include="Content\img\example\bar4.png" />
+    <Content Include="Content\img\example\bar5.png" />
+    <Content Include="Content\img\example\bar6.png" />
+    <Content Include="Content\img\example\bar7.png" />
+    <Content Include="Content\img\example\bar8.png" />
+    <Content Include="Content\img\example\bar9.png" />
+    <Content Include="Content\img\example\bmap1.png" />
+    <Content Include="Content\img\example\bmap2.png" />
     <Content Include="Content\img\example\cache.png" />
+    <Content Include="Content\img\example\chord.png" />
+    <Content Include="Content\img\example\chord1.png" />
+    <Content Include="Content\img\example\chord2.png" />
+    <Content Include="Content\img\example\chord3.png" />
+    <Content Include="Content\img\example\chord4.png" />
+    <Content Include="Content\img\example\dataRange.png" />
+    <Content Include="Content\img\example\dataRange1.png" />
+    <Content Include="Content\img\example\dataRange2.png" />
+    <Content Include="Content\img\example\dataZoom.png" />
+    <Content Include="Content\img\example\dataZoom1.png" />
+    <Content Include="Content\img\example\dynamicLineBar.png" />
+    <Content Include="Content\img\example\dynamicPieRadar.png" />
+    <Content Include="Content\img\example\dynamicScatterK.png" />
+    <Content Include="Content\img\example\event.png" />
+    <Content Include="Content\img\example\eventRiver1.png" />
+    <Content Include="Content\img\example\eventRiver2.png" />
+    <Content Include="Content\img\example\force.png" />
+    <Content Include="Content\img\example\force1.png" />
+    <Content Include="Content\img\example\force2.png" />
+    <Content Include="Content\img\example\force4.png" />
+    <Content Include="Content\img\example\funnel.png" />
+    <Content Include="Content\img\example\funnel1.png" />
+    <Content Include="Content\img\example\funnel2.png" />
+    <Content Include="Content\img\example\funnel3.png" />
+    <Content Include="Content\img\example\funnel4.png" />
+    <Content Include="Content\img\example\gauge.png" />
+    <Content Include="Content\img\example\gauge1.png" />
+    <Content Include="Content\img\example\gauge2.png" />
+    <Content Include="Content\img\example\gauge3.png" />
+    <Content Include="Content\img\example\gauge4.png" />
+    <Content Include="Content\img\example\gauge5.png" />
+    <Content Include="Content\img\example\heatmap.png" />
+    <Content Include="Content\img\example\heatmap2.png" />
+    <Content Include="Content\img\example\heatmap_map.png" />
+    <Content Include="Content\img\example\import.png" />
+    <Content Include="Content\img\example\k.png" />
+    <Content Include="Content\img\example\k1.png" />
+    <Content Include="Content\img\example\lasagna.png" />
+    <Content Include="Content\img\example\legend.png" />
     <Content Include="Content\img\example\line.png" />
     <Content Include="Content\img\example\line1.png" />
     <Content Include="Content\img\example\line2.png" />
@@ -161,6 +219,7 @@
     <Content Include="Content\img\example\line7.png" />
     <Content Include="Content\img\example\line8.png" />
     <Content Include="Content\img\example\line9.png" />
+    <Content Include="Content\img\icon\favicon.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -320,7 +379,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\icon\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
