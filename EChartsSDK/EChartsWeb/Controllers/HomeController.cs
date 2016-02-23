@@ -16,14 +16,18 @@ namespace EChartsWeb.Controllers
         public ActionResult Example(string api)
         {
             ViewBag.API = api;
-            if (api == "bar11" || api=="scatter4")
+            if (api == "bar11" || api == "scatter4")
             {
                 ViewBag.ExtJs = "../Scripts/charts/timelineOption.js";
             }
             else if (api == "scatter2")
             {
                 ViewBag.ExtJs = "../Scripts/charts/asset.js";
-            }           
+            }
+            else if (api == "lasagna")
+            {
+                ViewBag.ExtJs = "../Scripts/charts/lasagna.js";              
+            }
 
             return View();
         }

@@ -2274,7 +2274,6 @@ namespace EChartsWeb.Apis
 
         #endregion
 
-
         #region k data
         [AcceptVerbs("GET", "POST")]        
         public string K()
@@ -2409,6 +2408,7 @@ namespace EChartsWeb.Apis
 
         #region pie data
         [AcceptVerbs("GET", "POST")]
+        [ActionName("pie1")]
         public string StdPie()
         {
             IList<string> ads = ChartsUtil.Ads();
@@ -2440,6 +2440,622 @@ namespace EChartsWeb.Apis
             return result;
 
         }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("pie2")]
+        public string StdRing()
+        {
+            IList<string> ads = ChartsUtil.Ads();
+
+            IList<int> data1 = ChartsUtil.Datas(7, 90, 240);
+            IList<int> data2 = ChartsUtil.Datas(7, 190, 310);
+            IList<int> data3 = ChartsUtil.Datas(7, 150, 410);
+            IList<int> data4 = ChartsUtil.Datas(7, 300, 400);
+
+
+            ChartOption option = new ChartOption();
+            option.Title().Text("用户访问来源").SubText("虚构").X(HorizontalType.center);
+            option.ToolTip().Trigger(TriggerType.item).Formatter(new JRaw(@"{a} <br/>{b} : {c} ({d}%)").ToString());
+            option.Legend().Orient(OrientType.vertical).X(HorizontalType.left).SetData(new List<object>(ads.ToList()));
+            option.ToolBox(ToolBox(OrientType.vertical));
+            option.ToolBox().X(HorizontalType.right).Y(HorizontalType.center);
+            option.calculable = true;
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.MagicType().Show(true).Type("pie", "funnel")
+                .Option().Funnel().X("25%").Width("50%")
+                .FunnelAlign(HorizontalType.center).Max(1548);                
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            option.ToolBox().Show(true).SetFeature(feature);
+            option.Calculable(true);
+
+            var pie = new Pie("访问来源");
+
+            pie.Radius(new List<string>() { "50%", "70%" });
+            var style = new ItemStyle();
+            style.Normal().Label().Show(true);
+            style.Normal().LabelLine().Show(true);
+            style.Emphasis().Label().Show(true).Position(StyleLabelTyle.center)
+                .TextStyle().FontSize(30).FontWeight("bold");
+            pie.SetItemStyle(style);
+            pie.Data(new PieData<int>(345, ads[0]), new PieData<int>(310, ads[1]), new PieData<int>(234, ads[2]),
+                new PieData<int>(135, ads[3]), new PieData<int>(1543, ads[4]));
+
+
+            option.Series(pie);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("pie3")]
+        public string NestPie()
+        {
+            IList<string> ads = ChartsUtil.Ads();
+            IList<string> ses = ChartsUtil.Ses();
+            IList<int> data1 = ChartsUtil.Datas(7, 90, 240);
+            IList<int> data2 = ChartsUtil.Datas(7, 190, 310);
+            IList<int> data3 = ChartsUtil.Datas(7, 150, 410);
+            IList<int> data4 = ChartsUtil.Datas(7, 300, 400);
+            IList<int> data5 = ChartsUtil.Datas(7, 820, 1400);
+            IList<int> data6 = ChartsUtil.Datas(7, 600, 1200);
+            IList<int> data7 = ChartsUtil.Datas(7, 80, 400);
+            IList<int> data8 = ChartsUtil.Datas(7, 100, 300);
+            ads.ToList().AddRange(ses);
+
+            ChartOption option = new ChartOption();          
+            option.ToolTip().Trigger(TriggerType.item).Formatter(new JRaw(@"{a} <br/>{b} : {c} ({d}%)").ToString());
+            option.Legend().Orient(OrientType.vertical).X(HorizontalType.left).SetData(new List<object>(ads.ToList()));
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.MagicType().Show(true).Type("pie", "funnel")
+                .Option().Funnel().X("25%").Width("50%")
+                .FunnelAlign(HorizontalType.center).Max(1548);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            option.ToolBox().Show(true).SetFeature(feature);
+            option.Calculable(true);
+
+
+
+            option.calculable = true;
+
+            var pie = new Pie("访问来源");
+
+            pie.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "0", "70" })
+               .X("20%").Width("40%").FunnelAlign(HorizontalType.right).Max(1548);
+            var style = new ItemStyle();
+            style.Normal().Label().Position(StyleLabelTyle.inner);
+            style.Normal().LabelLine().Show(false);
+            pie.SetItemStyle(style);
+            pie.Data(new PieData<int>(335, "直达"), new PieData<int>(679, "营销广告"),
+                new PieData<int>(1548, "搜索引擎"));
+
+            var pie2 = new Pie("访问来源");
+
+            pie2.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "100", "140" })
+               .X("60%").Width("35%").FunnelAlign(HorizontalType.left).Max(1048);
+         
+            pie2.Data(new PieData<int>(335, "直达"), new PieData<int>(679, "营销广告"),
+                new PieData<int>(1548, "联盟广告"), new PieData<int>(1548, "视频广告"),
+                new PieData<int>(1548, "百度"), new PieData<int>(1548, "谷歌"),
+                new PieData<int>(1548, "必应"), new PieData<int>(1548, "其他"));
+
+
+            option.Series(pie,pie2);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("pie4")]
+        public string NigRosePie()
+        {
+            var names = ChartsUtil.GenString("rose", 8);
+            ChartOption option = new ChartOption();
+            option.ToolTip().Trigger(TriggerType.item).Formatter(new JRaw(@"{a} <br/>{b} : {c} ({d}%)").ToString());
+            option.Legend().Y(VerticalType.bottom).X(HorizontalType.center).SetData(new List<object>(names.ToList()));
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.MagicType().Show(true).Type("pie", "funnel")
+                .Option().Funnel().X("25%").Width("50%")
+                .FunnelAlign(HorizontalType.center).Max(1548);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            option.ToolBox().Show(true).SetFeature(feature);
+            option.Calculable(true);            
+
+            var pie = new Pie("半径模式");
+
+            pie.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "20", "110" })
+                .Center(new List<string>() { "25%", "200" }).RoseType(NigRoseType.radius)
+               .Width("40%").FunnelAlign(HorizontalType.right).Max(40);
+            var style = new ItemStyle();
+            style.Normal().Label().Show(false);
+            style.Normal().LabelLine().Show(false);
+            style.Emphasis().Label().Show(false);
+            style.Emphasis().LabelLine().Show(false);
+
+            pie.SetItemStyle(style);
+            pie.Data(new PieData<int>(10, "rose1"), new PieData<int>(5, "rose2"),
+                new PieData<int>(15, "rose3"),new PieData<int>(25,"roese4"),
+                new PieData<int>(20, "roese5"), new PieData<int>(35, "roese6"),
+                new PieData<int>(30, "roese7"), new PieData<int>(40, "roese8"));
+
+            var pie2 = new Pie("面积模式");
+
+            pie2.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "30", "110" })
+                .Center(new List<string>() { "75%", "200" }).RoseType(NigRoseType.area)
+               .Width("50%").FunnelAlign(HorizontalType.right).Max(40);
+
+            pie2.Data(new PieData<int>(10, "rose1"), new PieData<int>(5, "rose2"),
+                new PieData<int>(15, "rose3"), new PieData<int>(25, "roese4"),
+                new PieData<int>(20, "roese5"), new PieData<int>(35, "roese6"),
+                new PieData<int>(30, "roese7"), new PieData<int>(40, "roese8"));
+
+
+            option.Series(pie, pie2);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("pie5")]
+        public string Ring()
+        {
+            var labelTop = new ItemStyle();
+            labelTop.Normal().Label().Show(true).Position(StyleLabelTyle.center)
+                .Formatter("{b}").TextStyle().Baseline(VerticalType.bottom);
+
+            var labelFormatter = new ItemStyle();
+            labelFormatter.Normal().Label().Formatter(new JRaw(@" function (params){
+                return 100 - params.value + '%'
+            }")).TextStyle().Baseline(VerticalType.top);
+
+            var labelBottom = new ItemStyle();
+            labelBottom.Normal().Color("#ccc").Label().Show(true).Position(StyleLabelTyle.center);
+            labelBottom.Normal().LabelLine().Show(false);
+            labelBottom.Emphasis().Color("rgba(0,0,0,0)");
+            
+            ChartOption option = new ChartOption();
+            option.Legend().X(HorizontalType.center).Y(HorizontalType.center).
+                Data("GoogleMaps", "Facebook", "Youtube", "Google+", "Weixin",
+            "Twitter", "Skype", "Messenger", "Whatsapp", "Instagram");
+
+            option.Title().Text("The app world").Subtext("from global web index").X(HorizontalType.center);
+
+            option.ToolTip().Trigger(TriggerType.item).Formatter(new JRaw(@"{a} <br/>{b} : {c} ({d}%)").ToString());
+
+            var style = new ItemStyle();
+            style.Normal().Label().Formatter(new JRaw(@" function (params){
+                                        return 'other\n' + params.value + '%\n'
+                                    }")).TextStyle().Baseline(VerticalType.middle);
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.MagicType().Show(true).Type("pie", "funnel")
+                .Option().Funnel().Width("20%").Height("30%")
+                .FunnelAlign(HorizontalType.center).Max(1548)
+                .SetItemStyle(style) ;
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            option.ToolBox().Show(true).SetFeature(feature);
+            option.Calculable(true);
+
+            var pie = new Pie();
+            var pd1 = new PieData<int>(46, "other");
+            pd1.itemStyle = labelBottom;
+            var pd2 = new PieData<int>(54, "GoogleMaps");
+            pd2.itemStyle = labelTop;
+
+            pie.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "40", "55" })
+                .Center(new List<string>() { "10%", "30%" }).X("0%")
+               .Data(pd1, pd2).SetItemStyle(labelFormatter);
+                                    
+            var pie2 = new Pie();
+            var pd3 = new PieData<int>(56, "other");
+            pd3.itemStyle = labelBottom;
+            var pd4 = new PieData<int>(44, "Facebook");
+            pd4.itemStyle = labelTop;
+
+            pie2.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "40", "55" })
+                .Center(new List<string>() { "30%", "30%" }).X("20%")
+               .Data(pd3, pd4).SetItemStyle(labelFormatter);
+
+            var pie3 = new Pie();
+            var pd5 = new PieData<int>(56, "other");
+            pd5.itemStyle = labelBottom;
+            var pd6 = new PieData<int>(35, "Youtube");
+            pd6.itemStyle = labelTop;
+
+            pie3.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "40", "55" })
+                .Center(new List<string>() { "50%", "30%" }).X("40%")
+               .Data(pd5, pd6).SetItemStyle(labelFormatter);
+
+            var pie4 = new Pie();
+            var pd7 = new PieData<int>(70, "other");
+            pd7.itemStyle = labelBottom;
+            var pd8 = new PieData<int>(30, "Google+");
+            pd8.itemStyle = labelTop;
+
+            pie4.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "40", "55" })
+                .Center(new List<string>() { "70%", "30%" }).X("60%")
+               .Data(pd7, pd8).SetItemStyle(labelFormatter);
+
+            var pie5 = new Pie();
+            var pd9 = new PieData<int>(73, "other");
+            pd9.itemStyle = labelBottom;
+            var pd10 = new PieData<int>(27, "Weixin");
+            pd10.itemStyle = labelTop;
+
+            pie5.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "40", "55" })
+                .Center(new List<string>() { "90%", "30%" }).X("80%")
+               .Data(pd9, pd10).SetItemStyle(labelFormatter);
+
+            var pie6 = new Pie();
+            var pd11 = new PieData<int>(78, "other");
+            pd11.itemStyle = labelBottom;
+            var pd12 = new PieData<int>(22, "Twitter");
+            pd12.itemStyle = labelTop;
+
+            pie6.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "40", "55" })
+                .Center(new List<string>() { "10%", "70%" }).X("0%").Y("55%")
+               .Data(pd11, pd12).SetItemStyle(labelFormatter);
+
+            var pie7 = new Pie();
+            var pd13 = new PieData<int>(78, "other");
+            pd13.itemStyle = labelBottom;
+            var pd14 = new PieData<int>(22, "Skype");
+            pd14.itemStyle = labelTop;
+
+            pie7.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "40", "55" })
+                .Center(new List<string>() { "30%", "70%" }).X("20%").Y("55%")
+               .Data(pd13, pd14).SetItemStyle(labelFormatter);
+
+            var pie8 = new Pie();
+            var pd15 = new PieData<int>(78, "other");
+            pd15.itemStyle = labelBottom;
+            var pd16 = new PieData<int>(22, "Message");
+            pd16.itemStyle = labelTop;
+
+            pie8.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "40", "55" })
+                .Center(new List<string>() { "50%", "70%" }).X("40%").Y("55%")
+               .Data(pd15, pd16).SetItemStyle(labelFormatter);
+
+            var pie9 = new Pie();
+            var pd17 = new PieData<int>(83, "other");
+            pd17.itemStyle = labelBottom;
+            var pd18 = new PieData<int>(17, "Whatsapp");
+            pd18.itemStyle = labelTop;
+
+            pie9.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "40", "55" })
+                .Center(new List<string>() { "70%", "70%" }).X("60%").Y("55%")
+               .Data(pd17, pd18).SetItemStyle(labelFormatter);
+
+            var pie10 = new Pie();
+            var pd19 = new PieData<int>(89, "other");
+            pd19.itemStyle = labelBottom;
+            var pd20 = new PieData<int>(11, "Instagram");
+            pd20.itemStyle = labelTop;
+
+            pie10.SelectedMode(SelectedModeType.single).Radius(new List<string>() { "40", "55" })
+                .Center(new List<string>() { "90%", "70%" }).X("80%").Y("55%")
+               .Data(pd19, pd20).SetItemStyle(labelFormatter);
+
+            option.Series(pie, pie2, pie3, pie4, pie5, pie6, pie7, pie8, pie9, pie10);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("pie6")]
+        public string RingLike()
+        {
+
+            var dataStyle = new ItemStyle();
+            dataStyle.Normal().Label().Show(true);
+            dataStyle.Normal().LabelLine().Show(false);
+
+            var placeHolderStyle = new ItemStyle();
+            placeHolderStyle.Normal().Color("rgba(0,0,0,0)").Label().Show(false);
+            placeHolderStyle.Normal().LabelLine().Show(false);
+            placeHolderStyle.Emphasis().Color("rbga(0,0,0,0)");
+
+            ChartOption option = new ChartOption();
+            option.Title().Text("你幸福吗?").Subtext("From ExcelHome")
+                .Sublink("http://e.weibo.com/1341556070/AhQXtjbqh")
+                .X(HorizontalType.center).Y(HorizontalType.center)
+                .ItemGap(20).TextStyle().Color("rgba(30,144,255,0.8)").FontFamily("微软雅黑")
+                .FontSize(35).FontWeight("bolder");
+
+            option.ToolTip().Show(true).Formatter(new JRaw(@"{a} <br/>{b} : {c} ({d}%)").ToString());
+            option.Legend().Y(45).Orient(OrientType.vertical)
+                .Data("68%的人表示过的不错", "29%的人表示生活压力很大", "3%的人表示“我姓曾”");
+            option.Legend().x = new JRaw(@"document.getElementById('main').offsetWidth / 2");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.MagicType().Show(true).Type("pie", "funnel")
+                .Option().Funnel().X("25%").Width("50%")
+                .FunnelAlign(HorizontalType.center).Max(1548);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            option.ToolBox().Show(true).SetFeature(feature);
+            option.Calculable(true);
+
+            var pd1 = new PieData<int>(68, "68%的人表示过的不错");
+            var pd2 = new PieData<int>(32, "invisible", placeHolderStyle);
+            
+            var pie = new Pie("1");
+            pie.ClockWise(false).Radius(new List<string>() { "125", "150" });
+            pie.Data(pd1, pd2);
+            pie.SetItemStyle(dataStyle);
+
+
+            var pd3 = new PieData<int>(29, "29%的人表示生活压力很大");
+            var pd4 = new PieData<int>(71, "invisible", placeHolderStyle);
+
+            var pie2 = new Pie("2");
+            pie2.ClockWise(false).Radius(new List<string>() { "100", "125" });
+            pie2.Data(pd3, pd4);
+            pie2.SetItemStyle(dataStyle);
+
+
+            var pd5 = new PieData<int>(3, @"3%的人表示“我姓曾”");
+            var pd6 = new PieData<int>(97, "invisible", placeHolderStyle);
+
+            var pie3 = new Pie("3");
+            pie3.ClockWise(false).Radius(new List<string>() { "75", "100" });
+            pie3.Data(pd5, pd6);
+            pie3.SetItemStyle(dataStyle);
+
+            option.Series(pie, pie2,pie3);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("pie7")]
+        public string TimeBar()
+        {
+            var timeline = new TimeLine();
+            timeline.Data("2013-01-01", "2013-02-01", "2013-03-01", "2013-04-01", "2013-05-01",
+            "2013-06-01", "2013-07-01", "2013-08-01", "2013-09-01", "2013-10-01", "2013-11-01",
+             "2013-12-01")
+                .Label().Formatter(new JRaw(@" function(s) {
+                return s.slice(0, 7);
+            }"));
+            ChartOption option = new ChartOption();
+            option.timeline = timeline;
+
+            ChartOption option1 = new ChartOption();
+            option1.Title().Text("浏览器占比变化").Subtext("纯属虚构");             
+            option1.ToolTip().Show(true).Formatter(new JRaw(@"{a} <br/>{b} : {c} ({d}%)").ToString());
+            option1.Legend().Data("Chrome", "Firefox", "Safari", "IE9+", "IE8-");
+      
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.MagicType().Show(true).Type("pie", "funnel")
+                .Option().Funnel().X("25%").Width("50%")
+                .FunnelAlign(HorizontalType.center).Max(1700);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            option1.ToolBox().Show(true).SetFeature(feature);
+            option1.Calculable(true);
+            var pies = ChartsUtil.GetBrowsersData(10);
+            pies[0].Center(new List<string>() { "50%", "45%" }).Radius("50%");
+            option1.Series(pies[0]);
+
+            ChartOption option2 = new ChartOption();
+            option2.Series(pies[1]);
+
+            ChartOption option3 = new ChartOption();
+            option3.Series(pies[2]);
+
+            ChartOption option4 = new ChartOption();
+            option4.Series(pies[3]);
+
+            ChartOption option5 = new ChartOption();
+            option5.Series(pies[4]);
+
+            ChartOption option6 = new ChartOption();
+            option6.Series(pies[5]);
+
+            ChartOption option7 = new ChartOption();
+            option7.Series(pies[6]);
+
+            ChartOption option8 = new ChartOption();
+            option8.Series(pies[7]);
+
+            ChartOption option9 = new ChartOption();
+            option9.Series(pies[8]);
+
+            ChartOption option10 = new ChartOption();
+            option10.Series(pies[9]);
+            var options = new List<ChartOption>() {
+                option1,option2,option3,option4,option5,
+                option6,option7,option8,option9,option10
+            };
+            option.options = options;
+
+            var result = JsonTools.ObjectToJson2(option1);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]        
+        public string Lasagna()
+        {
+            
+            ChartOption option = new ChartOption();
+            option.Title().Text("浏览器占比变化").Subtext("纯属虚构")
+                .X(HorizontalType.right).Y(VerticalType.bottom);
+                            
+            option.ToolTip().Show(true).Formatter(new JRaw(@"{a} <br/>{b} : {c} ({d}%)").ToString());
+            option.Legend().X(HorizontalType.left).Orient(OrientType.vertical)
+                .Data("Chrome", "Firefox", "Safari", "IE9+", "IE8-");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.MagicType().Show(true).Type("pie", "funnel")
+                .Option().Funnel().X("25%").Width("50%")
+                .FunnelAlign(HorizontalType.center).Max(1548);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            option.ToolBox().Show(true).SetFeature(feature);
+            option.Calculable(false);
+            option.series = new JRaw(@"(function (){
+                var series = [];
+                for (var i = 0; i < 30; i++) {
+                    series.push({
+                        name:'浏览器（数据纯属虚构）',
+                        type:'pie',
+                        itemStyle : {normal : {
+                            label : {show : i > 28},
+                            labelLine : {show : i > 28, length:20}
+                        }},
+                        radius : [i * 4 + 40, i * 4 + 43],
+                        data:[
+                            {value: i * 128 + 80,  name:'Chrome'},
+                            {value: i * 64  + 160,  name:'Firefox'},
+                            {value: i * 32  + 320,  name:'Safari'},
+                            {value: i * 16  + 640,  name:'IE9+'},
+                            {value: i * 8  + 1280, name:'IE8-'}
+                        ]
+                    })
+                }
+                series[0].markPoint = {
+                    symbol:'emptyCircle',
+                    symbolSize:series[0].radius[0],
+                    effect:{show:true,scaleSize:12,color:'rgba(250,225,50,0.8)',shadowBlur:10,period:30},
+                    data:[{x:'50%',y:'50%'}]
+                };
+                return series;
+            })()");
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]        
+        public string Pie()
+        {
+            IList<string> ads = ChartsUtil.Ads();
+            IList<string> ses = ChartsUtil.Ses();
+
+            foreach (var se in ses)
+            {
+                ads.Add(se);
+            }
+
+            ChartOption option = new ChartOption();
+           
+            option.ToolTip().Formatter(new JRaw(@"{a} <br/>{b} : {c} ({d}%)").ToString());
+            option.Legend().Orient(OrientType.vertical).X(HorizontalType.left).SetData(new List<object>(ads.ToList()));
+            Feature feature = new Feature();
+            feature.Mark().Show(true);            
+            feature.DataView().Show(true).ReadOnly(false);          
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.calculable = true;
+
+            var style = new ItemStyle();
+            style.Normal().Label().Position(StyleLabelTyle.inner).Formatter(new JRaw(@" function (params) {                         
+                          return (params.percent - 0).toFixed(0) + '%'
+                        }"));
+            style.Normal().LabelLine().Show(false);
+            style.Emphasis().Label().Show(true).Formatter("{b}\n{d}%");
+            
+            var pie = new Pie("访问来源");
+            pie.Radius(new List<string>() {"110","140" }).Center(new List<string>() { "35%", "200" });
+            pie.SetItemStyle(style);
+            pie.Data(new PieData<int>(335, ads[0]), new PieData<int>(679, ads[1]), new PieData<int>(1548, ads[2]));
+
+            var pieStyle1 = new ItemStyle();
+            pieStyle1.Normal().Color(new JRaw(@"(function (){
+                                var zrColor = require('zrender/tool/color');
+                                return zrColor.getRadialGradient(
+                                    300, 200, 110, 300, 200, 140,
+                                    [[0, 'rgba(255,255,0,1)'],[1, 'rgba(30,144,250,1)']]
+                                )
+                            })()"))
+                .Label().TextStyle().Color("rgba(30,144,255,0.8)").Align(HorizontalType.center)
+                .Baseline(VerticalType.middle).FontFamily("微软雅黑")
+                .FontSize(30).FontWeight("bolder");
+            pieStyle1.Normal().LabelLine().Length(40).LineStyle()
+                .Color("#f0f").Width(3).Type(LineStyleType.dotted);
+            var pieStyle2 = new ItemStyle();
+            pieStyle2.Normal().Label().Show(false);
+            pieStyle2.Normal().LabelLine().Show(false);
+            pieStyle2.Emphasis().Label().Show(false);
+            pieStyle2.Emphasis().LabelLine().Show(false).Length(50);
+            var pie2 = new Pie("访问来源");
+            pie2.Radius(new List<string>() { "110", "140" }).Center(new List<string>() { "35%", "200" });
+            pie2.Data(new PieData<int>(335, ads[0]), new PieData<int>(310, ads[1]), new PieData<int>(234, ads[2]),
+                new PieData<int>(135, ads[3]), new PieData<int>(135, ads[4]), new PieData<int>(1048, ads[5], pieStyle1),
+                new PieData<int>(102, ads[6], pieStyle2), new PieData<int>(147, ads[7]));
+
+            var style2 = new ItemStyle();
+            style2.Normal().Label().Show(false);
+            style2.Normal().LabelLine().Show(false);
+            style2.Emphasis().Color(new JRaw(@"(function (){
+                        var zrColor = require('zrender/tool/color');
+                        return zrColor.getRadialGradient(
+                            650, 200, 80, 650, 200, 120,
+                            [[0, 'rgba(255,255,0,1)'],[1, 'rgba(255,0,0,1)']]
+                        )
+                    })()")).Label().Show(true).Position(StyleLabelTyle.center).Formatter("{d}%")
+                    .TextStyle().Color("red").FontSize(30).FontFamily("微软雅黑").FontWeight("bold");
+
+
+            var pie3 = new Pie("访问来源");
+            pie3.SetItemStyle(style2);
+            pie3.Radius(new List<string>() { "80", "120" }).Center(new List<string>() { "75%", "200" })
+                .StartAngle(135).ClockWise(true);
+            pie3.Data(new PieData<int>(335, ads[0]), new PieData<int>(310, ads[1]), new PieData<int>(234, ads[2]),
+                new PieData<int>(135, ads[3]), new PieData<int>(135, ads[4]));
+            var md = new MarkData("最大");
+            md.Value(1548).X("80%").Y(50).SymbolSize(32);
+            pie3.MarkPoint().Symbol("star").Data(md);
+
+            option.Series(pie, pie2, pie3);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
         #endregion
 
         private ToolBox ToolBox(OrientType orient= OrientType.horizontal)
@@ -2484,6 +3100,9 @@ namespace EChartsWeb.Apis
             pie.Data(new PieData<int>(345, ads[0]), new PieData<int>(310, ads[1]), new PieData<int>(234, ads[2]),
                 new PieData<int>(135, ads[3]), new PieData<int>(1543, ads[4]));
 
+            var pie1 = new Pie("访问来源");
+
+          
 
             option.Series(pie);
 

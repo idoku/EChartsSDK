@@ -36,6 +36,91 @@ namespace ECharts.Entities.series
 
         public bool? legendHoverLink { get; set; }
 
+        public Funnel LegendHoverLink(bool legendHoverLink)
+        {
+            this.legendHoverLink = legendHoverLink;
+            return this;
+        }
+
+        public Funnel Gap(int gap)
+        {
+            this.gap = gap;
+            return this;
+        }
+
+        public Funnel Sort(SortType sort)
+        {
+            this.sort = sort;
+            return this;
+        }
+
+        public Funnel MinSize(string minSize)
+        {
+            this.minSize = minSize;
+            return this;
+        }
+
+        public Funnel MaxSize(string maxSize)
+        {
+            this.maxSize = maxSize;
+            return this;
+        }
+
+        public Funnel Max(int max)
+        {
+            this.max = max;
+            return this;
+        }
+
+        public Funnel Min(int min)
+        {
+            this.min = min;
+            return this;
+        }
+
+        public Funnel FunnelAlign(HorizontalType funnelAlign)
+        {
+            this.funnelAlign = funnelAlign;
+            return this;
+        }
+
+        public Funnel Height(object height)
+        {
+            this.height = height;
+            return this;
+        }
+
+        public Funnel Width(object width)
+        {
+            this.width = width;
+            return this;
+        }
+
+        public Funnel Y(object y)
+        {
+            this.y = y;
+            return this;
+        }
+
+        public Funnel Y2(object y2)
+        {
+            this.y2 = y2;
+            return this;
+        }
+
+        public Funnel X(object x)
+        {
+            this.x = x;
+            return this;
+        }
+
+        public Funnel X2(object x2)
+        {
+            this.x2 = x2;
+            return this;
+        }
+
+
 
 
         public Funnel()

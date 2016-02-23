@@ -26,6 +26,57 @@ namespace ECharts.Entities.series
 
         public bool? legendHoverLink { get; set; }
 
+        public object x { get; set; }
+
+        public object y { get; set; }
+
+        public object width { get; set; }
+
+        public HorizontalType? funnelAlign { get; set; }
+
+        public int? max { get; set; }
+
+        public SortType? sort { get; set; }
+
+        public Pie Sort(SortType sort)
+        {
+            this.sort = sort;
+            return this;
+        }
+
+        public Pie Max(int max)
+        {
+            this.max = max;
+            return this;
+        }
+
+        public Pie FunnelAlign(HorizontalType funnelAlign)
+        {
+            this.funnelAlign = funnelAlign;
+            return this;
+        }
+
+        public Pie Width(object width)
+        {
+            this.width = width;
+            return this;
+        }
+
+        public Pie X(object x)
+        {
+            this.x = x;
+            return this;
+        }
+
+        public Pie Y(object y)
+        {
+            this.y = y;
+            return this;
+        }
+
+
+
+
         public Pie LegendHoverLink(bool legendHoverLink)
         {
             this.legendHoverLink = legendHoverLink;
@@ -74,11 +125,17 @@ namespace ECharts.Entities.series
             return this;
         }
 
+        public Pie Radius(IList<string> radius)
+        {
+            this.radius = radius;
+            return this;
+        }
+
         public Pie Center(IList<string> center)
         {
             this.center = center;
             return this;
-        }
+        }        
 
         public Pie() {
             this.type = ChartType.pie;
@@ -87,6 +144,8 @@ namespace ECharts.Entities.series
         public Pie(string name):this() {
             this.name = name;
         }
+
+       
 
     }
 }

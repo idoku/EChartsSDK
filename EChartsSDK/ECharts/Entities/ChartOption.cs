@@ -41,7 +41,7 @@ namespace ECharts.Entities
 
         public IList<Axis> yAxis { get; set; }
 
-        public IList<object> series { get; set; }
+        public object series { get; set; }
 
         public IList<ChartOption> options { get; set; }
 
@@ -131,7 +131,7 @@ namespace ECharts.Entities
             {
                 this.series = new List<object>();
             }
-            values.ToList().ForEach(v => series.Add(v));            
+            series = values.ToList();
             return this;
         }
 

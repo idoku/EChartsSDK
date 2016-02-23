@@ -97,6 +97,15 @@ namespace ECharts.Entities.style
             return this.label;
         }
 
+        public LabelLine LabelLine()
+        {
+            if (labelLine == null)
+                this.labelLine = new style.LabelLine();
+            return this.labelLine;
+        }
+
+         
+
 
         public LineStyle LineStyle()
         {

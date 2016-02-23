@@ -44,6 +44,8 @@ namespace ECharts.Entities
 
     public enum StyleLabelTyle
     {
+        [EnumMember(Value = "center")]
+        center,
         [EnumMember(Value = "outer")]
         outer,
         [EnumMember(Value = "inner")]
@@ -203,7 +205,7 @@ namespace ECharts.Entities
         [EnumMember(Value = "right")]
         right,
         [EnumMember(Value = "center")]
-        center
+        center,
     }
 
     /// <summary>

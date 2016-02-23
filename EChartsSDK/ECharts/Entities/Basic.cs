@@ -80,6 +80,12 @@ namespace ECharts.Entities
             return this as T;
         }
 
+        public T Y(VerticalType y)
+        {
+            this.y = y;
+            return this as T;
+        }
+
         public T Z(int z)
         {
             this.z = z;

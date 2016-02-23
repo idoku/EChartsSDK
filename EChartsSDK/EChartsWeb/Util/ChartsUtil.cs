@@ -1,4 +1,5 @@
 ﻿using ECharts.Entities.series;
+using ECharts.Entities.series.data;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -202,6 +203,34 @@ namespace EChartsWeb.Util
                 scatters.Add(scatter);
             }
             return scatters;
+        }
+
+        public static IList<string> GenString(string name, int count)
+        {
+            IList<string> names = new List<string>();
+            for (int i = 1; i <= count; i++)
+            {
+                names.Add(name + i);
+            }
+            return names;
+        }
+
+        public static IList<Pie> GetBrowsersData(int count)
+        {
+            var idx = 1;
+            IList<Pie> pies = new List<Pie>();
+            for (int i = 0; i < count; i++)
+            {
+                var pie = new Pie("浏览器（数据纯属虚构）");
+                var pd1 = new PieData<int>(idx * 128 + 80, "Chrome");
+                var pd2 = new PieData<int>(idx * 64 + 160, "Firefox");
+                var pd3 = new PieData<int>(idx * 32 + 320, "Safari");
+                var pd4 = new PieData<int>(idx * 16 + 640, "IE9+");
+                var pd5 = new PieData<int>(idx++ * 8 + 1280, "IE8-");
+                pie.Data(pd1, pd2, pd3, pd4, pd5);
+                pies.Add(pie);
+            }           
+            return pies;
         }
     }
 }

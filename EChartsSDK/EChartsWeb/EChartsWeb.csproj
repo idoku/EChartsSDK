@@ -231,6 +231,7 @@
     <Content Include="Scripts\charts\asset.js" />
     <Content Include="Scripts\charts\bar.js" />
     <Content Include="Scripts\charts\example.js" />
+    <Content Include="Scripts\charts\lasagna.js" />
     <Content Include="Scripts\charts\timelineOption.js" />
     <Content Include="Scripts\charts\line.js" />
     <Content Include="Scripts\charts\pie.js" />
