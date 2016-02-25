@@ -31,6 +31,8 @@ namespace ECharts.Entities
 
         public IList<IndicatorData> indicator { get; set; }
 
+       
+
         public AxisLabel AxisLabel()
         {
             axisLabel = new AxisLabel();
@@ -67,6 +69,15 @@ namespace ECharts.Entities
             this.splitNumber = splitNumber;
             return this;
         }
+
+        public Polar Indicator(params IndicatorData[] values)
+        {
+            if (this.indicator == null)
+                indicator = new List<IndicatorData>();
+            values.ToList().ForEach(v => indicator.Add(v));
+            return this;
+        }
+
 
         public Polar StartAngle(int radius)
         {

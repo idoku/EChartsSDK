@@ -35,7 +35,9 @@ namespace ECharts.Entities
 
         public DataZoom dataZoom { get; set; }
 
-        public Grid grid { get; set; }            
+        public Grid grid { get; set; }       
+        
+        public IList<Polar> polar { get; set; }
 
         public IList<Axis> xAxis { get; set; }
 
@@ -140,6 +142,14 @@ namespace ECharts.Entities
             if (this.legend == null)
                 this.legend = new Entities.Legend();
             return this.legend;
+        }
+
+        public ChartOption Polar(params Polar[] valuse)
+        {
+            if (this.polar == null)
+                this.polar = new List<Entities.Polar>();
+            valuse.ToList().ForEach(v => polar.Add(v));
+            return this;
         }
 
         public ChartOption Legend(Legend legend) {

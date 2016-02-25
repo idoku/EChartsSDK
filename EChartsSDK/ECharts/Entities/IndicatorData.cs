@@ -17,6 +17,8 @@ namespace ECharts.Entities
 
         public AxisLabel axisLabel { get; set; }
 
+
+
         public AxisLabel AxisLabel()
         {
             if (axisLabel == null)

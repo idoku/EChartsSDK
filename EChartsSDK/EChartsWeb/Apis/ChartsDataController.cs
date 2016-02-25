@@ -3058,6 +3058,50 @@ namespace EChartsWeb.Apis
 
         #endregion
 
+        #region radar data
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("radar1")]
+        public string StdRadar()
+        { 
+
+            ChartOption option = new ChartOption();
+            option.Title().Text("预算 vs 开销（Budget vs spending）").SubText("纯属虚构");
+            option.ToolTip().Trigger(TriggerType.axis);
+            option.Legend().Orient(OrientType.vertical).X(HorizontalType.right)
+                .Y(VerticalType.bottom).Data("预算分配", "实际开销");
+            option.ToolBox(ToolBox(OrientType.vertical));            
+            option.calculable = true;
+            var pd1 = new IndicatorData();
+            pd1.Text("销售").Max(6000);
+            var pd2 = new IndicatorData();
+            pd2.Text("管理").Max(16000);
+            var pd3 = new IndicatorData();
+            pd3.Text("信息技术").Max(30000);
+            var pd4 = new IndicatorData();
+            pd4.Text("客服").Max(38000);
+            var pd5 = new IndicatorData();
+            pd5.Text("研发").Max(52000);
+            var pd6 = new IndicatorData();
+            pd6.Text("市场").Max(25000);
+            var polar = new Polar();
+            polar.Indicator(pd1, pd2, pd3, pd4, pd5, pd6);
+            option.Polar(polar);
+            var radar = new Radar("预算 vs 开销（Budget vs spending）");
+            var pd7 = new PolarData("预算分配");
+            pd7.Value(4300, 10000, 28000, 35000, 50000, 19000);
+            var pd8 = new PolarData("实际开销");
+            pd8.Value(5000, 14000, 28000, 31000, 42000, 21000);
+            radar.Data(pd7, pd8);
+
+            option.Series(radar);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+        #endregion
+
+
         private ToolBox ToolBox(OrientType orient= OrientType.horizontal)
         {
             

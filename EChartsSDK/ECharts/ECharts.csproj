@@ -61,6 +61,7 @@
     <Compile Include="Entities\Basic.cs" />
     <Compile Include="Entities\NoDataLoadingOption.cs" />
     <Compile Include="Entities\LoadingOption.cs" />
+    <Compile Include="Entities\series\data\PolarData.cs" />
     <Compile Include="Entities\series\force\Category.cs" />
     <Compile Include="Entities\ChartOption.cs" />
     <Compile Include="Entities\DataRange.cs" />
