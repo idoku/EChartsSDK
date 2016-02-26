@@ -27,7 +27,7 @@ namespace ECharts.Entities
 
         public Dictionary<string, bool> selected { get; set; }
 
-        public IList<object> data { get; set; }
+        public object data { get; set; }
 
         public Legend SetSelected(Dictionary<string, bool> selected)
         {
@@ -103,7 +103,7 @@ namespace ECharts.Entities
             if (data == null) {
                 data = new List<object>();
             }
-            values.ToList().ForEach(v => data.Add(v));
+            data = values.ToList();
             return this;
         }
 
@@ -113,8 +113,18 @@ namespace ECharts.Entities
             {
                 data = new List<object>();
             }
-            values.ToList().ForEach(v => data.Add(v));
+            data = values.ToList();
             return this;
-        }               
+        }
+
+        public Legend Data(object data)
+        {
+            if (this.data == null)
+            {
+                this.data = new List<object>();
+            }
+            this.data = data;
+            return this;
+        }
     }
 }

@@ -17,7 +17,14 @@ namespace ECharts.Entities
 
         public AxisLabel axisLabel { get; set; }
 
+        public IndicatorData()
+        {
+          
+        }
 
+        public IndicatorData(string text) {
+            this.text = text;
+        }
 
         public AxisLabel AxisLabel()
         {

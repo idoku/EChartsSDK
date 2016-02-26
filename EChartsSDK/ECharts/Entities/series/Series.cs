@@ -71,6 +71,13 @@ namespace ECharts.Entities.series
             return this.markLine;
         }
 
+        public ToolTip ToolTip()
+        {
+            if (this.tooltip == null)
+                this.tooltip = new ToolTip();
+            return this.tooltip;
+        }
+
         public MarkPoint MarkPoint()
         {
             if (this.markPoint == null)

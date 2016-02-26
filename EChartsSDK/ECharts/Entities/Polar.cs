@@ -9,11 +9,13 @@ namespace ECharts.Entities
 {
     public class Polar:Basic<Polar>
     {
-        public string radius { get; set; }
+        public int? radius { get; set; }
 
         public int? startAngle { get; set; }
 
         public int? splitNumber { get; set; }
+
+        public IList<string> center { get; set; }
 
         public AxisName name { get; set; }
 
@@ -29,9 +31,13 @@ namespace ECharts.Entities
 
         public PolarType? type { get; set; }
 
-        public IList<IndicatorData> indicator { get; set; }
+        public object indicator { get; set; }
 
-       
+        public Polar Type(PolarType type)
+        {
+            this.type = type;
+            return this;
+        }
 
         public AxisLabel AxisLabel()
         {
@@ -74,10 +80,21 @@ namespace ECharts.Entities
         {
             if (this.indicator == null)
                 indicator = new List<IndicatorData>();
-            values.ToList().ForEach(v => indicator.Add(v));
+            indicator = values.ToList();
             return this;
         }
 
+        public Polar Indicator(object indicator)
+        {
+            this.indicator = indicator;
+            return this;
+        }
+
+        public Polar Center(IList<string> center)
+        {
+            this.center = center;
+            return this;
+        }
 
         public Polar StartAngle(int radius)
         {
@@ -85,7 +102,7 @@ namespace ECharts.Entities
             return this;
         }
 
-        public Polar Radius(string radius)
+        public Polar Radius(int radius)
         {
             this.radius = radius;
             return this;

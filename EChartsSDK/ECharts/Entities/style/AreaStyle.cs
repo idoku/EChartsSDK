@@ -18,7 +18,7 @@ namespace ECharts.Entities.style
             return this;
         }
 
-        public AreaStyle SetType(AreaStyleType type)
+        public AreaStyle Type(AreaStyleType type)
         {
             this.type = type;
             return this;

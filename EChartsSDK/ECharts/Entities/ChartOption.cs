@@ -61,6 +61,12 @@ namespace ECharts.Entities
             return this;
         }
 
+        public ChartOption Color(object color)
+        {
+            this.color = color;
+            return this;
+        }
+
         public Title Title()
         {
             if (title == null)

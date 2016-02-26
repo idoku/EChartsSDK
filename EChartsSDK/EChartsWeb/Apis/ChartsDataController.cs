@@ -542,9 +542,8 @@ namespace EChartsWeb.Apis
             });
 
             ItemStyle itemStyle = new ItemStyle();
-            itemStyle.Normal().AreaStyle().SetType(AreaStyleType.Default);
+            itemStyle.Normal().AreaStyle().Type(AreaStyleType.Default);
            
-
             Line l1 = new Line(ads[0]);
             l1.stack = "总量";
             l1.data = data1;
@@ -646,7 +645,7 @@ namespace EChartsWeb.Apis
             option.YAxis(y1, y2);
 
             var itemStyle = new ItemStyle();
-            itemStyle.Normal().AreaStyle().SetType(AreaStyleType.Default);
+            itemStyle.Normal().AreaStyle().Type(AreaStyleType.Default);
             var l1 = new Line("流量");
             l1.itemStyle = itemStyle;
             l1.data = flows;            
@@ -3094,6 +3093,344 @@ namespace EChartsWeb.Apis
             radar.Data(pd7, pd8);
 
             option.Series(radar);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("radar2")]
+        public string StdFillRadar()
+        {
+            ChartOption option = new ChartOption();
+            option.Title().Text("预算 vs 开销（Budget vs spending）").SubText("纯属虚构");
+            option.ToolTip().Trigger(TriggerType.axis);
+            option.Legend().X(HorizontalType.center).Data("罗纳尔多", "舍普琴科");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.calculable = true;
+            var pd1 = new IndicatorData();
+            pd1.Text("进攻").Max(100);
+            var pd2 = new IndicatorData();
+            pd2.Text("防守").Max(100);
+            var pd3 = new IndicatorData();
+            pd3.Text("体能").Max(100);
+            var pd4 = new IndicatorData();
+            pd4.Text("速度").Max(100);
+            var pd5 = new IndicatorData();
+            pd5.Text("力量").Max(100);
+            var pd6 = new IndicatorData();
+            pd6.Text("技巧").Max(100);
+            var polar = new Polar();
+            polar.Radius(130).Indicator(pd1, pd2, pd3, pd4, pd5, pd6);
+            option.Polar(polar);
+            var radar = new Radar("完全实况球员数据");
+            radar.ItemStyle().Normal().AreaStyle().Type(AreaStyleType.Default);
+            var pd7 = new PolarData("舍普琴科");
+            pd7.Value(97, 42, 88, 94, 90, 86);
+            var pd8 = new PolarData("罗纳尔多");
+            pd8.Value(97, 32, 74, 95, 88, 92);
+            radar.Data(pd7, pd8);
+            option.Series(radar);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("radar3")]
+        public string MultiRadar()
+        {
+            ChartOption option = new ChartOption();
+            option.Title().Text("多雷达图").SubText("纯属虚构");
+            option.ToolTip().Trigger(TriggerType.axis);
+            option.Legend().X(HorizontalType.center).Data("某软件", "某主食手机", "某水果手机", "降水量", "蒸发量");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.calculable = true;
+            var pd1 = new IndicatorData();
+            pd1.Text("品牌").Max(100);
+            var pd2 = new IndicatorData();
+            pd2.Text("内容").Max(100);
+            var pd3 = new IndicatorData();
+            pd3.Text("可用性").Max(100);
+            var pd4 = new IndicatorData();
+            pd4.Text("功能").Max(100);
+
+            var polar1 = new Polar();
+            polar1.Radius(80).Center(new List<string>() { "25%", "200" }).Indicator(pd1, pd2, pd3, pd4);
+
+            var pd5 = new IndicatorData();
+            pd5.Text("外观").Max(100);
+            var pd6 = new IndicatorData();
+            pd6.Text("拍照").Max(100);
+            var pd7 = new IndicatorData();
+            pd7.Text("系统").Max(100);
+            var pd8 = new IndicatorData();
+            pd8.Text("性能").Max(100);
+            var pd9 = new IndicatorData();
+            pd9.Text("屏幕").Max(100);
+
+            var polar2 = new Polar();
+            polar2.Radius(80).Indicator(pd5, pd6, pd7, pd8, pd9);
+
+            var polar3 = new Polar();
+            polar3.Radius(80).Center(new List<string>() { "75%", "200" })
+                .Indicator(new JRaw(@"(function (){
+                var res = [];
+                for (var i = 1; i <= 12; i++) {
+                    res.push({text:i+'月',max:100});
+                }
+                return res;
+            })()"));
+
+
+
+            option.Polar(polar1, polar2, polar3);
+
+            var r1 = new Radar();
+            r1.ItemStyle().Normal().AreaStyle().Type(AreaStyleType.Default);
+            r1.ToolTip().Trigger(TriggerType.item);
+            var rd1 = new RadarData("某软件");
+            rd1.Value(60, 73, 85, 40);
+            r1.Data(rd1);
+
+            var r2 = new Radar();
+            r2.PolarIndex(1);            
+            var rd2 = new RadarData("某主食手机");
+            rd2.Value(85, 90, 90, 95, 95);
+            var rd3 = new RadarData("某水果手机");
+            rd3.Value(95, 80, 95, 90, 93);
+            r2.Data(rd2, rd3);
+
+            var r3 = new Radar();
+            r3.PolarIndex(2).ItemStyle().Normal().AreaStyle().Type(AreaStyleType.Default); ;
+            var rd4 = new RadarData("降水量");
+            rd4.Value(2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 75.6, 82.2, 48.7, 18.8, 6.0, 2.3);
+            var rd5 = new RadarData("蒸发量");
+            rd5.Value(2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 35.6, 62.2, 32.6, 20.0, 6.4, 3.3);
+            r3.Data(rd4, rd5);
+
+            option.Series(r1, r2, r3);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("wormhole")]
+        public string WormholeRadar()
+        {
+            ChartOption option = new ChartOption();
+            option.Color(new JRaw(@" (function (){
+               var zrColor = require('zrender/tool/color');
+               return zrColor.getStepColors('yellow', 'red', 28);
+            })()"));
+            option.Title().Text("浏览器占比变化").SubText("纯属虚构")
+                .X(HorizontalType.right).Y(VerticalType.bottom);
+            option.ToolTip().Trigger(TriggerType.axis).BackgroundColor("rgba(0,0,250,0.2)");
+            option.Legend().Data(new JRaw(@"function (){
+                var list = [];
+                for (var i = 1; i <=28; i++) {
+                    list.push(i + 2000);
+                }
+                return list;
+            }()"));
+
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.calculable = true;
+            var pd1 = new IndicatorData();
+            pd1.Text("IE8-").Max(400);
+            var pd2 = new IndicatorData();
+            pd2.Text("IE9+").Max(400);
+            var pd3 = new IndicatorData();
+            pd3.Text("Safari").Max(400);
+            var pd4 = new IndicatorData();
+            pd4.Text("Firefox").Max(400);
+            var pd5 = new IndicatorData();
+            pd5.Text("Chrome").Max(400);
+
+            var polar1 = new Polar();
+            polar1.Radius(80).Indicator(pd1, pd2, pd3, pd4, pd5);
+            option.Polar(polar1);
+
+
+
+            option.series = new JRaw(@" (function (){
+        var series = [];
+        for (var i = 1; i <= 28; i++) {
+            series.push({
+                name:'浏览器（数据纯属虚构）',
+                type:'radar',
+                symbol:'none',
+                itemStyle: {
+                    normal: {
+                        lineStyle: {
+                          width:1
+                        }
+                    },
+                    emphasis : {
+                        areaStyle: {color:'rgba(0,250,0,0.3)'}
+                    }
+                },
+                data:[
+                  {
+                    value:[
+                        (40 - i) * 10,
+                        (38 - i) * 4 + 60,
+                        i * 5 + 10,
+                        i * 9,
+                        i * i /2
+                    ],
+                    name:i + 2000
+                  }
+                ]
+            })
+        }
+        return series;
+    })()");
+            
+ 
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        public string Radar()
+        {
+            ChartOption option = new ChartOption();
+            option.ToolTip().Trigger(TriggerType.axis);
+            option.Legend().X(HorizontalType.left)
+                .Y(VerticalType.bottom).Data("图一", "图二", "图三");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+
+            option.calculable = true;
+            var pd1 = new IndicatorData("指标一");
+            var pd2 = new IndicatorData("指标二");
+            var pd3 = new IndicatorData("指标三");
+            var pd4 = new IndicatorData("指标四");
+            var pd5 = new IndicatorData("指标五");
+            var polar = new Polar();
+            polar.Center(new List<string>() { "25%", "210" }).Radius(150).StartAngle(90).SplitNumber(8)
+                .Indicator(pd1, pd2, pd3, pd4, pd5);
+            polar.Name().Formatter("【{value}】").TextStyle().Color("red");
+            polar.Type(PolarType.circle).AxisLine().Show(true).LineStyle().Color("green")
+                .Width(2).Type(LineStyleType.solid);
+            polar.AxisLabel().Show(true).TextStyle().Color("#ccc");
+            polar.SplitLine().Show(true).LineStyle().Width(2).Color("yellow");
+            
+
+            var pd6 = new IndicatorData("语文");
+            pd6.Max(150);
+            var pd7 = new IndicatorData("数学");
+            pd7.Max(150);
+            var pd8 = new IndicatorData("英语");
+            pd8.Max(150);
+            var pd9 = new IndicatorData("物理");
+            pd9.Max(150);
+            var pd10 = new IndicatorData("化学");
+            pd10.Max(108);
+            var pd11 = new IndicatorData("生物");
+            pd11.Max(72);
+            var polar2 = new Polar();
+            polar2.Center(new List<string>() { "75%", "210" }).Radius(150)
+                .Indicator(pd6, pd7, pd8, pd9, pd10, pd11);
+            option.Polar(polar, polar2);
+
+            var radar = new Radar("雷达图");
+            radar.ItemStyle().Emphasis().LineStyle().Width(4);
+            var rd1 = new RadarData("图一");
+            rd1.Symbol("star5").SymbolSize("4").ItemStyle().Normal()
+                .LineStyle().Type(LineStyleType.dashed);
+            rd1.Value(100, 8, 0.40, -80, 2000);
+
+            var rd2 = new RadarData("图二");
+            rd2.ItemStyle().Normal()
+                .AreaStyle().Type(AreaStyleType.Default);
+            rd2.Value(10, 3, 0.20, -100, 1000);
+
+            var rd3 = new RadarData("图三");
+            rd3.Symbol("none").ItemStyle().Normal()
+               .LineStyle().Type(LineStyleType.dotted);
+            rd3.Value(20, 3, 0.3, -13.5, 3000);
+            radar.Data(rd1, rd2, rd3);
+
+            var radar2 = new Radar("成绩单");
+            radar2.PolarIndex(1).ItemStyle().Normal().AreaStyle().Type(AreaStyleType.Default);
+            var rd4 = new RadarData("张三");
+            rd4.ItemStyle().Normal().Color(new JRaw(@"function(params) {
+                                var value = params.data
+                                return isNaN(value) 
+                                       ? undefined
+                                       : (value >= 120 ? 'green' : 'red')
+                            }"))
+                .Label().Show(true).Formatter(new JRaw(@"function(params) {
+                                    return params.value;
+                                }"));
+            rd4.ItemStyle().Normal().AreaStyle().Color(new JRaw(@"(function (){
+                                    var zrColor = require('zrender/tool/color');
+                                    var x = document.getElementById('main').offsetWidth - 250;
+                                    return zrColor.getRadialGradient(
+                                        x, 210, 0, x, 200, 150,
+                                        [[0, 'rgba(255,255,0,0.3)'],[1, 'rgba(255,0,0,0.5)']]
+                                    )
+                                })()"));
+            rd4.Value(120, 118, 130, 100, 99, 70);
+            var rd5 = new RadarData("李四");
+            rd5.ItemStyle().Normal().LineStyle().Type(LineStyleType.dashed);
+            rd5.Value(90, 113, 140, 30, 70, 60);
+            radar2.Data(rd4, rd5);
+
+            var mp = new MarkPoint();
+            mp.Symbol("emptyHeart").Data(new MarkData("打酱油的标注")
+            {
+                value = 100,
+                x = "50%",
+                y = "15%",
+                symbolSize = 32,
+            });
+
+            radar2.markPoint = mp;
+
+            option.Series(radar,radar2);
 
             var result = JsonTools.ObjectToJson2(option);
             return result;
