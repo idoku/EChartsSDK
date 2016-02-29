@@ -10,11 +10,19 @@ namespace ECharts.Entities.style
     {
         public int? width { get; set; }
 
+        public double opacity { get; set; }
+
         public string color { get; set; }
 
-        public string borderWidth { get; set; }
+        public object borderWidth { get; set; }
 
         public string borderColor { get; set; }
+
+        public ChordStyle Opacity(double opacity)
+        {
+            this.opacity = opacity;
+            return this;
+        }
 
         public ChordStyle Width(int width)
         {
@@ -28,7 +36,11 @@ namespace ECharts.Entities.style
             return this;
         }
 
- 
+        public ChordStyle BorderWidth(int borderWidth)
+        {
+            this.borderWidth = borderWidth;
+            return this;
+        }
 
         public ChordStyle BorderWidth(string borderWidth)
         {

@@ -9,13 +9,21 @@ namespace ECharts.Entities.series
 {
     public class Link
     {
+        public string name { get; set; }
+
         public object source { get; set; }
 
         public object target { get; set; }
 
-        public int? weight { get; set; }
+        public double? weight { get; set; }
 
         public ItemStyle itemStyle { get; set; }
+
+        public Link Name(string name)
+        {
+            this.name = name;
+            return this;
+        }
 
         public Link Source(object source)
         {
@@ -29,7 +37,7 @@ namespace ECharts.Entities.series
             return this;
         }
 
-        public Link Weight(int weight)
+        public Link Weight(double weight)
         {
             this.weight = weight;
             return this;

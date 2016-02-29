@@ -47,6 +47,7 @@ namespace ECharts.Entities
 
         public IList<ChartOption> options { get; set; }
 
+        public string noDataEffect { get; set; }
 
         public ToolBox ToolBox()
         {
@@ -58,6 +59,12 @@ namespace ECharts.Entities
         public ChartOption ToolBox(ToolBox toolbox)
         {
             this.toolbox = toolbox;
+            return this;
+        }
+        
+             public ChartOption NoDataEffect(string noDataEffect)
+        {
+            this.noDataEffect = noDataEffect;
             return this;
         }
 

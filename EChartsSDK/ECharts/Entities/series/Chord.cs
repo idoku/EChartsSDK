@@ -14,7 +14,7 @@ namespace ECharts.Entities.series
 
         public IList<Link> links { get; set; }
 
-        public IList<int> matrix { get; set; }
+        public int[,] matrix { get; set; }
 
         public bool? ribbonType { get; set; }
 
@@ -26,7 +26,13 @@ namespace ECharts.Entities.series
 
         public int? maxRadius { get; set; }
 
+        public object radius { get; set; }
+
+        public object center { get; set; }
+
         public bool? showScale { get; set; }
+
+        public int? startAngle { get; set; }
 
         public bool? showScaleText { get; set; }
 
@@ -37,6 +43,19 @@ namespace ECharts.Entities.series
         public SortType? sortSub { get; set; }
 
         public bool? clockWise { get; set; }
+
+        public Chord Links(params Link[] values)
+        {
+            if (this.links == null)
+                links = new List<Link>();
+            values.ToList().ForEach(v => links.Add(v));
+            return this;
+        }
+
+        public Chord SetMatrix(int[,] matrix) {
+            this.matrix = matrix;
+            return this;
+        }
 
         public Chord ClockWise(bool clockWise)
         {
@@ -56,6 +75,9 @@ namespace ECharts.Entities.series
             return this;
         }
 
+       
+
+
         public Chord ShowScaleText(bool showScaleText)
         {
             this.showScaleText = showScaleText;
@@ -73,6 +95,32 @@ namespace ECharts.Entities.series
             this.showScale = showScale;
             return this;
         }
+
+        public Chord Radius(string radius)
+        {
+            this.radius = radius;
+            return this;
+        }
+
+        public Chord Radius(IList<string> radius)
+        {
+            this.radius = radius;
+            return this;
+        }
+
+        public Chord Center(IList<string> center)
+        {
+            this.center = center;
+            return this;
+        }
+
+        public Chord StartAngle(int startAngle)
+        {
+            this.startAngle = startAngle;
+            return this;
+        }
+
+
 
         public Chord MaxRadius(int maxRadius)
         {
@@ -104,6 +152,10 @@ namespace ECharts.Entities.series
             return this;
         }
 
+
+      
+
+
         public Chord() {
             this.type = ChartType.chord;
         }
@@ -111,6 +163,8 @@ namespace ECharts.Entities.series
         public Chord(string name):this() {
             this.name = name;
         }
+
+
 
     }
 }

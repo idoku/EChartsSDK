@@ -15,7 +15,8 @@ namespace ECharts.Entities.style
         public bool? rotate { get; set; }
 
         public int? distance { get; set; }
-    
+
+        public object color { get; set; }
 
         public object formatter { get; set; }
 
@@ -46,6 +47,12 @@ namespace ECharts.Entities.style
         public StyleLabel Rotate(bool rotate)
         {
             this.rotate = rotate;
+            return this;
+        }
+
+        public StyleLabel Color(string color)
+        {
+            this.color = color;
             return this;
         }
 

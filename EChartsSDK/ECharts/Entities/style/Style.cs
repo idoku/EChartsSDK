@@ -22,7 +22,7 @@ namespace ECharts.Entities.style
 
         public LinkStyle linkStyle { get; set; }
 
-        public object borderColor { get; set; }
+        public object borderColor { get; set; }      
 
         public int? borderWidth { get; set; }
 
@@ -53,6 +53,7 @@ namespace ECharts.Entities.style
             this.barBorderColor = barBorderColor;
             return this as T;
         }
+   
 
         public T BarBorderWidth(int barBorderWidth)
         {

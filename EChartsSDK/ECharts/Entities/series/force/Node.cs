@@ -25,6 +25,12 @@ namespace ECharts.Entities.series
 
         public ItemStyle itemStyle { get; set; }
 
+        public Node() { }
+
+        public Node(string name) {
+            this.name = name;
+        }
+
         public Node Ignore(bool ignore)
         {
             this.ignore = ignore;

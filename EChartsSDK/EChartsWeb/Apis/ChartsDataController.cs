@@ -3438,6 +3438,457 @@ namespace EChartsWeb.Apis
         }
         #endregion
 
+        #region Chord data
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("chord1")]
+        public string StdChord()
+        {
+            ChartOption option = new ChartOption();
+
+            option.Title().Text("测试数据").SubText("From d3.js")
+                .X(HorizontalType.right).Y(VerticalType.bottom);
+            option.ToolTip().Trigger(TriggerType.item)
+                .Formatter(new JRaw(@"function (params) {
+            if (params.indicator2) { // is edge
+                return params.value.weight;
+            } else {// is node
+                return params.name
+            }
+        }"));
+            option.Legend().X(HorizontalType.left).Data("group1", "group2", "group3", "group4");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            Chord c1 = new Chord();
+
+            var cd1 = new Node("group1");
+            var cd2 = new Node("group2");
+            var cd3 = new Node("group3");
+            var cd4 = new Node("group4");
+            c1.Data(cd1, cd2, cd3, cd4);
+            c1.ItemStyle().Normal().Label().Show(false);
+            var matrix = new int[,] {
+                 {11975, 5871, 8916, 2868},
+                {1951, 10048, 2060, 6171},
+                {8010, 16145, 8090, 8045},
+                {1013, 990, 940, 6907}
+            };
+
+
+            c1.Sort(SortType.ascending).SortSub(SortType.descending).ShowScale(true).ShowScaleText(true);
+            c1.SetMatrix(matrix);
+            option.Series(c1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("chord2")]
+        public string MultiChord()
+        {
+            ChartOption option = new ChartOption();
+            IList<string> color = new List<string>() {
+                 "#FBB367","#80B1D2","#FB8070","#CC99FF","#B0D961",
+        "#99CCCC","#BEBBD8","#FFCC99","#8DD3C8","#FF9999",
+        "#CCEAC4","#BB81BC","#FBCCEC","#CCFF66","#99CC66",
+        "#66CC66","#FF6666","#FFED6F","#ff7f50","#87cefa",
+            };
+            option.Color(color).Title().Text("中东地区的敌友关系").SubText("数据来自财新网")
+                .Sublink("http://international.caixin.com/2013-09-06/100579154.html")
+                .X(HorizontalType.right).Y(VerticalType.bottom);
+            option.ToolTip().Trigger(TriggerType.item)
+                .Formatter(new JRaw(@"function (params) {
+            if (params.name && params.name.indexOf('-') != -1) {
+                return params.name.replace('-', ' ' + params.seriesName + ' ')
+            }
+            else {
+                return params.name ? params.name : params.data.id
+            }
+             }"));
+            option.Legend().X(HorizontalType.left).Orient(OrientType.vertical).Data("美国",
+            "叙利亚反对派",
+            "阿萨德",
+            "伊朗",
+            "塞西",
+            "哈马斯",
+            "以色列",
+            "穆斯林兄弟会",
+            "基地组织",
+            "俄罗斯",
+            "黎巴嫩什叶派",
+            "土耳其",
+            "卡塔尔",
+            "沙特",
+            "黎巴嫩逊尼派",
+            "",
+            "支持",
+            "反对",
+            "未表态");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            Chord c1 = new Chord("支持");
+            c1.ShowScaleText(false).ClockWise(false);
+            var cd1 = new Node("美国");
+            var cd2 = new Node("叙利亚反对派");
+            var cd3 = new Node("阿萨德");
+            var cd4 = new Node("伊朗");
+            var cd5 = new Node("塞西");
+            var cd6 = new Node("哈马斯");
+            var cd7 = new Node("以色列");
+            var cd8 = new Node("穆斯林兄弟会");
+            var cd9 = new Node("基地组织");
+            var cd10 = new Node("俄罗斯");
+            var cd11 = new Node("黎巴嫩什叶派");
+            var cd12 = new Node("土耳其");
+            var cd13 = new Node("卡塔尔");
+            var cd14 = new Node("沙特");
+            var cd15 = new Node("黎巴嫩逊尼派");
+            c1.Data(cd1, cd2, cd3, cd4, cd5, cd6, cd7, cd8, cd9, cd10, cd11, cd12, cd13, cd14, cd15);
+            c1.ItemStyle().Normal().Label().Show(false);
+            var matrix = new int[,] {
+                 {0, 100, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0},
+                {10, 0, 0, 0, 0, 10, 10, 0, 10, 0, 0, 10, 10, 10, 10},
+                {0, 0, 0, 10, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0},
+                {0, 0, 100, 0, 0, 100, 0, 0, 0, 0, 100, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0},
+                {0, 100, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0},
+                {10, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0},
+                {0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 100, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 100, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0},
+                {0, 100, 0, 0, 0, 100, 0, 100, 0, 0, 0, 0, 0, 0, 0},
+                {0, 100, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100},
+                {0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0}
+            };            
+            c1.SetMatrix(matrix);
+
+            Chord c2 = new Chord("反对");
+            c2.Data(cd1, cd2, cd3, cd4, cd5, cd6, cd7, cd8, cd9, cd10, cd11, cd12, cd13, cd14, cd15);
+            var matrix2 = new int[,] {
+                  {0, 0, 100, 100, 0, 100, 0, 0, 100, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 10, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0},
+                {10, 0, 0, 0, 0, 0, 10, 10, 10, 0, 0, 10, 10, 0, 10},
+                {10, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 10, 0, 100, 0, 0, 0, 10, 10, 0, 0},
+                {10, 0, 0, 0, 100, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 100, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 100, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0},
+                {10, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0},
+                {0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 100, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 100, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 100, 10, 0, 0, 0, 0, 0, 0},
+                {0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+            };
+            c2.SetMatrix(matrix2);
+
+            Chord c3 = new Chord("未表态");
+            c3.Data(cd1, cd2, cd3, cd4, cd5, cd6, cd7, cd8, cd9, cd10, cd11, cd12, cd13, cd14, cd15);
+            var matrix3 = new int[,] {
+                  {0, 0, 0, 0, 100, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+            };
+            c3.SetMatrix(matrix3);
+
+            option.Series(c1, c2, c3);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("chord3")]
+        public string StdChord2()
+        {
+            ChartOption option = new ChartOption();
+
+            option.Title().Text("德国队效力联盟")
+                .X(HorizontalType.right).Y(VerticalType.bottom);
+            option.ToolTip().Trigger(TriggerType.item)
+                .Formatter(new JRaw(@" function (params) {
+            if (params.indicator2) {    // is edge
+                return params.indicator2 + ' ' + params.name + ' ' + params.indicator;
+            } else {    // is node
+                return params.name
+            }
+        }"));
+            option.Legend().X(HorizontalType.left).Data("阿森纳", "拜仁慕尼黑", "多特蒙德");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            Chord c1 = new Chord();
+
+            var cd1 = new Node("默特萨克");
+            var cd2 = new Node("厄齐尔");
+            var cd3 = new Node("波多尔斯基");
+            var cd4 = new Node("博阿滕");
+            var cd5 = new Node("施魏因施泰格");
+            var cd6 = new Node("拉姆");
+            var cd7 = new Node("克罗斯");
+            var cd8 = new Node("穆勒");
+            var cd9 = new Node("格策");
+            var cd10 = new Node("阿森纳");
+            var cd11 = new Node("拜仁慕尼黑");
+            var cd12 = new Node("多特蒙德");
+            c1.Data(cd1, cd2, cd3, cd4, cd5, cd6, cd7, cd8, cd9, cd10, cd11, cd12);
+
+            var cl1 = new Link();
+            cl1.Source("阿森纳").Target("默特萨克").Weight(0.9).Name("效力");
+            var cl2 = new Link();
+            cl2.Source("阿森纳").Target("厄齐尔").Weight(0.9).Name("效力");
+            var cl3 = new Link();
+            cl3.Source("阿森纳").Target("波多尔斯基").Weight(0.9).Name("效力");
+            var cl4 = new Link();
+            cl4.Source("拜仁慕尼黑").Target("诺伊尔").Weight(0.9).Name("效力");
+            var cl5 = new Link();
+            cl5.Source("拜仁慕尼黑").Target("博阿滕").Weight(0.9).Name("效力");
+            var cl6 = new Link();
+            cl6.Source("拜仁慕尼黑").Target("施魏因施泰格").Weight(0.9).Name("效力");
+            var cl7 = new Link();
+            cl7.Source("拜仁慕尼黑").Target("拉姆").Weight(0.9).Name("效力");
+            var cl8 = new Link();
+            cl8.Source("拜仁慕尼黑").Target("克罗斯").Weight(0.9).Name("效力");
+            var cl9 = new Link();
+            cl9.Source("拜仁慕尼黑").Target("穆勒").Weight(0.9).Name("效力");
+            // Ribbon Type 的和弦图每一对节点之间必须是双向边
+            var cl11 = new Link();
+            cl11.Target("阿森纳").Source("默特萨克").Weight(0.9).Name("效力");
+            var cl12 = new Link();
+            cl12.Target("阿森纳").Source("厄齐尔").Weight(0.9).Name("效力");
+            var cl13 = new Link();
+            cl13.Target("阿森纳").Source("波多尔斯基").Weight(0.9).Name("效力");
+            var cl14 = new Link();
+            cl14.Target("拜仁慕尼黑").Source("诺伊尔").Weight(0.9).Name("效力");
+            var cl15 = new Link();
+            cl15.Target("拜仁慕尼黑").Source("博阿滕").Weight(0.9).Name("效力");
+            var cl16 = new Link();
+            cl16.Target("拜仁慕尼黑").Source("施魏因施泰格").Weight(0.9).Name("效力");
+            var cl17 = new Link();
+            cl17.Target("拜仁慕尼黑").Source("拉姆").Weight(0.9).Name("效力");
+            var cl18 = new Link();
+            cl18.Target("拜仁慕尼黑").Source("克罗斯").Weight(0.9).Name("效力");
+            var cl19 = new Link();
+            cl19.Target("拜仁慕尼黑").Source("穆勒").Weight(0.9).Name("效力");
+            c1.Links(cl1, cl2, cl3, cl4, cl5, cl6, cl7, cl8, cl9, cl11, cl12, cl13, cl14, cl15, cl16, cl17, cl18, cl19);
+
+           
+            option.Series(c1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("chord4")]
+        public string NonRibbonChord2()
+        {
+            ChartOption option = new ChartOption();
+
+            option.Title().Text("德国队效力联盟")
+                .X(HorizontalType.right).Y(VerticalType.bottom);
+            option.ToolTip().Trigger(TriggerType.item)
+                .Formatter(new JRaw(@" function (params) {
+            if (params.indicator2) {    // is edge
+                return params.indicator2 + ' ' + params.name + ' ' + params.indicator;
+            } else {    // is node
+                return params.name
+            }
+        }"));
+            option.Legend().X(HorizontalType.left).Data("阿森纳", "拜仁慕尼黑", "多特蒙德");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            Chord c1 = new Chord();
+            c1.RibbonType(false).Radius("60%").MinRadius(7).MaxRadius(20)
+                .ItemStyle().Normal().Label().Rotate(true);
+            var cd1 = new Node("默特萨克");
+            var cd2 = new Node("厄齐尔");
+            var cd3 = new Node("波多尔斯基");
+            var cd4 = new Node("博阿滕");
+            var cd5 = new Node("施魏因施泰格");
+            var cd6 = new Node("拉姆");
+            var cd7 = new Node("克罗斯");
+            var cd8 = new Node("穆勒");
+            cd8.Symbol("star");
+            var cd9 = new Node("格策");
+            var cd10 = new Node("阿森纳");
+            var cd11 = new Node("拜仁慕尼黑");
+            var cd12 = new Node("多特蒙德");
+            c1.Data(cd1, cd2, cd3, cd4, cd5, cd6, cd7, cd8, cd9, cd10, cd11, cd12);
+
+            var cl1 = new Link();
+            cl1.Source("阿森纳").Target("默特萨克").Weight(0.9).Name("效力");
+            var cl2 = new Link();
+            cl2.Source("阿森纳").Target("厄齐尔").Weight(0.9).Name("效力");
+            var cl3 = new Link();
+            cl3.Source("阿森纳").Target("波多尔斯基").Weight(0.9).Name("效力");
+            var cl4 = new Link();
+            cl4.Source("拜仁慕尼黑").Target("诺伊尔").Weight(0.9).Name("效力");
+            var cl5 = new Link();
+            cl5.Source("拜仁慕尼黑").Target("博阿滕").Weight(0.9).Name("效力");
+            var cl6 = new Link();
+            cl6.Source("拜仁慕尼黑").Target("施魏因施泰格").Weight(0.9).Name("效力");
+            var cl7 = new Link();
+            cl7.Source("拜仁慕尼黑").Target("拉姆").Weight(0.9).Name("效力");
+            var cl8 = new Link();
+            cl8.Source("拜仁慕尼黑").Target("克罗斯").Weight(0.9).Name("效力");
+            var cl9 = new Link();
+            cl9.Source("拜仁慕尼黑").Target("穆勒").Weight(0.9).Name("效力");
+            // Ribbon Type 的和弦图每一对节点之间必须是双向边
+         
+            c1.Links(cl1, cl2, cl3, cl4, cl5, cl6, cl7, cl8, cl9);
+
+
+            option.Series(c1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+       
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("webkit-dep2")]
+        public string ComplexChord()
+        {
+            ChartOption option = new ChartOption();
+            //这个暂时没实现
+            option.Title().Text("webkit内核依赖").SubText("数据来自网络")
+             .X(HorizontalType.right).Y(VerticalType.bottom);
+            option.ToolTip().Trigger(TriggerType.item)
+                .Formatter("{b}");
+            option.Legend().X(HorizontalType.left).Data("group1", "group2", "group3", "group4");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            feature.MagicType().Show(true).Type("force", "chord");
+            var chord = new Chord();
+            chord.MinRadius(2).MaxRadius(10).RibbonType(false)
+                .ItemStyle().Normal().ChordStyle().Opacity(0.2);
+            var force = new Force();
+            force.MinRadius(5).MaxRadius(8).ItemStyle().Normal().LinkStyle()
+                .Opacity(0.5);
+            option.ToolBox().Show(true).SetFeature(feature);
+            option.Legend().Orient(OrientType.vertical).X(HorizontalType.left)
+                .Data("HTMLElement", "WebGL", "SVG", "CSS", "Other");
+            var c1 = new Chord();
+            option.Series(c1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]        
+        public string Chord()
+        {
+            ChartOption option = new ChartOption();
+
+            option.Title().Text("测试数据");                
+            option.ToolTip().Trigger(TriggerType.item)
+                .Formatter(new JRaw(@"function (params) {
+            if (params.indicator2) { // is edge
+                return params.value.weight;
+            } else {// is node
+                return params.name
+            }
+        }"));
+            option.Legend().X(HorizontalType.right).Data("g1", "g2", "g3", "g4");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            Chord c1 = new Chord();
+            c1.Radius(new List<string>() { "55%", "75%" })
+                .Center(new List<string>() { "50%", "50%" })
+                .Padding(2).Sort(SortType.descending).SortSub(SortType.descending)
+                .StartAngle(90).ClockWise(false).ShowScale(true).ShowScaleText(true);
+            var style = new ItemStyle();
+            style.Normal().BarBorderWidth(0).BorderColor("#000")
+                .ChordStyle().BorderWidth(0);
+            style.Normal().Label().Show(true).Color("red");
+            style.Emphasis().BorderWidth(0).BorderColor("#000").ChordStyle()
+                .BorderWidth(2).BorderColor("black");
+
+            var cd1 = new Node("g1");
+            var style2 = new ItemStyle();
+            style2.Normal().Color("rgba(255,30,30,0.5)").LineStyle().Width(1).Color("green");
+            style2.Emphasis().Color("yellow").LineStyle().Width(2).Color("blue");
+            var cd2 = new Node("g2");
+            var cd3 = new Node("g3");
+            var cd4 = new Node("g4");
+            c1.Data(cd1, cd2, cd3, cd4);
+
+            var matrix = new int[,] {
+               {11975, 5871, 8916, 2868},
+                {1951, 10048, 2060, 6171},
+                {8010, 16145, 8090, 8045},
+                {1013, 990, 940, 6907}
+            };                     
+            c1.SetMatrix(matrix);
+
+            var mp1 = new MarkData("打酱油的标注");
+            mp1.Value(100).X("5%").Y("50%").SymbolSize(32);
+            var mp2 = new MarkData("打酱油的标注");
+            mp2.Value(100).X("95%").Y("50%").SymbolSize(32);
+
+            c1.MarkPoint().Symbol("star").Data(mp1, mp2);
+
+            option.Series(c1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+        #endregion
 
         private ToolBox ToolBox(OrientType orient= OrientType.horizontal)
         {
