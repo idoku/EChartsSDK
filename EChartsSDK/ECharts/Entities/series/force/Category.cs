@@ -17,6 +17,10 @@ namespace ECharts.Entities.series
 
         public ItemStyle itemStyle { get; set; }
 
+        public Category(string name) {
+            this.name = name;
+        }
+
         public Category SymbolSize(object symbolSize)
         {
             this.symbolSize = symbolSize;

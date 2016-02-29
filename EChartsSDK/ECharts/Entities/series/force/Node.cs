@@ -17,6 +17,8 @@ namespace ECharts.Entities.series
 
         public bool? ignore { get; set; }
 
+        public bool? draggable { get; set; }
+
         public string symbol { get; set; }
 
         public object symbolSize { get; set; }
@@ -29,6 +31,12 @@ namespace ECharts.Entities.series
 
         public Node(string name) {
             this.name = name;
+        }
+
+        public Node(string name, int value, int category):this(name)
+        {
+            this.value = value;
+            this.category = category;
         }
 
         public Node Ignore(bool ignore)
@@ -75,6 +83,12 @@ namespace ECharts.Entities.series
             return this;
         }
 
+        public Node Draggable(bool draggable)
+        {
+            this.draggable = draggable;
+            return this;
+        }
+    
 
         public ItemStyle ItemStyle()
         {

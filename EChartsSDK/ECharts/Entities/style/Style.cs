@@ -53,7 +53,8 @@ namespace ECharts.Entities.style
             this.barBorderColor = barBorderColor;
             return this as T;
         }
-   
+
+       
 
         public T BarBorderWidth(int barBorderWidth)
         {
@@ -105,7 +106,14 @@ namespace ECharts.Entities.style
             return this.labelLine;
         }
 
-         
+        public NodeStyle NodeStyle()
+        {            
+            if (nodeStyle == null)
+                this.nodeStyle = new style.NodeStyle();
+            return this.nodeStyle;
+        }
+
+        
 
 
         public LineStyle LineStyle()

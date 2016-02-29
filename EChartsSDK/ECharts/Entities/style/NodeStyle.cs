@@ -10,6 +10,8 @@ namespace ECharts.Entities.style
     {
         public object color { get; set; }
 
+        public object brushType { get; set; }
+
         public object borderColor { get; set; }
 
         public int? borderWidt { get; set; }
@@ -17,6 +19,13 @@ namespace ECharts.Entities.style
         public NodeStyle Color(object color)
         {
             this.color = color;
+            return this;
+        }
+
+
+        public NodeStyle BrushType(object brushType)
+        {
+            this.brushType = brushType;            
             return this;
         }
 

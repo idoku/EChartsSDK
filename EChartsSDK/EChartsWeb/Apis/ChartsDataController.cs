@@ -3787,8 +3787,7 @@ namespace EChartsWeb.Apis
             var result = JsonTools.ObjectToJson2(option);
             return result;
         }
-
-       
+    
         [AcceptVerbs("GET", "POST")]
         [ActionName("webkit-dep2")]
         public string ComplexChord()
@@ -3888,6 +3887,302 @@ namespace EChartsWeb.Apis
             var result = JsonTools.ObjectToJson2(option);
             return result;
         }
+        #endregion
+
+        #region force data
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("force1")]
+        public string SimpleForce()
+        {
+            ChartOption option = new ChartOption();
+
+            option.Title().Text("测试数据").SubText("From d3.js")
+                .X(HorizontalType.right).Y(VerticalType.bottom);
+            option.ToolTip().Trigger(TriggerType.item)
+                .Formatter("{a}:{b}");            
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.Legend().X(HorizontalType.left).Data("家人", "朋友");
+
+            Force f1 = new Force();
+            Category c1 = new Category("人物");
+            Category c2 = new Category("家人");
+            Category c3 = new Category("朋友");
+            f1.Categories(c1, c2, c3);
+            var style = new ItemStyle();
+            style.Normal().Label().Show(true).TextStyle().Color("#333");
+            style.Normal().NodeStyle().BorderColor("rgba(255,215,0,0.4)").BorderWidt(1)
+                .BrushType("both");
+            style.Normal().LinkStyle().Type(LinkStyleType.curve);
+            style.Emphasis().Label().Show(false);
+            style.Emphasis().NodeStyle();
+            style.Emphasis().LinkStyle();
+            f1.UseWorker(false).MinRadius(15).MaxRadius(25).Gravity(1.1).Scaling(1.1).Roam("move");
+            f1.SetItemStyle(style);
+            Node n1 = new Node("乔布斯", 10, 0);
+            Node n2 = new Node("丽萨-乔布斯", 3, 1);
+            Node n3 = new Node("保罗-乔布斯", 3, 1);
+            Node n4 = new Node("克拉拉-乔布斯", 3, 1);
+            Node n5 = new Node("劳伦-鲍威尔", 7, 3);
+            Node n6 = new Node("史蒂夫-沃兹尼艾克", 5, 3);
+            Node n7 = new Node("奥巴马", 10, 8);
+            Node n8= new Node("比尔-盖茨", 10, 9);
+            f1.Nodes(n1, n2, n3, n4, n5, n5, n6, n7, n8);
+
+            Link l1 = new Link("女儿");
+            l1.Source("丽萨-乔布斯").Target("乔布斯").Weight(1);
+            Link l2 = new Link("父亲");
+            l2.Source("保罗-乔布斯").Target("乔布斯").Weight(2);
+            Link l3 = new Link("母亲");
+            l3.Source("克拉拉-乔布斯").Target("乔布斯").Weight(1);
+            Link l4 = new Link();
+            l4.Source("劳伦-鲍威尔").Target("乔布斯").Weight(2);
+            Link l5 = new Link("合伙人");
+            l5.Source("史蒂夫-沃兹尼艾克").Target("乔布斯").Weight(3);
+            Link l6 = new Link("竞争对手");
+            l6.Source("奥巴马").Target("乔布斯").Weight(1);
+            Link l7 = new Link("爱将");
+            l7.Source("比尔-盖茨").Target("乔布斯").Weight(6);
+
+            Link l11 = new Link();
+            l11.Target("保罗-乔布斯").Source("奥巴马").Weight(1);
+            Link l12 = new Link();
+            l12.Target("克拉拉-乔布斯").Source("奥巴马").Weight(1);
+            Link l13 = new Link();
+            l13.Target("劳伦-鲍威尔").Source("奥巴马").Weight(1);
+            Link l14 = new Link();
+            l14.Target("史蒂夫-沃兹尼艾克").Source("奥巴马").Weight(1);
+            Link l15 = new Link();
+            l15.Target("奥巴马").Source("比尔-盖茨").Weight(1);
+            Link l16 = new Link();
+            l16.Target("克拉拉-乔布斯").Source("比尔-盖茨").Weight(1);
+            Link l17 = new Link();
+            l17.Target("保罗-乔布斯").Target("克拉拉-乔布斯").Weight(1);
+
+            f1.Links(l1, l2, l3, l4, l5, l6, l7, l11, l12, l13, l14, l15, l16, l17);
+            
+            option.Series(f1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("force2")]
+        public string TreeForce()
+        {
+            ChartOption option = new ChartOption();
+
+            option.Title().Text("Force").SubText("From d3.js")
+                .X(HorizontalType.right).Y(VerticalType.bottom);
+            option.ToolTip().Trigger(TriggerType.item)
+                .Formatter("{a}:{b}");
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.Legend().X(HorizontalType.left).Data("叶子节点", "非叶子节点", "根节点");
+
+            Force f1 = new Force("Force tree");
+            Category c1 = new Category("叶子节点");
+            Category c2 = new Category("非叶子节点");
+            Category c3 = new Category("根节点");
+            f1.Categories(c1, c2, c3);
+            var style = new ItemStyle();
+            style.Normal().Label().Show(false).TextStyle().Color("#333");
+            style.Normal().NodeStyle().BorderColor("rgba(255,215,0,0.4)").BorderWidt(1)
+                .BrushType("both");                       
+            f1.SetItemStyle(style);
+            f1.minRadius = new JRaw("constMinRadius");
+            f1.maxRadius = new JRaw("constMaxRadius");
+            f1.Steps(10).RibbonType(false);
+            f1.nodes = new JRaw("nodes");
+            f1.links = new JRaw("links");
+
+            option.Series(f1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("webkit-dep")]
+        public string ComplexForce()
+        {
+            ChartOption option = new ChartOption();
+            //这个暂时没实现
+            option.Title().Text("webkit内核依赖").SubText("数据来自网络")
+             .X(HorizontalType.right).Y(VerticalType.bottom);
+            option.ToolTip().Trigger(TriggerType.item)
+                .Formatter("{b}");
+            option.Legend().X(HorizontalType.left).Data("group1", "group2", "group3", "group4");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+            feature.MagicType().Show(true).Type("force", "chord");
+            var chord = new Chord();
+            chord.MinRadius(2).MaxRadius(10).RibbonType(false)
+                .ItemStyle().Normal().ChordStyle().Opacity(0.2);
+            var force = new Force();
+            force.MinRadius(5).MaxRadius(8).ItemStyle().Normal().LinkStyle()
+                .Opacity(0.5);
+            option.ToolBox().Show(true).SetFeature(feature);
+            option.Legend().Orient(OrientType.vertical).X(HorizontalType.left)
+                .Data("HTMLElement", "WebGL", "SVG", "CSS", "Other");
+            var f1 = new Force();
+            option.Series(f1);
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("force4")]
+        public string BTreeForce()
+        {
+            ChartOption option = new ChartOption();
+
+            option.Title().Text("Force").SubText("Force-directed tree")
+                .X(HorizontalType.right).Y(VerticalType.bottom);
+            option.ToolTip().Trigger(TriggerType.item)
+                .Formatter("{a}:{b}");
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.Legend().X(HorizontalType.left).Data("叶子节点", "非叶子节点", "根节点");
+
+            Force f1 = new Force("Force tree");
+            Category c1 = new Category("叶子节点");
+            c1.ItemStyle().Normal().Color("#ff7f50");
+            Category c2 = new Category("非叶子节点");
+            c2.ItemStyle().Normal().Color("#6f57bc");
+            Category c3 = new Category("根节点");
+            c3.ItemStyle().Normal().Color("#af0000");
+            f1.Categories(c1, c2, c3);
+            var style = new ItemStyle();
+            style.Normal().Label().Show(false).TextStyle().Color("#333");
+            style.Normal().NodeStyle().BorderColor("rgba(255,215,0,0.4)").BorderWidt(1)
+                .BrushType("both");
+            f1.SetItemStyle(style);
+            f1.minRadius = new JRaw("constMinRadius");
+            f1.maxRadius = new JRaw("constMaxRadius");
+            f1.Steps(10).RibbonType(false);
+            f1.nodes = new JRaw("nodes");
+            f1.links = new JRaw("links");
+
+            option.Series(f1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        public string Force()
+        {
+            ChartOption option = new ChartOption();
+
+            option.Title().Text("测试数据").SubText("From d3.js")
+                .X(HorizontalType.right).Y(VerticalType.bottom);
+            option.ToolTip().Trigger(TriggerType.item)
+                .Formatter("{a}:{b}");
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.Legend().X(HorizontalType.left).Data("家人", "朋友");
+
+            Force f1 = new Force();
+            Category c1 = new Category("人物");
+            Category c2 = new Category("家人");
+            Category c3 = new Category("朋友");
+            f1.Categories(c1, c2, c3);
+            var style = new ItemStyle();
+            style.Normal().Label().Show(true).TextStyle().Color("#333");
+            style.Normal().NodeStyle().BorderColor("rgba(255,215,0,0.4)").BorderWidt(1)
+                .BrushType("both");
+            style.Normal().LinkStyle().Type(LinkStyleType.curve);
+            style.Emphasis().Label().Show(false);
+            style.Emphasis().NodeStyle();
+            style.Emphasis().LinkStyle();
+            f1.UseWorker(false).MinRadius(15).MaxRadius(25).Gravity(1.1).Scaling(1.1).Roam("move")
+                .LinkSymbol("arrow");
+            f1.SetItemStyle(style);
+
+            Node n1 = new Node("乔布斯", 10, 0);
+            n1.Symbol("image://http://www.damndigital.com/wp-content/uploads/2010/12/steve-jobs.jpg")
+                .SymbolSize(new List<int>() { 60, 35 }).ItemStyle().Normal()
+                .Label().Position(StyleLabelTyle.right).TextStyle().Color("black");
+            Node n2 = new Node("丽萨-乔布斯", 3, 1);
+            Node n3 = new Node("保罗-乔布斯", 3, 1);
+            Node n4 = new Node("克拉拉-乔布斯", 3, 1);
+            Node n5 = new Node("劳伦-鲍威尔", 7, 3);
+            Node n6 = new Node("史蒂夫-沃兹尼艾克", 5, 3);
+            Node n7 = new Node("奥巴马", 10, 8);
+            Node n8 = new Node("比尔-盖茨", 10, 9);
+            f1.Nodes(n1, n2, n3, n4, n5, n5, n6, n7, n8);
+
+            Link l1 = new Link("女儿");
+            l1.Source("丽萨-乔布斯").Target("乔布斯").Weight(1)
+                .ItemStyle().Normal().Color("red");
+            Link l2 = new Link("父亲");
+            l2.Source("保罗-乔布斯").Target("乔布斯").Weight(2);
+            Link l3 = new Link("母亲");
+            l3.Source("克拉拉-乔布斯").Target("乔布斯").Weight(1);
+            Link l4 = new Link();
+            l4.Source("劳伦-鲍威尔").Target("乔布斯").Weight(2);
+            Link l5 = new Link("合伙人");
+            l5.Source("史蒂夫-沃兹尼艾克").Target("乔布斯").Weight(3);
+            Link l6 = new Link("竞争对手");
+            l6.Source("奥巴马").Target("乔布斯").Weight(1);
+            Link l7 = new Link("爱将");
+            l7.Source("比尔-盖茨").Target("乔布斯").Weight(6);
+
+            Link l11 = new Link();
+            l11.Target("保罗-乔布斯").Source("奥巴马").Weight(1);
+            Link l12 = new Link();
+            l12.Target("克拉拉-乔布斯").Source("奥巴马").Weight(1);
+            Link l13 = new Link();
+            l13.Target("劳伦-鲍威尔").Source("奥巴马").Weight(1);
+            Link l14 = new Link();
+            l14.Target("史蒂夫-沃兹尼艾克").Source("奥巴马").Weight(1);
+            Link l15 = new Link();
+            l15.Target("奥巴马").Source("比尔-盖茨").Weight(1);
+            Link l16 = new Link();
+            l16.Target("克拉拉-乔布斯").Source("比尔-盖茨").Weight(1);
+            Link l17 = new Link();
+            l17.Target("保罗-乔布斯").Target("克拉拉-乔布斯").Weight(1);
+
+            f1.Links(l1, l2, l3, l4, l5, l6, l7, l11, l12, l13, l14, l15, l16, l17);
+
+            option.Series(f1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
         #endregion
 
         private ToolBox ToolBox(OrientType orient= OrientType.horizontal)

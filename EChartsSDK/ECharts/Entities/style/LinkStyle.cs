@@ -10,7 +10,7 @@ namespace ECharts.Entities.style
     {
         public LinkStyleType? type { get; set; }
 
-        public double opacity { get; set; }
+        public double? opacity { get; set; }
 
         public object color { get; set; }
 

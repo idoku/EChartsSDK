@@ -19,11 +19,24 @@ namespace ECharts.Entities.series
 
         public ItemStyle itemStyle { get; set; }
 
+        public Link()
+        {             
+           
+        }
+
+        public Link(string name)
+        {
+            this.name = name;           
+        }
+
+
         public Link Name(string name)
         {
             this.name = name;
             return this;
         }
+
+
 
         public Link Source(object source)
         {

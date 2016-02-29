@@ -10,9 +10,9 @@ namespace ECharts.Entities.series
     {
         public IList<Category> categories { get; set; }
 
-        public IList<Node> nodes { get; set; }
+        public object nodes { get; set; }
 
-        public IList<Link> links { get; set; }
+        public object links { get; set; }
 
         public int[,] matrix { get; set; }
 
@@ -20,9 +20,9 @@ namespace ECharts.Entities.series
 
         public int? size { get; set; }
 
-        public int? minRadius { get; set; }
+        public object minRadius { get; set; }
 
-        public int? maxRadius { get; set; }
+        public object maxRadius { get; set; }
 
         public string symbol { get; set; }
 
@@ -30,11 +30,13 @@ namespace ECharts.Entities.series
 
         public object linkSymbol { get; set; }
 
+        public double? coolDown { get; set; }
+
         public IList<int> linkSymbolSize { get; set; }
 
-        public int? scaling { get; set; }
+        public double? scaling { get; set; }
 
-        public int? gravity { get; set; }
+        public double? gravity { get; set; }
 
         public bool? draggable { get; set; }
 
@@ -45,6 +47,8 @@ namespace ECharts.Entities.series
         public int? steps { get; set; }
 
         public object roam { get; set; }
+
+        public bool ribbonType { get; set; }
 
         public Force Roam(object roam)
         {
@@ -76,15 +80,21 @@ namespace ECharts.Entities.series
             return this;
         }
 
-        public Force Gravity(int gravity)
+        public Force Gravity(double gravity)
         {
             this.gravity = gravity;
             return this;
         }
 
-        public Force Scaling(int scaling)
+        public Force Scaling(double scaling)
         {
             this.scaling = scaling;
+            return this;
+        }
+
+        public Force CoolDown(double coolDown)
+        {
+            this.coolDown = coolDown;
             return this;
         }
 
@@ -97,6 +107,34 @@ namespace ECharts.Entities.series
         public Force Center(object center)
         {
             this.center = center;
+            return this;
+        }
+
+        public Force Categories(params Category[] values)
+        {
+            if (this.categories == null)
+                this.categories = new List<Category>();
+            this.categories = values.ToList();
+            return this;
+        }
+
+        public Force Nodes(params Node[] values)
+        {
+            if (this.nodes == null)
+            {
+                this.nodes = new List<Node>();
+            }
+            this.nodes = values.ToList();
+            return this;
+        }
+
+        public Force Links(params Link[] values)
+        {
+            if (this.links == null)
+            {
+                this.links = new List<Link>();
+            }
+            this.links = values.ToList();
             return this;
         }
 
@@ -129,6 +167,13 @@ namespace ECharts.Entities.series
             this.symbol = symbol;
             return this;
         }
+
+        public Force RibbonType(bool ribbonType)
+        {
+            this.ribbonType = ribbonType;
+            return this;
+        }
+
 
         public Force() {
             this.type = ChartType.force;

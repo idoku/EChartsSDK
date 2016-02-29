@@ -26,7 +26,22 @@ namespace EChartsWeb.Controllers
             }
             else if (api == "lasagna")
             {
-                ViewBag.ExtJs = "../Scripts/charts/lasagna.js";              
+                ViewBag.ExtJs = "../Scripts/charts/lasagna.js";
+            }
+            else if (api == "Force") {
+                ViewBag.ExtJs = "../Scripts/charts/force.js";
+            }
+            else if (api == "force1")
+            {
+                ViewBag.ExtJs = "../Scripts/charts/force.js";
+            }
+            else if (api == "force2")
+            {
+                ViewBag.ExtJs = "../Scripts/charts/force2.js";
+            }
+            else if (api == "force4")
+            {
+                ViewBag.ExtJs = "../Scripts/charts/force4.js";
             }
 
             return View();
