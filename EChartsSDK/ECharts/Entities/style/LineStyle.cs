@@ -50,11 +50,7 @@ namespace ECharts.Entities.style
             return this;
         }
 
-        public LineStyle Color(string color)
-        {
-            this.color = color;
-            return this;
-        }
+    
 
         public LineStyle Color0(string color0)
         {

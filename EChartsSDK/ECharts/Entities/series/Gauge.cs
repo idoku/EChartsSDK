@@ -9,7 +9,7 @@ namespace ECharts.Entities.series
 {
     public class Gauge : ChartSeries<Gauge>
     {
-        public IList<object> center { get; set; }
+        public IList<string> center { get; set; }
 
         public object radius { get; set; }
 
@@ -45,6 +45,12 @@ namespace ECharts.Entities.series
             return this;
         }
 
+        public Gauge Center(IList<string> center)
+        {
+            this.center = center;
+            return this;
+        }
+
         public Gauge Max(int max)
         {
             this.max = max;
@@ -66,6 +72,12 @@ namespace ECharts.Entities.series
         public Gauge StartAngle(int startAngle)
         {
             this.startAngle = startAngle;
+            return this;
+        }
+
+        public Gauge EndAngle(int endAngle)
+        {
+            this.endAngle = endAngle;
             return this;
         }
 
@@ -101,23 +113,41 @@ namespace ECharts.Entities.series
             this.type = ChartType.gauge;
         }
 
+        public Gauge(string name):this()
+        {
+            this.name = name;
+        }
+
         public AxisLabel AxisLabel()
         {
+            if(axisLabel==null)
             axisLabel = new AxisLabel();
             return axisLabel;
         }
 
         public AxisLine AxisLine()
         {
+            if(axisLine==null)
             axisLine = new AxisLine();
             return axisLine;
         }
+
+        public AxisTick AxisTick()
+        {
+            if (axisTick == null)
+                axisTick = new AxisTick();
+
+            return axisTick;
+        }
+
 
         public SplitLine SplitLine()
         {
             splitLine = new SplitLine();
             return splitLine;
         }
+
+        
 
 
     }

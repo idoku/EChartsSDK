@@ -21,7 +21,7 @@ namespace ECharts.Entities
 
         public int? height { get; set; }
 
-        public IList<object> offsetCenter { get; set; }
+        public IList<string> offsetCenter { get; set; }
 
         public object formatter { get; set; }
 
@@ -76,6 +76,13 @@ namespace ECharts.Entities
             return this;
         }
 
+        public GaugeDetail OffsetCenter(IList<string> offsetCenter)
+        {
+            this.offsetCenter = offsetCenter;
+            return this;
+        }
+
+        
 
     }
 }

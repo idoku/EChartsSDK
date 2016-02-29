@@ -234,6 +234,8 @@
     <Content Include="Scripts\charts\force.js" />
     <Content Include="Scripts\charts\force2.js" />
     <Content Include="Scripts\charts\force4.js" />
+    <Content Include="Scripts\charts\gauge.js" />
+    <Content Include="Scripts\charts\gauge4.js" />
     <Content Include="Scripts\charts\lasagna.js" />
     <Content Include="Scripts\charts\timelineOption.js" />
     <Content Include="Scripts\charts\line.js" />

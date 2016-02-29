@@ -146,6 +146,7 @@ function launch(api) {
               domGraphic = document.getElementById('graphic');
               iconResize = document.getElementById('icon-resize');
               launchExample();
+              
         },
         error: function (msg) {
             alert("系统发生错误");
@@ -162,6 +163,7 @@ function needMap() {
 
 }
 
+var option;
 function refresh(isBtnRefresh) {
     if (isBtnRefresh) {
         needRefresh = true;
@@ -175,8 +177,11 @@ function refresh(isBtnRefresh) {
     myChart = echarts.init(domMain);
     window.onresize = myChart.resize;
     var data = editor.doc.getValue();
-    var option = eval('(' + data + ')');
+    option = eval('(' + data + ')');
     myChart.setOption(option)
+
+    //
+
    // domMessage.innerHTML = '';
 }
 

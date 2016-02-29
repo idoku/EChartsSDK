@@ -4185,6 +4185,207 @@ namespace EChartsWeb.Apis
 
         #endregion
 
+        #region map data
+
+        #endregion
+
+        #region gauge data
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("gauge1")]
+        public string StdGauge()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();           
+            option.ToolTip().Formatter("{a} <br/>{b} : {c}%");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            var g1 = new Gauge();
+            g1.Name("业务指标");
+            g1.Data(new SeriesData<int>(50, "完成率"));
+            option.Series(g1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("gauge2")]
+        public string StdGauge2()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.ToolTip().Formatter("{a} <br/>{b} : {c}%");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            var g1 = new Gauge();
+            g1.Name("业务指标");
+            g1.Data(new SeriesData<int>(50, "完成率"));
+            string[,] color = new string[,] {
+                { "0.2","#228b22" },
+                   { "0.8","#48b" },
+                      { "1","#ff4500" }
+            };
+            g1.SplitNumber(10).AxisLine().LineStyle()
+                .Color(color).Width(8);
+            g1.AxisTick().SplitNumber(10).Length(12).LineStyle().Color("auto");
+            g1.AxisLabel().TextStyle().Color("auto");
+            g1.SplitLine().Show(true).Length(30).LineStyle().Color("auto");
+            g1.Pointer().Width(5);
+            g1.Title().Show(true).OffsetCenter(new List<string>() { "0", "-40%" }).TextStyle().FontWeight("bolder");
+            g1.Detail().Formatter("{value}%").TextStyle().Color("auto").FontWeight("bolder");
+            g1.Data(new SeriesData<int>(50, "完成率"));
+            option.Series(g1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("gauge3")]
+        public string StdGauge3()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.ToolTip().Formatter("{a} <br/>{b} : {c}%");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            var g1 = new Gauge();
+            g1.Name("业务指标");
+            g1.Data(new SeriesData<int>(50, "完成率"));
+            g1.StartAngle(180).EndAngle(0).Center(new List<string>() { "50%", "90%" })
+                .Radius(320);
+            g1.AxisLine().LineStyle().Width(200);
+            g1.AxisTick().SplitNumber(10).Length(12);
+            g1.AxisLabel().Formatter(new JRaw(@"function(v){
+                    switch (v+''){
+                        case '10': return '低';
+                        case '50': return '中';
+                        case '90': return '高';
+                        default: return '';
+                    }
+                }")).TextStyle().Color("#fff").FontSize(15).FontWeight("bolder");            
+            g1.SplitLine().Show(true).Length(30).LineStyle().Color("auto");
+            g1.Pointer().Width(50).Length("90%").Color("rgba(255, 255, 255, 0.8)");
+            g1.Title().Show(true).OffsetCenter(new List<string>() { "0", "-60%" }).TextStyle()
+                .Color("#fff").FontSize(30);
+            g1.Detail().Formatter("{value}%").Show(true).BackgroundColor("rgba(0,0,0,0)")
+                .BorderWidth(0).BorderColor("#ccc").Width(100).Height(40)
+                .OffsetCenter(new List<string>() { "0","-40" })
+                .TextStyle().Color("auto").FontWeight("bolder");
+            g1.Data(new SeriesData<int>(50, "完成率"));
+            option.Series(g1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("gauge4")]
+        public string MultiGauge()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.ToolTip().Formatter("{a} <br/>{c} {b}");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+            string[,] color = new string[,] {
+                { "0.2","#228b22" },
+                   { "0.8","#48b" },
+                      { "1","#ff4500" }
+            };
+            var g1 = new Gauge();
+            g1.Name("速度");
+            g1.Data(new SeriesData<int>(50, "完成率"));
+            g1.Min(0).Max(220).SplitNumber(11).AxisLine().LineStyle().Width(10);
+            g1.AxisTick().Length(15).LineStyle().Color("auto");
+            g1.SplitLine().Length(20).LineStyle().Color("auto");
+            g1.Title().TextStyle().FontWeight("bolder").FontSize(20).FontStyle(FontStyleType.italic);
+            g1.Detail().TextStyle().FontWeight("bolder");
+            g1.Data(new SeriesData<int>(40, "km/h"));
+
+            var g2 = new Gauge("转速");
+            
+            g2.Data(new SeriesData<int>(50, "完成率"));
+            g2.Min(0).Max(7).Center(new List<string> { "25%","55%" }).Radius("50%")
+               .EndAngle(45).SplitNumber(7).AxisLine().LineStyle().Width(8);
+            g2.AxisTick().Length(12).LineStyle().Color("auto");
+            g2.SplitLine().Length(20).LineStyle().Color("auto");
+            g2.Pointer().Width(5);
+            g2.Title().OffsetCenter(new List<string>() { "0", "-30%" });                        
+            g2.Detail().TextStyle().FontWeight("bolder");
+            g2.Data(new SeriesData<double>(1.5, "x1000 r/min"));
+
+            var g3 = new Gauge("油表");         
+            g3.Min(0).Max(2).SplitNumber(2).Center(new List<string> { "75%", "50%" }).Radius("50%")
+               .EndAngle(45).StartAngle(135).AxisLine().LineStyle().Width(8)
+               .Color(color);
+            g3.AxisTick().SplitNumber(5).Length(10).LineStyle().Color("auto");
+            g3.AxisLabel().Formatter(new JRaw(@"function(v){
+                    switch (v + '') {
+                        case '0' : return 'E';
+                        case '1' : return 'Gas';
+                        case '2' : return 'F';
+                    }
+                }"));
+            g3.SplitLine().Length(15).LineStyle().Color("auto");
+            g3.Pointer().Width(5);
+            g3.Title().Show(false);
+            g3.Detail().Show(false);
+            g3.Data(new SeriesData<double>(0.5, "gas"));
+
+            var g4 = new Gauge("水表");
+         
+            g4.Min(0).Max(2).SplitNumber(2).Center(new List<string> { "75%", "50%" }).Radius("50%")
+               .EndAngle(225).StartAngle(315).AxisLine().LineStyle().Width(8).Color(color);
+            g4.AxisTick().Show(false);
+            g4.AxisLabel().Formatter(new JRaw(@"function(v){
+                    switch (v + '') {
+                        case '0' : return 'E';
+                        case '1' : return 'Gas';
+                        case '2' : return 'F';
+                    }
+                }"));
+            g4.Pointer().Width(2);
+            g4.Title().Show(false);
+            g4.Detail().Show(false);
+            g4.Data(new SeriesData<double>(0.5, "whater"));
+
+
+
+            option.Series(g1,g2,g3,g4);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+        #endregion
+
         private ToolBox ToolBox(OrientType orient= OrientType.horizontal)
         {
             

@@ -25,6 +25,12 @@ namespace ECharts.Entities.style
 
         public object fontWeight { get; set; }
 
+        public TextStyle FontStyle(FontStyleType fontStyle)
+        {
+            this.fontStyle = fontStyle;
+            return this;
+        }
+
         public TextStyle FontWeight(object fontWeight)
         {
             this.fontWeight = fontWeight;

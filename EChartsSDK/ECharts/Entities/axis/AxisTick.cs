@@ -13,6 +13,8 @@ namespace ECharts.Entities.axis
 
         public object interval { get; set; }
 
+        public int splitNumber { get; set; }
+
         public bool? onGap { get; set; }
 
         public bool? inside { get; set; }
@@ -20,6 +22,19 @@ namespace ECharts.Entities.axis
         public int? length { get; set; }
         
         public LineStyle lineStyle { get; set; }
+
+        public AxisTick Length(int length)
+        {
+            this.length = length;
+            return this;
+        }
+
+
+        public AxisTick SplitNumber(int splitNumber)
+        {
+            this.splitNumber = splitNumber;
+            return this;
+        }
 
         public AxisTick Inside(bool inside)
         {

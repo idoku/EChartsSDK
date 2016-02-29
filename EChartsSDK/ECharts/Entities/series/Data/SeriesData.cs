@@ -13,6 +13,8 @@ namespace ECharts.Entities.series.data
     {
         public T value { get; set; }
 
+        public string name { get; set; }
+
         public ToolTip tooltip { get; set; }
 
         public ItemStyle itemStyle { get; set; }
@@ -29,6 +31,10 @@ namespace ECharts.Entities.series.data
         public SeriesData(T value):this(value,null,null)
         {         
             
+        }
+
+        public SeriesData(T value, string name):this(value) {
+            this.name = name;
         }
 
         public SeriesData(T value,ToolTip tooltip):this(value,tooltip,null)

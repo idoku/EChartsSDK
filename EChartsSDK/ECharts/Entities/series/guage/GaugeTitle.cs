@@ -11,7 +11,7 @@ namespace ECharts.Entities
     {
         public bool? show { get; set; }
        
-        public IList<object> offsetCenter { get; set; }
+        public IList<string> offsetCenter { get; set; }
       
         public TextStyle textStyle { get; set; }
 
@@ -21,6 +21,12 @@ namespace ECharts.Entities
             if (this.textStyle == null)
                 textStyle = new style.TextStyle();
             return textStyle;
+        }
+
+        public GaugeTitle OffsetCenter(IList<string> offsetCenter)
+        {
+            this.offsetCenter = offsetCenter;
+            return this;
         }
 
         public GaugeTitle Show(bool show)

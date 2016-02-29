@@ -13,7 +13,15 @@ namespace ECharts.Entities.axis
 
         public bool? onGap { get; set; }
 
+        public int? length { get; set; }
+
         public LineStyle lineStyle { get; set; }
+
+        public SplitLine Length(int length)
+        {
+            this.length = length;
+            return this;
+        }
 
         public SplitLine Show(bool show)
         {
