@@ -39,6 +39,14 @@ namespace ECharts.Entities.series
 
         public bool? legendHoverLink { get; set; }
 
+        public int? precision { get; set; }
+
+        public Gauge Precision(int precision)
+        {
+            this.precision = precision;
+            return this;
+        }
+
         public Gauge SplitNumber(int splitNumber)
         {
             this.splitNumber = splitNumber;

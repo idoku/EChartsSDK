@@ -27,6 +27,22 @@ namespace ECharts.Entities
 
         public TextStyle textStyle { get; set; }
 
+        public int? shadowBlur { get; set; }
+
+        public object shadowColor { get; set; }
+
+        public GaugeDetail ShadowColor(object shadowColor)
+        {
+            this.shadowColor = shadowColor;
+            return this;
+        }
+
+        public GaugeDetail ShadowBlur(int shadowBlur)
+        {
+            this.shadowBlur = shadowBlur;
+            return this;
+        }
+
         public TextStyle TextStyle()
         {
             if (this.textStyle == null)

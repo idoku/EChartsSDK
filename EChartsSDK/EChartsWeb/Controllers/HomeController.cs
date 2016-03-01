@@ -48,6 +48,10 @@ namespace EChartsWeb.Controllers
             {
                 ViewBag.ExtJs = "../Scripts/charts/gauge4.js";
             }
+            else if (api == "gauge5")
+            {
+                ViewBag.ExtJs = "../Scripts/charts/gauge5.js";
+            }
             else if (api.Contains("gauge")) {
                 ViewBag.ExtJs = "../Scripts/charts/gauge.js";
             }

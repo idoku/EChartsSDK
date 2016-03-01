@@ -4384,6 +4384,146 @@ namespace EChartsWeb.Apis
             var result = JsonTools.ObjectToJson2(option);
             return result;
         }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("gauge5")]
+        public string MultiGauge2()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.BackgroundColor("#1b1b1b");
+            option.ToolTip().Formatter("{a} <br/>{c} {b}");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+            string[,] color = new string[,] {
+                { "0.09","lime" },
+                   { "0.82","#1e90ff" },
+                      { "1","#ff4500" }
+            };
+            var g1 = new Gauge("速度");
+           
+            g1.Min(0).Max(220).SplitNumber(11).AxisLine().LineStyle().Width(10)
+                .Color(color).ShadowColor("#fff").ShadowBlur(10);
+            g1.AxisTick().Length(15).LineStyle().Color("auto").ShadowColor("#fff").ShadowBlur(10); 
+            g1.SplitLine().Length(20).LineStyle().Color("auto").ShadowColor("#fff").ShadowBlur(10); 
+            g1.Pointer().ShadowColor("#fff").ShadowBlur(5);
+            g1.Title().TextStyle().FontWeight("bolder").FontSize(20).FontStyle(FontStyleType.italic)
+                .ShadowColor("#fff").ShadowBlur(10);
+            g1.Detail().BackgroundColor("rgba(30,144,255,0.8)").BorderWidth(1).BorderColor("#fff")
+                .ShadowColor("#fff").ShadowBlur(5).TextStyle().FontWeight("bolder");
+            g1.Data(new SeriesData<int>(40, "km/h"));
+
+            var g2 = new Gauge("转速");
+
+            g2.Data(new SeriesData<int>(50, "完成率"));
+            g2.Min(0).Max(7).Center(new List<string> { "25%", "55%" }).Radius("50%")
+               .EndAngle(45).SplitNumber(7).AxisLine().LineStyle().Width(8).ShadowColor("#fff").ShadowBlur(10);
+            g2.AxisTick().Length(15).LineStyle().Color("auto").ShadowColor("#fff").ShadowBlur(10);
+            g2.SplitLine().Length(20).LineStyle().Color("auto").ShadowColor("#fff").ShadowBlur(10);
+            g2.Pointer().ShadowColor("#fff").ShadowBlur(5);
+            g2.Title().OffsetCenter(new List<string>() { "0","-30%" }).TextStyle().FontWeight("bolder").FontSize(20).FontStyle(FontStyleType.italic)
+                .ShadowColor("#fff").ShadowBlur(10);
+            g2.Detail().OffsetCenter(new List<string>() { "25", "20%" }).BackgroundColor("rgba(30,144,255,0.8)").BorderWidth(1).BorderColor("#fff")
+                .ShadowColor("#fff").ShadowBlur(5).TextStyle().FontWeight("bolder");
+            g2.Data(new SeriesData<double>(1.5, "x1000 r/min"));
+
+            var g3 = new Gauge("油表");
+            g3.Min(0).Max(2).SplitNumber(2).Center(new List<string> { "75%", "50%" }).Radius("50%")
+               .EndAngle(45).StartAngle(135).AxisLine().LineStyle().Width(8)
+               .Color(color).ShadowColor("#fff").ShadowBlur(10); ;
+            g3.AxisTick().SplitNumber(5).Length(10).LineStyle().Color("auto").ShadowColor("#fff").ShadowBlur(10); ;
+            g3.AxisLabel().Formatter(new JRaw(@"function(v){
+                    switch (v + '') {
+                        case '0' : return 'E';
+                        case '1' : return 'Gas';
+                        case '2' : return 'F';
+                    }
+                }")).TextStyle().ShadowColor("#fff").ShadowBlur(10);
+            g3.SplitLine().Length(15).LineStyle().Color("#fff").ShadowColor("#fff").ShadowBlur(10); ;
+            g3.Pointer().Width(5).ShadowColor("#fff").ShadowBlur(5); ;
+            g3.Title().Show(false);
+            g3.Detail().Show(false);
+            g3.Data(new SeriesData<double>(0.5, "gas"));
+
+            var g4 = new Gauge("水表");
+
+            g4.Min(0).Max(2).SplitNumber(2).Center(new List<string> { "75%", "50%" }).Radius("50%")
+               .EndAngle(225).StartAngle(315).AxisLine().LineStyle().Width(8).Color(color).ShadowColor("#fff").ShadowBlur(10);
+            g4.AxisTick().Show(false);
+            g4.AxisLabel().Formatter(new JRaw(@"function(v){
+                    switch (v + '') {
+                        case '0' : return 'E';
+                        case '1' : return 'Gas';
+                        case '2' : return 'F';
+                    }
+                }")).TextStyle().ShadowColor("#fff").ShadowBlur(10).Color("#fff");
+            g4.SplitLine().Length(15).LineStyle().ShadowColor("#fff").ShadowBlur(10);
+            g4.Pointer().Width(2).ShadowColor("#fff").ShadowBlur(5);;
+            g4.Title().Show(false);
+            g4.Detail().Show(false);
+            g4.Data(new SeriesData<double>(0.5, "whater"));
+
+            option.Series(g1, g2, g3, g4);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]        
+        public string Gauge()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.ToolTip().Formatter("{a} <br/>{b} : {c}%");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+            string[,] color = new string[,] {
+                { "0.2","lightgreen" },
+                   { "0.4","orange" },
+                      { "0.8","skyblue" },
+                {"1","#fff4500" }
+            };
+            var g1 = new Gauge();
+            g1.Name("个性化仪表盘");
+            g1.Min(0).Max(100).Center(new List<string> { "50%", "50%" }).Radius(new List<string>() { "0","75%" })
+             .EndAngle(-140).StartAngle(140).SplitNumber(10).Precision(0)
+             .AxisLine().LineStyle().Width(8).ShadowColor("#fff").ShadowBlur(10);
+            g1.AxisTick().SplitNumber(5).Length(8).LineStyle().Color("#eee").Type(LineStyleType.solid);
+            g1.AxisLabel().Formatter(new JRaw(@"function(v){
+                    switch (v+''){
+                        case '10': return '弱';
+                        case '30': return '低';
+                        case '60': return '中';
+                        case '90': return '高';
+                        default: return '';
+                    }}")).TextStyle().Color("#333");
+            g1.SplitLine().Length(30).LineStyle().Color("#eee").Type(LineStyleType.solid);
+            g1.Pointer().Length("80%").Width(8);
+            g1.Title().OffsetCenter(new List<string>() { "-65%","-10" }).TextStyle().Color("#333").FontSize(15);
+            g1.Detail().BackgroundColor("rgba(0,0,0,0)").BorderWidth(0).BorderColor("#ccc")
+                .Width(100).Height(40).OffsetCenter(new List<string>() {"-60%","10" })
+                .Formatter("{value}%")
+                .ShadowColor("#fff").ShadowBlur(5).TextStyle().FontWeight("bolder");
+
+            g1.Data(new SeriesData<int>(50, "仪盘表"));
+            option.Series(g1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
         #endregion
 
         private ToolBox ToolBox(OrientType orient= OrientType.horizontal)

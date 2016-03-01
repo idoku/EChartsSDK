@@ -25,6 +25,22 @@ namespace ECharts.Entities.style
 
         public object fontWeight { get; set; }
 
+        public int? shadowBlur { get; set; }
+
+        public object shadowColor { get; set; }
+
+        public TextStyle ShadowColor(object shadowColor)
+        {
+            this.shadowColor = shadowColor;
+            return this;
+        }
+
+        public TextStyle ShadowBlur(int shadowBlur)
+        {
+            this.shadowBlur = shadowBlur;
+            return this;
+        }
+
         public TextStyle FontStyle(FontStyleType fontStyle)
         {
             this.fontStyle = fontStyle;

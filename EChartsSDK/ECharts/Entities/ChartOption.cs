@@ -56,6 +56,13 @@ namespace ECharts.Entities
             return toolbox;
         }
 
+
+        public ChartOption BackgroundColor(object backgroundColor)
+        {
+            this.backgroundColor = backgroundColor;
+            return this;
+        }
+
         public ChartOption ToolBox(ToolBox toolbox)
         {
             this.toolbox = toolbox;
