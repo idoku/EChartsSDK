@@ -20,6 +20,8 @@ namespace ECharts.Entities.series
 
         public object height { get; set; }
 
+        public object center { get; set; }
+
         public HorizontalType? funnelAlign { get; set; }
 
         public int? min { get; set; }
@@ -53,6 +55,13 @@ namespace ECharts.Entities.series
             this.sort = sort;
             return this;
         }
+
+        public Funnel Center(object center)
+        {
+            this.center = center;
+            return this;
+        }
+
 
         public Funnel MinSize(string minSize)
         {

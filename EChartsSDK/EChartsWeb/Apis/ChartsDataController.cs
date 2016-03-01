@@ -4526,6 +4526,250 @@ namespace EChartsWeb.Apis
 
         #endregion
 
+        #region funnel data
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("funnel1")]
+        public string StdFunnel()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.ToolTip().Formatter("{a} <br/>{b} : {c}%");
+            option.Title().Text("漏斗图").Subtext("纯属虚构");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.Legend().Data("展现", "点击", "访问", "咨询", "订单");
+            
+            var f1 = new Funnel("业务指标");
+            f1.Width("40%");
+            var sd1 = new SeriesData<int>(60, "访问");
+            var sd2 = new SeriesData<int>(40, "咨询");
+            var sd3 = new SeriesData<int>(20, "订单");
+            var sd4 = new SeriesData<int>(80, "点击");
+            var sd5 = new SeriesData<int>(100, "展现");
+            f1.Data(sd1, sd2, sd3, sd4, sd5);
+            var f2 = new Funnel("金字塔");
+            f2.X("50%").Sort(SortType.ascending).ItemStyle().Normal().Label().Position(StyleLabelTyle.left);
+            f2.Data(sd1, sd2, sd3, sd4, sd5);
+            option.Series(f1,f2);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("funnel2")]
+        public string MultiFunnel()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.ToolTip().Formatter("{a} <br/>{b} : {c}%");
+            option.Title().Text("漏斗图").Subtext("纯属虚构");
+            var color = new List<string>() {
+                 "rgba(255, 69, 0, 0.5)",
+        "rgba(255, 150, 0, 0.5)",
+        "rgba(255, 200, 0, 0.5)",
+        "rgba(155, 200, 50, 0.5)",
+        "rgba(55, 200, 100, 0.5)"
+            };
+            option.Color(color);
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.Legend().Data("展现", "点击", "访问", "咨询", "订单");
+
+            var f1 = new Funnel("预期");
+            f1.Width("80%").X("10%").ItemStyle().Normal().Label().Formatter("{b}预期");
+            f1.ItemStyle().Normal().LabelLine().Show(false);
+            f1.ItemStyle().Emphasis().Label().Position(StyleLabelTyle.inside).Formatter("{b}预期:{c}%");
+            var sd1 = new SeriesData<int>(60, "访问");
+            var sd2 = new SeriesData<int>(40, "咨询");
+            var sd3 = new SeriesData<int>(20, "订单");
+            var sd4 = new SeriesData<int>(80, "点击");
+            var sd5 = new SeriesData<int>(100, "展现");
+            f1.Data(sd1, sd2, sd3, sd4, sd5);
+            var f2 = new Funnel("实际");
+            f2.Width("80%").MaxSize("80%").X("10%")
+                .ItemStyle().Normal().BorderColor("#fff").BorderWidth(2)
+                .Label().Position(StyleLabelTyle.inside).Formatter("{c}%").TextStyle().Color("#fff");
+            f2.ItemStyle().Emphasis().Label().Position(StyleLabelTyle.inside).Formatter("{b}实际:{c}%");
+            sd1.value = 30;
+            sd2.value = 10;
+            sd3.value = 5;
+            sd4.value = 50;
+            sd5.value = 80;
+            f2.Data(sd1, sd2, sd3, sd4, sd5);
+            option.Series(f1, f2);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("funnel3")]
+        public string MultiFunnel2()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.ToolTip().Formatter("{a} <br/>{b} : {c}%");
+            option.Title().Text("漏斗图").Subtext("纯属虚构");
+            var color = new List<string>() {
+                 "rgba(255, 69, 0, 0.5)",
+        "rgba(255, 150, 0, 0.5)",
+        "rgba(255, 200, 0, 0.5)",
+        "rgba(155, 200, 50, 0.5)",
+        "rgba(55, 200, 100, 0.5)"
+            };
+            option.Color(color);
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.Legend().Data("展现", "点击", "访问", "咨询", "订单");
+
+            var f1 = new Funnel("漏斗图");
+            f1.Width("40%").Height("45%").X("5%").Y("50%")
+                .ItemStyle().Normal().Label().Formatter("{b}预期");
+            f1.ItemStyle().Normal().LabelLine().Show(false);
+            f1.ItemStyle().Emphasis().Label().Position(StyleLabelTyle.inside).Formatter("{b}预期:{c}%");
+            var sd1 = new SeriesData<int>(60, "访问");
+            var sd2 = new SeriesData<int>(40, "咨询");
+            var sd3 = new SeriesData<int>(20, "订单");
+            var sd4 = new SeriesData<int>(80, "点击");
+            var sd5 = new SeriesData<int>(100, "展现");
+            f1.Data(sd1, sd2, sd3, sd4, sd5);
+            var f2 = new Funnel("金字塔");
+            f2.Width("40%").Height("45%").X("5%").Y("5%").Sort(SortType.ascending);                                    
+            f2.Data(sd1, sd2, sd3, sd4, sd5);
+            var f3 = new Funnel("漏斗图");
+            f3.Width("40%").Height("45%").X("55%").Y("5%")
+                .ItemStyle().Normal().Label().Position(StyleLabelTyle.left);
+            f3.Data(sd1, sd2, sd3, sd4, sd5);
+            var f4 = new Funnel("金字塔");
+            f4.Width("40%").Height("45%").X("55%").Y("50%").Sort(SortType.ascending)
+     .ItemStyle().Normal().Label().Position(StyleLabelTyle.left);
+            f4.Data(sd1, sd2, sd3, sd4, sd5);
+            option.Series(f1, f2,f3,f4);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("funnel4")]
+        public string MultiFunnel3()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.ToolTip().Formatter("{a} <br/>{b} : {c}%");
+            option.Title().Text("漏斗图").Subtext("纯属虚构")
+                .X(HorizontalType.left).Y(VerticalType.bottom);
+            
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.MagicType().Show(true).Type("pie", "funnel")
+                .Option().Pie().Radius(new List<string>() { "pie","funnel" });
+
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.Legend().Data("产品A","产品B","产品C","产品D","产品E");
+
+            var f1 = new Funnel("漏斗图");
+            f1.Width("40%").Height("45%").X("5%").Y("50%").FunnelAlign(HorizontalType.right)
+                .Center(new List<string>() { "25%", "25%" });              
+            f1.ItemStyle().Normal().LabelLine().Show(false);
+            f1.ItemStyle().Emphasis().Label().Position(StyleLabelTyle.inside).Formatter("{b}预期:{c}%");
+            var sd1 = new SeriesData<int>(60, "产品C");
+            var sd2 = new SeriesData<int>(30, "产品D");
+            var sd3 = new SeriesData<int>(10, "产品E");
+            var sd4 = new SeriesData<int>(80, "产品B");
+            var sd5 = new SeriesData<int>(100, "产品A");
+            f1.Data(sd1, sd2, sd3, sd4, sd5);
+            var f2 = new Funnel("金字塔");
+            f2.Width("40%").Height("45%").X("5%").Y("5%").FunnelAlign(HorizontalType.right)
+               .Center(new List<string>() { "25%", "75%" }).Sort(SortType.ascending);
+            f2.Data(sd1, sd2, sd3, sd4, sd5);
+            var f3 = new Funnel("漏斗图");
+            f3.Width("40%").Height("45%").X("55%").Y("5%").FunnelAlign(HorizontalType.left)
+             .Center(new List<string>() { "75%", "25%" });
+            f3.Data(sd1, sd2, sd3, sd4, sd5);
+            var f4 = new Funnel("金字塔");
+            f4.Width("40%").Height("45%").X("55%").Y("50%").FunnelAlign(HorizontalType.left)
+             .Center(new List<string>() { "75%", "75%" }).Sort(SortType.ascending);
+            f4.Data(sd1, sd2, sd3, sd4, sd5);
+            option.Series(f1, f2, f3, f4);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]        
+        public string Funnel()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.ToolTip().Formatter("{a} <br/>{b} : {c}%");
+            option.Title().Text("漏斗图").Subtext("纯属虚构")
+                .X(HorizontalType.left).Y(VerticalType.bottom);
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.MagicType().Show(true).Type("pie", "funnel")
+                .Option().Pie().Radius(new List<string>() { "pie", "funnel" });
+
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            option.Legend().Data("产品A", "产品B", "产品C", "产品D", "产品E");
+
+            var f1 = new Funnel("漏斗图");
+            f1.X("10%").Y("60").Y2(60)
+                .Width("80%").Min(0).Max(100).MinSize("0%").MaxSize("100%")
+                .Sort(SortType.descending).Gap(10)
+                .ItemStyle().Normal().BorderColor("#fff").BorderWidth(1).Label().Show(true).Position(StyleLabelTyle.inside);
+            f1.ItemStyle().Normal().LabelLine().Show(false).Length(10)
+                .LineStyle().Width(1).Type(LineStyleType.solid);
+            f1.ItemStyle().Emphasis().BorderColor("red").BorderWidth(5)
+                .Label().Show(true).Formatter("{b}:{c}%").TextStyle().FontSize(2);
+            f1.ItemStyle().Emphasis().LabelLine().Show(true);
+
+            var sd1 = new SeriesData<int>(60, "产品C");
+            var sd2 = new SeriesData<int>(30, "产品D");
+            var sd3 = new SeriesData<int>(10, "产品E");
+            var sd4 = new SeriesData<int>(80, "产品B");
+            var sd5 = new SeriesData<int>(100, "产品A");
+            f1.Data(sd1, sd2, sd3, sd4, sd5);
+            
+           
+            option.Series(f1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+        #endregion
+
         private ToolBox ToolBox(OrientType orient= OrientType.horizontal)
         {
             
