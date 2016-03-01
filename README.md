@@ -1,5 +1,6 @@
 # EChartsSDK - Net类库
 当前版本  echarts2
+演示地址  http://echarts.idoku.cn/
 ECharts的.NET类库,从ECharts的Java类库移植.
 Echarts:https://github.com/ecomfe/echarts
 java版:https://github.com/abel533/ECharts
