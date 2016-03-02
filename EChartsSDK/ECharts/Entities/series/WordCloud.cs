@@ -13,6 +13,8 @@ namespace ECharts.Entities.series
 
         public object size { get; set; }
 
+        public object textPadding { get; set; }
+
         public object textRotation { get; set; }
 
         public AutoSizeConfig autoSize { get; set; }
@@ -35,6 +37,15 @@ namespace ECharts.Entities.series
             this.size = size;
             return this;
         }
+
+        public WordCloud TextPadding(object textPadding)
+        {
+            this.textPadding = textPadding;
+            return this;
+        }
+        
+
+
 
         public WordCloud TextRotation(object textRotation)
         {

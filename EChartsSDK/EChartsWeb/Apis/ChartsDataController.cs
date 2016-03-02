@@ -5445,6 +5445,44 @@ namespace EChartsWeb.Apis
         }
         #endregion
 
+        #region wordCloud data
+        [AcceptVerbs("GET", "POST")]        
+        public string WordCloud()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("Google Trends").Link("http://www.google.com/trends/hottrends");
+
+            option.ToolTip().Show(true);           
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            var wc = new WordCloud("Google Trends");
+            wc.Size(new List<string>() { "80%", "80%" }).TextRotation(new List<int>() {
+                0,45,90,-45
+            }).AutoSize().Enable(true).MinSize(14);
+
+            var sd1 = new SeriesData<int>(10000, "sam s club");
+            sd1.ItemStyle().Normal().Color("black");
+            //item style type
+            //var sd3 = new SeriesData<int>(10000, "sam s club");
+            //sd2.itemStyle = new JRaw("createRandomItemStyle()");
+            //var sd4 = new SeriesData<int>(10000, "sam s club");
+            //sd2.itemStyle = new JRaw("createRandomItemStyle()");
+
+            option.Series(wc);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+        #endregion
+
         private ToolBox ToolBox(OrientType orient= OrientType.horizontal)
         {
             
