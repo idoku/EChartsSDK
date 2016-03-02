@@ -245,6 +245,7 @@
     <Content Include="Scripts\charts\pie.js" />
     <Content Include="Scripts\charts\scatter.js" />
     <Content Include="Scripts\charts\tooltip.js" />
+    <Content Include="Scripts\charts\wordCloud.js" />
     <Content Include="Scripts\code\codemirror.css" />
     <Content Include="Scripts\code\codemirror.js" />
     <Content Include="Scripts\code\javascript.js" />

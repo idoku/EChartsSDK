@@ -68,7 +68,10 @@ namespace EChartsWeb.Controllers
             {
                 ViewBag.ExtJs = "../Scripts/charts/eventRiver2_data.js";
             }
-
+            else if (api == "wordCloud")
+            {
+                ViewBag.ExtJs = "../Scripts/charts/wordCloud.js";
+            }
             return View();
         }
     }

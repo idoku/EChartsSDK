@@ -9,7 +9,7 @@ namespace ECharts.Entities.series
 {
     public class Tree : ChartSeries<Tree>
     {
-        public object rootLocation { get; set; }
+        public LocationData rootLocation { get; set; }
 
         public int? layerPadding { get; set; }
 
@@ -70,7 +70,7 @@ namespace ECharts.Entities.series
             return this;
         }
 
-        public Tree RootLocation(string rootLocation)
+        public Tree RootLocation(LocationData rootLocation)
         {
             this.rootLocation = rootLocation;
             return this;

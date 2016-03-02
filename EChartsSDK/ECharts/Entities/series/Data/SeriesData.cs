@@ -13,6 +13,8 @@ namespace ECharts.Entities.series.data
     {
         public T value { get; set; }
 
+        public IList<SeriesData<T>> children { get; set; }
+
         public string name { get; set; }
 
         public ToolTip tooltip { get; set; }
@@ -85,6 +87,15 @@ namespace ECharts.Entities.series.data
             this.symbolSize = symbolSize;
             return this;
         }
+
+        public SeriesData<T> Children(params SeriesData<T>[] values) {
+            if (values == null) {
+                return this;
+            }
+            this.children = values.ToList();
+            return this;
+        }
+
 
         public ToolTip ToolTip()
         {

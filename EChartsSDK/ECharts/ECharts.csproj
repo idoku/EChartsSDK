@@ -93,6 +93,7 @@
     <Compile Include="Entities\series\heatmap\GradientColorData.cs" />
     <Compile Include="Entities\series\K.cs" />
     <Compile Include="Entities\series\guage\GaugeTitle.cs" />
+    <Compile Include="Entities\series\tree\LocationData.cs" />
     <Compile Include="Entities\style\IconStyle.cs" />
     <Compile Include="Entities\TimeLine.cs" />
     <Compile Include="Entities\Legend.cs" />

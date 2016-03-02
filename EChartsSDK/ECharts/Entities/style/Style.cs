@@ -32,9 +32,20 @@ namespace ECharts.Entities.style
 
         public int? barBorderWidth { get; set; }
 
+        public  string brushType { get; set; }
+
         public StyleLabel label { get; set; }
 
         public LabelLine labelLine { get; set; }
+
+        
+
+          public T BrushType(string brushType)
+        {
+            this.brushType = brushType;
+            return this as T;
+        }
+
 
         public T BarBorderRadius(string barBorderRadius)
         {

@@ -5061,6 +5061,390 @@ namespace EChartsWeb.Apis
         }
         #endregion
 
+        #region venn data
+        [AcceptVerbs("GET", "POST")]        
+        public string Venn()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("访问 vs 咨询").Subtext("各个数据的集合");
+
+            option.ToolTip().Formatter("{b}:{c}");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            var venn = new Venn();
+            venn.ItemStyle().Normal().Label().Show(true)
+                .TextStyle().FontFamily("Arial, Verdana, sans-serif").FontSize(16)
+                .FontStyle(FontStyleType.italic).FontWeight("bolder");
+            venn.ItemStyle().Normal().LabelLine().Show(false).Length(10)
+                .LineStyle().Width(1).Type(LineStyleType.solid);
+            venn.ItemStyle().Emphasis().Color("#cc99cc")
+                .BorderWidth(3).BorderColor("#996699");
+            venn.Data(new SeriesData<int>(100, "访问"),
+                new SeriesData<int>(50, "咨询"),
+                new SeriesData<int>(20, "公共"));
+            option.Series(venn);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+        #endregion
+
+        #region treemap data
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("treemap")]
+        public string RectangleTreeMap()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("手机占有率").Subtext("虚构数据");
+
+            option.ToolTip().Formatter("{b}:{c}");
+
+            option.ToolTip().Trigger(TriggerType.item).Formatter("{b}:{c}");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            TreeMap tm = new TreeMap("矩形图");
+            tm.ItemStyle().Normal().BorderWidth(1).Label().Show(true).Formatter("{b}");
+            tm.ItemStyle().Emphasis().Label().Show(true);
+            var sd1 = new SeriesData<int>(6, "三星");
+            var sd2 = new SeriesData<int>(4, "小米");
+            var sd3 = new SeriesData<int>(4, "评估");
+            var sd4 = new SeriesData<int>(2, "华为");
+            var sd5 = new SeriesData<int>(2, "联想");
+            var sd6 = new SeriesData<int>(1, "魅族");
+            var sd7 = new SeriesData<int>(1, "中兴");
+            tm.Data(sd1, sd2, sd3, sd4, sd4, sd5, sd6, sd7);
+            option.Series(tm);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("treemap1")]
+        public string RectangleTreeMap2()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("手机占有率").Subtext("数据下钻例子，虚构数据");
+
+            option.ToolTip().Formatter("{b}:{c}");
+
+            option.ToolTip().Trigger(TriggerType.item).Formatter("{b}:{c}");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            TreeMap tm = new TreeMap("手机占有率");
+            tm.ItemStyle().Normal().BorderWidth(1).BorderColor("#ccc").Label().Show(true).Formatter("{b}");
+            tm.ItemStyle().Emphasis().Color("#cc99cc").BorderWidth(3).BorderColor("#996699").Label().Show(true);
+            var sd1 = new SeriesData<int>(6, "三星");
+            sd1.ItemStyle().Normal().Color("#99cccc");
+            sd1.Children(new SeriesData<int>(2, "Galaxy S4"),
+                new SeriesData<int>(3, "Galaxy S5"),
+                new SeriesData<int>(3, "Galaxy S6"),
+                new SeriesData<int>(1, "Galaxy Tab"));
+            var sd2 = new SeriesData<int>(4, "小米");
+            sd2.ItemStyle().Normal().Color("#99ccff");
+            sd2.Children(new SeriesData<int>(6, "小米 3"),
+                new SeriesData<int>(6, "小米 4"),
+                new SeriesData<int>(4, "小米 5"));
+            var sd3 = new SeriesData<int>(4, "苹果");
+            sd3.Children(new SeriesData<int>(6, "iphone 5s"),
+             new SeriesData<int>(3, "iphone 6"),
+             new SeriesData<int>(3, "iphone 6+"));
+            var sd4 = new SeriesData<int>(2, "华为");
+            sd4.ItemStyle().Normal().Color("#ccffcc");
+            var sd5 = new SeriesData<int>(2, "联想");
+            sd5.ItemStyle().Normal().Color("#ccccff");
+            var sd6 = new SeriesData<int>(1, "魅族");
+            sd6.ItemStyle().Normal().Color("#99ccff");
+            sd6.Children(new SeriesData<int>(6, "MX 4"),
+                new SeriesData<int>(6, "MX3 4"),
+                new SeriesData<int>(4, "魅蓝 note"));
+            var sd7 = new SeriesData<int>(1, "中兴");
+            sd7.ItemStyle().Normal().Color("#ffffcc");
+            sd7.Children(new SeriesData<int>(16 ,"v5"),
+                new SeriesData<int>(6, "努比亚"),
+                new SeriesData<int>(4, "功能"));
+            tm.Data(sd1, sd2, sd3, sd4, sd4, sd5, sd6, sd7);
+            option.Series(tm);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("treemap2")]
+        public string RectangleTreeMap3()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("手机占有率").Subtext("虚构数据");
+
+            option.ToolTip().Formatter("{b}:{c}");
+
+            option.ToolTip().Trigger(TriggerType.item).Formatter("{b}:{c}");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            TreeMap tm = new TreeMap("矩形图");
+            tm.ItemStyle().Normal().BorderWidth(1).BorderColor("#000")
+                .Label().Show(true).Formatter("{b}:{c}")
+                .TextStyle().Color("#00ffdd").FontFamily("Times New Roman\", Georgia, Serif")
+                .FontSize(20).FontStyle(FontStyleType.italic).FontWeight("bold");
+
+            tm.ItemStyle().Emphasis().Color("#cc99cc").BorderWidth(3).BorderColor("#996699")
+                .Label().Show(true).Formatter("{b}:{c}")
+                .TextStyle().Color("#00ffdd").FontFamily("Times New Roman\", Georgia, Serif")
+                .FontSize(20).FontStyle(FontStyleType.italic).FontWeight("bold");
+
+            var sd1 = new SeriesData<int>(6, "三星");
+            
+            sd1.ItemStyle().Normal().Color("#cc9999").BorderColor("999999").BorderWidth(3)
+                .Label().Show(true).Formatter("{b}最多").X(60).Y(65)
+                .TextStyle().Color("#ccc").FontSize(16);
+            sd1.ItemStyle().Emphasis().Label().Show(true).Formatter("{b}-{c}")
+                .X(80).Y(85).TextStyle().Color("red").FontSize(18);
+            var sdd1 = new SeriesData<int>(6, "S4");
+            sdd1.Children(new SeriesData<int>(6, "2012"),
+                new SeriesData<int>(4, "2013"),
+                new SeriesData<int>(3, "2014"));
+            sd1.Children(sdd1,
+                new SeriesData<int>(6, "note 3"),
+                new SeriesData<int>(3, "S5"),
+                new SeriesData<int>(1, "S6"));
+
+            var sd2 = new SeriesData<int>(4, "小米");
+            sd2.ItemStyle().Normal().Color("#99ccff");
+            sd2.ItemStyle().Emphasis().Label().Show(true);
+            var sd3 = new SeriesData<int>(4, "苹果");
+            sd3.ItemStyle().Normal().Color("#9999cc");
+            var sd4 = new SeriesData<int>(2, "华为");
+            sd4.ItemStyle().Normal().Color("#ccffcc");
+            var sd5 = new SeriesData<int>(2, "联想");
+            sd5.ItemStyle().Normal().Color("#ccccff");
+            var sd6 = new SeriesData<int>(1, "魅族");
+            sd6.ItemStyle().Normal().Color("#99ccff");
+            sd6.Children(new SeriesData<int>(6, "MX 4"),
+                new SeriesData<int>(6, "MX3 4"),
+                new SeriesData<int>(4, "魅蓝 note"));
+            var sd7 = new SeriesData<int>(1, "中兴");
+            sd7.ItemStyle().Normal().BorderWidth(3).Label().Show(true).Formatter("{b}:{c}");
+            sd7.ItemStyle().Emphasis().Color("#cc9999").BorderWidth(3).BorderColor("#999999")
+                .Label().Show(true);
+            tm.Data(sd1, sd2, sd3, sd4, sd4, sd5, sd6, sd7);
+            option.Series(tm);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+        #endregion
+
+        #region tree data
+        [AcceptVerbs("GET", "POST")]       
+        public string Tree()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("树图").Subtext("虚构数据");          
+
+            option.ToolTip().Trigger(TriggerType.item).Formatter("{b}:{c}");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            var tm = new Tree("树图");
+            tm.Orient(OrientType.vertical).RootLocation(new LocationData("center", 50))
+                .NodePadding(1);
+            tm.ItemStyle().Normal().BorderWidth(1).Label().Show(true).Formatter("{b}");
+            tm.ItemStyle().Normal().LineStyle().Color("#48b").ShadowColor("#000")
+                .ShadowBlur(3).ShadowOffsetX(3).ShadowOffsetY(5).Type(LineStyleType.curve);
+            tm.ItemStyle().Emphasis().Label().Show(true);
+            var sd1 = new SeriesData<int>(6, "跟节点");
+            var sdd1 = new SeriesData<int>(6, "节点1");             
+            var sddd1 = new SeriesData<int>(6, "叶子节点1");
+            var sddd2 = new SeriesData<int>(6, "叶子节点2");
+            var sddd3 = new SeriesData<int>(6, "叶子节点3");
+            var sddd4 = new SeriesData<int>(6, "叶子节点4");
+            var sddd5 = new SeriesData<int>(6, "叶子节点5");
+            var sddd6 = new SeriesData<int>(6, "叶子节点6");
+            sdd1.Children(sddd1, sddd2, sddd3, sddd4, sddd5, sddd6);
+            var sdd2 = new SeriesData<int>(6, "节点2");
+            var sddd7 = new SeriesData<int>(6, "叶子节点7");
+            var sddd8 = new SeriesData<int>(6, "叶子节点8");
+            sdd2.Children(sddd7, sddd8);
+            var sdd3 = new SeriesData<int>(6, "节点3");
+            var sddd9 = new SeriesData<int>(6, "叶子节点6");
+            var sddd10 = new SeriesData<int>(6, "叶子节点6");
+            var sddd11 = new SeriesData<int>(6, "叶子节点6");
+            var sddd12 = new SeriesData<int>(6, "叶子节点6");
+            sdd3.Children(sddd9, sddd10, sddd11, sddd12);
+            sd1.Children(sdd1, sdd2, sdd3);
+            tm.Data(sd1);
+            option.Series(tm);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        public string Tree1()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("手机品牌").Subtext("线、节点样式");
+
+            option.ToolTip().Trigger(TriggerType.item).Formatter("{b}:{c}");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            var tm = new Tree("树图");
+            tm.Orient(OrientType.horizontal).RootLocation(new LocationData(100, "60%"))
+                .NodePadding(20).Symbol("circle").SymbolSize("40");
+            tm.ItemStyle().Normal().BorderWidth(1).Label().Show(true).Position(StyleLabelTyle.inside)
+                .TextStyle().Color("#cc9999").FontSize(15).FontWeight("bolder");
+            tm.ItemStyle().Normal().LineStyle().Color("#000").Width(1)
+                .Type(LineStyleType.broken);
+            tm.ItemStyle().Emphasis().Label().Show(true);
+            var sd1 = new SeriesData<int>(6, "手机");
+            sd1.Symbol("image://http://www.iconpng.com/png/ecommerce-business/iphone.png");
+            sd1.SymbolSize(new List<int>() { 90,70 }).ItemStyle().Normal().Label().Show(false);
+            var sdd1 = new SeriesData<int>(6, "小米");
+            sdd1.Symbol("image://http://pic.58pic.com/58pic/12/36/51/66d58PICMUV.jpg");
+            sdd1.ItemStyle().Normal().Label().Show(false);
+            sdd1.SymbolSize(new List<int>() { 60, 60 });            
+            var sddd1 = new SeriesData<int>(6, "小米1");
+            sddd1.Symbol(SymbolType.circle).SymbolSize(20).ItemStyle()
+                .Normal().Color("#fa6900").Label().Show(true).Position(StyleLabelTyle.right);
+            sddd1.ItemStyle().Emphasis().BorderWidth(0);
+
+            var sddd2 = new SeriesData<int>(4, "小米2");
+            sddd2.Symbol(SymbolType.circle).SymbolSize(20).ItemStyle()
+               .Normal().BorderWidth(2).BorderColor("#cc66ff").Color("#fa6900").Label().Show(true).Position(StyleLabelTyle.right)
+               .Formatter("{b}");
+            sddd2.ItemStyle().Emphasis().BorderWidth(0);
+            var sddd3 = new SeriesData<int>(6, "小米3");
+            sddd3.Symbol(SymbolType.circle).SymbolSize(20).ItemStyle()
+             .Normal().BorderWidth(1).BorderColor("#cc66ff").Color("#fa6900").BrushType("stroke")
+             .Label().Show(true).Position(StyleLabelTyle.right)
+             .Formatter("{b}");
+            sddd3.ItemStyle().Emphasis().BorderWidth(0);           
+            sdd1.Children(sddd1, sddd2, sddd3);
+            
+            var sdd2 = new SeriesData<int>(4, "苹果");
+            sdd2.Symbol("image://http://www.viastreaming.com/images/apple_logo2.png");
+            sdd2.SymbolSize(new List<int> { 60, 60 });
+            sdd2.ItemStyle().Normal().Label().Show(true);
+                 
+            var sdd3 = new SeriesData<int>(2, "华为");
+            sdd3.Symbol("image://http://market.huawei.com/hwgg/logo_cn/download/logo.jpg");
+            sdd3.SymbolSize(new List<int> { 60, 60 });
+            sdd3.ItemStyle().Normal().Label().Show(false);
+
+            var sdd4 = new SeriesData<int>(2, "联想");
+            sdd4.Symbol("image://http://www.lenovo.com.cn/HomeUpload/Home001/6d94ee9a20140714.jpg");
+            sdd4.SymbolSize(new List<int> { 100, 40 });
+            sdd4.ItemStyle().Normal().Label().Show(false);
+
+            sd1.Children(sdd1, sdd2, sdd3, sdd4);
+            tm.Data(sd1);
+            option.Series(tm);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        public string Tree2()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("冰桶挑战");
+
+            option.ToolTip().Trigger(TriggerType.item).Formatter("{b}:{c}");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            var tm = new Tree("树图");
+            tm.Orient(OrientType.vertical).RootLocation(new LocationData(100, 230))
+                .NodePadding(8).LayerPadding(200).Roam(true).SymbolSize("6");
+            tm.ItemStyle().Normal().BorderWidth(1).Label().Show(true).Formatter("{b}");
+            tm.ItemStyle().Normal().LineStyle().Color("#48b").ShadowColor("#000")
+                .ShadowBlur(3).ShadowOffsetX(3).ShadowOffsetY(5).Type(LineStyleType.curve);
+            tm.ItemStyle().Emphasis().Label().Show(true);
+            //data数据过于复杂了
+            var sd1 = new SeriesData<int>(6, "跟节点");
+            var sdd1 = new SeriesData<int>(6, "节点1");
+            var sddd1 = new SeriesData<int>(6, "叶子节点1");
+            var sddd2 = new SeriesData<int>(6, "叶子节点2");
+            var sddd3 = new SeriesData<int>(6, "叶子节点3");
+            var sddd4 = new SeriesData<int>(6, "叶子节点4");
+            var sddd5 = new SeriesData<int>(6, "叶子节点5");
+            var sddd6 = new SeriesData<int>(6, "叶子节点6");
+            sdd1.Children(sddd1, sddd2, sddd3, sddd4, sddd5, sddd6);
+            var sdd2 = new SeriesData<int>(6, "节点2");
+            var sddd7 = new SeriesData<int>(6, "叶子节点7");
+            var sddd8 = new SeriesData<int>(6, "叶子节点8");
+            sdd2.Children(sddd7, sddd8);
+            var sdd3 = new SeriesData<int>(6, "节点3");
+            var sddd9 = new SeriesData<int>(6, "叶子节点6");
+            var sddd10 = new SeriesData<int>(6, "叶子节点6");
+            var sddd11 = new SeriesData<int>(6, "叶子节点6");
+            var sddd12 = new SeriesData<int>(6, "叶子节点6");
+            sdd3.Children(sddd9, sddd10, sddd11, sddd12);
+            sd1.Children(sdd1, sdd2, sdd3);
+            tm.Data(sd1);
+            option.Series(tm);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+        #endregion
+
         private ToolBox ToolBox(OrientType orient= OrientType.horizontal)
         {
             
