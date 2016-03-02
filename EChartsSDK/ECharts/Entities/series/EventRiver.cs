@@ -33,7 +33,7 @@ namespace ECharts.Entities.series
         }
 
         public EventRiver() {
-            this.type = ChartType.time;
+            this.type = ChartType.eventRiver;
         }
 
         public EventRiver(string name) : this() {

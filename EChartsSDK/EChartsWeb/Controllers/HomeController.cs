@@ -44,7 +44,7 @@ namespace EChartsWeb.Controllers
             {
                 ViewBag.ExtJs = "../Scripts/charts/force4.js";
             }
-            else if (api=="gauge4")
+            else if (api == "gauge4")
             {
                 ViewBag.ExtJs = "../Scripts/charts/gauge4.js";
             }
@@ -52,16 +52,21 @@ namespace EChartsWeb.Controllers
             {
                 ViewBag.ExtJs = "../Scripts/charts/gauge5.js";
             }
-            else if (api.Contains("gauge")) {
+            else if (api.Contains("gauge"))
+            {
                 ViewBag.ExtJs = "../Scripts/charts/gauge.js";
             }
-            else if (api=="heatmap_map")
+            else if (api == "heatmap_map")
             {
                 ViewBag.ExtJs = "../Scripts/charts/heatmap_map.js";
             }
             else if (api.Contains("heatmap"))
             {
                 ViewBag.ExtJs = "../Scripts/charts/heatmap.js";
+            }
+            else if (api == "eventRiver2")
+            {
+                ViewBag.ExtJs = "../Scripts/charts/eventRiver2_data.js";
             }
 
             return View();

@@ -4849,6 +4849,217 @@ namespace EChartsWeb.Apis
         }
         #endregion
 
+        #region eventRiver data
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("eventRiver1")]
+        public string EventRiver1()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("Event Riverk").Subtext("纯属虚构");
+
+            option.Legend().Data("财经事件", "政治事件");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            var x = new TimeAxis();
+            x.BoundaryGap(0.05, 0.1);
+            option.XAxis(x);
+
+            var ed1 = new EventData("阿里巴巴上市");
+            ed1.Weight(123);
+            var el1 = new EventEvolution();
+            el1.Time(new DateTime(2014, 5, 1)).Value(14).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            var el2 = new EventEvolution();
+            el2.Time(new DateTime(2014, 5, 2)).Value(34).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            var el3 = new EventEvolution();
+            el3.Time(new DateTime(2014, 5, 3)).Value(60).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            var el4 = new EventEvolution();
+            el4.Time(new DateTime(2014, 5, 4)).Value(40).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            var el5 = new EventEvolution();
+            el5.Time(new DateTime(2014, 5, 5)).Value(10).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+            ed1.Evolution(el1, el2, el3, el4, el5);
+
+            var ed2 = new EventData("阿里巴巴上市2");
+            el1 = new EventEvolution();
+            el1.Time(new DateTime(2014, 5, 1)).Value(10).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+             el2 = new EventEvolution();
+            el2.Time(new DateTime(2014, 5, 2)).Value(10).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+             el3 = new EventEvolution();
+            el3.Time(new DateTime(2014, 5, 3)).Value(34).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+             el4 = new EventEvolution();
+            el4.Time(new DateTime(2014, 5, 4)).Value(40).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+             el5 = new EventEvolution();
+            el5.Time(new DateTime(2014, 5, 5)).Value(10).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            ed2.Evolution(el2, el3, el4, el5);
+
+            var ed3 = new EventData("三星业绩暴跌");
+            el1 = new EventEvolution();
+            el1.Time(new DateTime(2014, 5, 3)).Value(24).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el2 = new EventEvolution();
+            el2.Time(new DateTime(2014, 5, 4)).Value(34).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el3 = new EventEvolution();
+            el3.Time(new DateTime(2014, 5, 5)).Value(50).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el4 = new EventEvolution();
+            el4.Time(new DateTime(2014, 5, 6)).Value(30).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el5 = new EventEvolution();
+            el5.Time(new DateTime(2014, 5, 7)).Value(20).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            ed3.Evolution(el1,el2, el3, el4, el5);
+
+            var e1 = new EventRiver("财经事件");
+            e1.Weight(123);
+            e1.Data(ed1, ed2, ed3);
+
+          
+
+            var ed4 = new EventData("apec峰会");
+            ed1.Weight(123);
+            el1 = new EventEvolution();
+            el1.Time(new DateTime(2014, 5, 6)).Value(14).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el2 = new EventEvolution();
+            el2.Time(new DateTime(2014, 5, 7)).Value(34).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el3 = new EventEvolution();
+            el3.Time(new DateTime(2014, 5, 8)).Value(60).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el4 = new EventEvolution();
+            el4.Time(new DateTime(2014, 5, 9)).Value(40).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el5 = new EventEvolution();
+            el5.Time(new DateTime(2014, 5, 10)).Value(20).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            ed4.Evolution(el1, el2, el3, el4, el5);
+
+            var ed5 = new EventData("运城关帮透视");
+            ed1.Weight(123);
+            el1 = new EventEvolution();
+            el1.Time(new DateTime(2014, 5, 8)).Value(4).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el2 = new EventEvolution();
+            el2.Time(new DateTime(2014, 5, 9)).Value(14).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el3 = new EventEvolution();
+            el3.Time(new DateTime(2014, 5, 10)).Value(30).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el4 = new EventEvolution();
+            el4.Time(new DateTime(2014, 5, 11)).Value(20).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el5 = new EventEvolution();
+            el5.Time(new DateTime(2014, 5, 12)).Value(10).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            ed5.Evolution(el1, el2, el3, el4, el5);
+
+            var ed6 = new EventData("底层公务员收入超过副部长");
+            ed1.Weight(123);
+
+            el1 = new EventEvolution();
+            el1.Time(new DateTime(2014, 5, 11)).Value(4).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el2 = new EventEvolution();
+            el2.Time(new DateTime(2014, 5, 12)).Value(24).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el3 = new EventEvolution();
+            el3.Time(new DateTime(2014, 5, 13)).Value(40).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el4 = new EventEvolution();
+            el4.Time(new DateTime(2014, 5, 14)).Value(20).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+            el5 = new EventEvolution();
+            el5.Time(new DateTime(2014, 5, 15)).Value(15).Detail()
+                .Link("http://www.baidu.com").Text("百度指数").Img("../Content/img/icon/favicon.png");
+
+
+            ed6.Evolution(el1, el2, el3, el4, el5);
+
+            var e2 = new EventRiver("政治事件");
+            e2.Weight(123);
+            e2.Data(ed4, ed5, ed6);
+
+            option.Series(e1, e2);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("eventRiver2")]
+        public string EventRiver2()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("Event Riverk").Subtext("纯属虚构");
+
+            option.Legend().data = new JRaw("legendName");
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+            feature.SaveAsImage().Show(true);
+
+            option.ToolBox().Show(true).SetFeature(feature);
+
+            var x = new TimeAxis();
+            x.BoundaryGap(0.05, 0.1);
+            option.XAxis(x);
+
+            option.series = new JRaw("eventRiver2Data");
+
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+        #endregion
 
         private ToolBox ToolBox(OrientType orient= OrientType.horizontal)
         {

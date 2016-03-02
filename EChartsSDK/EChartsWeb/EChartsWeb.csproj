@@ -230,6 +230,8 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\charts\asset.js" />
     <Content Include="Scripts\charts\bar.js" />
+    <Content Include="Scripts\charts\eventRiver2.js" />
+    <Content Include="Scripts\charts\eventRiver2_data.js" />
     <Content Include="Scripts\charts\example.js" />
     <Content Include="Scripts\charts\force.js" />
     <Content Include="Scripts\charts\force2.js" />

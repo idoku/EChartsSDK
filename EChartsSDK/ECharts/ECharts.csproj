@@ -102,7 +102,7 @@
     <Compile Include="Entities\series\mark\Bound.cs" />
     <Compile Include="Entities\series\Chord.cs" />
     <Compile Include="Entities\series\mark\Effect.cs" />
-    <Compile Include="Entities\series\event\Event.cs" />
+    <Compile Include="Entities\series\event\EventData.cs" />
     <Compile Include="Entities\series\EventRiver.cs" />
     <Compile Include="Entities\series\Force.cs" />
     <Compile Include="Entities\series\Funnel.cs" />

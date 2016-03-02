@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace ECharts
 {
@@ -88,11 +89,14 @@ namespace ECharts
             //json.NullValueHandling = NullValueHandling.Ignore;
             json.ObjectCreationHandling = Newtonsoft.Json.ObjectCreationHandling.Replace;           
             json.MissingMemberHandling = Newtonsoft.Json.MissingMemberHandling.Ignore;
-            json.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            
-            json.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());           
+            json.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;                        
+            json.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+            IsoDateTimeConverter timeFormate = new IsoDateTimeConverter();
+            timeFormate.DateTimeFormat = "yyyy-MM-dd";
+            json.Converters.Add(timeFormate);        
             json.Formatting = Formatting.Indented;
             json.NullValueHandling = NullValueHandling.Ignore;
+           
             if (clearLastZero)
                 json.Converters.Add(new MinifiedNumArrayConverter());
             StringWriter sw = new StringWriter();

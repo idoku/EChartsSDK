@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Event
+    public class EventData
     {
         public string name { get; set; }
 
@@ -14,15 +14,29 @@ namespace ECharts.Entities.series
 
         public IList<EventEvolution> evolution { get; set; }
 
-        public Event Name(string name)
+        public EventData() { }
+
+        public EventData(string name) {
+            this.name = name;
+        }
+
+        public EventData Name(string name)
         {
             this.name = name;
             return this;
         }
 
-        public Event Weight(int weight)
+        public EventData Weight(int weight)
         {
             this.weight = weight;
+            return this;
+        }
+
+        public EventData Evolution(params EventEvolution[] values)
+        {
+            if (values == null)
+                return this;
+            this.evolution = values.ToList();
             return this;
         }
     }

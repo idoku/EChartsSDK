@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,7 @@ namespace ECharts.Entities.series
 {
     public class EventEvolution
     {
+        
         public DateTime? time { get; set; }
 
         public int? value { get; set; }
@@ -26,7 +29,7 @@ namespace ECharts.Entities.series
             return this;
         }
 
-        public EventDetail Detail(EventDetail detail)
+        public EventDetail Detail()
         {
             if(this.detail==null)
               this.detail = new EventDetail();

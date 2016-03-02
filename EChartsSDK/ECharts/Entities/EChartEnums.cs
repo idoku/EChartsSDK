@@ -260,6 +260,8 @@ namespace ECharts.Entities
         time,
         [EnumMember(Value = "heatmap")]
         heatmap,
+        [EnumMember(Value = "eventRiver")]
+        eventRiver,
         [EnumMember(Value = "tree")]
         tree,
         [EnumMember(Value = "treemap")]
