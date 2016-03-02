@@ -24,7 +24,7 @@ namespace ECharts.Entities.style
 
         public object borderColor { get; set; }      
 
-        public int? borderWidth { get; set; }
+        public double? borderWidth { get; set; }
 
         public string barBorderColor { get; set; }
 
@@ -62,7 +62,7 @@ namespace ECharts.Entities.style
             return this as T;
         }
 
-        public T BorderWidth(int borderWidth)
+        public T BorderWidth(double borderWidth)
         {
             this.borderWidth = borderWidth;
             return this as T;

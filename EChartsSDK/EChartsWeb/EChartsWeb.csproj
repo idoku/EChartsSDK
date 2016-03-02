@@ -235,7 +235,8 @@
     <Content Include="Scripts\charts\force2.js" />
     <Content Include="Scripts\charts\force4.js" />
     <Content Include="Scripts\charts\gauge.js" />
-    <Content Include="Scripts\charts\gauge4.js" />
+    <Content Include="Scripts\charts\gauge5.js" />
+    <Content Include="Scripts\charts\heatmap.js" />
     <Content Include="Scripts\charts\lasagna.js" />
     <Content Include="Scripts\charts\timelineOption.js" />
     <Content Include="Scripts\charts\line.js" />
@@ -275,6 +276,7 @@
     <Content Include="Scripts\plugins\echarts\chart\funnel.js" />
     <Content Include="Scripts\plugins\echarts\chart\gauge.js" />
     <Content Include="Scripts\plugins\echarts\chart\heatmap.js" />
+    <Content Include="Scripts\charts\heatmap_map.js" />
     <Content Include="Scripts\plugins\echarts\chart\k.js" />
     <Content Include="Scripts\plugins\echarts\chart\line.js" />
     <Content Include="Scripts\plugins\echarts\chart\map.js" />
@@ -287,6 +289,8 @@
     <Content Include="Scripts\plugins\echarts\chart\wordCloud.js" />
     <Content Include="Scripts\plugins\echarts\echarts-all.js" />
     <Content Include="Scripts\plugins\echarts\echarts.js" />
+    <Content Include="Scripts\plugins\echarts\theme\default.js" />
+    <Content Include="Scripts\plugins\echarts\theme\infographic.js" />
     <Content Include="Scripts\plugins\echarts\theme\macarons.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\respond.js" />

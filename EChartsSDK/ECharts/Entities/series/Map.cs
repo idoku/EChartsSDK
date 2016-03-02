@@ -36,7 +36,7 @@ namespace ECharts.Entities.series
 
         public object heatmap { get; set; }
 
-        public Map Heatmap(object heatmap)
+        public Map SetHeatmap(HeatMap heatmap)
         {
             this.heatmap = heatmap;
             return this;

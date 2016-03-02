@@ -10,15 +10,23 @@ namespace ECharts.Entities.series
     {
         public int? blurSize { get; set; }
 
-        public IList<object> gradientColors { get; set; }
+        public bool? hoverable { get; set; }
+
+        public IList<GradientColorData> gradientColors { get; set; }
 
         public double? minAlpha { get; set; }
 
         public int? valueScale { get; set; }
 
-        public int? opacity { get; set; }
+        public double? opacity { get; set; }
 
-        public HeatMap Opacity(int opacity)
+        public HeatMap Hoverable(bool hoverable)
+        {
+            this.hoverable = hoverable;
+            return this;
+        }
+
+        public HeatMap Opacity(double opacity)
         {
             this.opacity = opacity;
             return this;
@@ -27,6 +35,14 @@ namespace ECharts.Entities.series
         public HeatMap ValueScale(int valueScale)
         {
             this.valueScale = valueScale;
+            return this;
+        }
+
+        public HeatMap GradientColors(params GradientColorData[] values)
+        {
+            if (values == null)
+                return this;
+            gradientColors = values.ToList();
             return this;
         }
 

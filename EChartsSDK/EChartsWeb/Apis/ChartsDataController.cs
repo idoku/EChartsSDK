@@ -4768,7 +4768,87 @@ namespace EChartsWeb.Apis
             var result = JsonTools.ObjectToJson2(option);
             return result;
         }
+
+
         #endregion
+
+        #region heatmap data
+        [AcceptVerbs("GET", "POST")]
+        public string Heatmap()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("热力图自定义样式").Subtext("纯属虚构");
+
+            var h1 = new HeatMap();
+            h1.data = new JRaw("heatData");
+            var gc1 = new GradientColorData(0.4, "green");
+            var gc2 = new GradientColorData(0.5, "yellow");
+            var gc3 = new GradientColorData(0.8, "orange");
+            var gc4 = new GradientColorData(1, "red");
+            h1.GradientColors(gc1, gc2, gc3, gc4);
+            h1.Hoverable(false).MinAlpha(0.2).ValueScale(2).Opacity(0.6);
+
+            option.Series(h1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("heatmap2")]
+        public string Heatmap1()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.Title().Text("热力图").Subtext("纯属虚构");
+
+            var h1 = new HeatMap();
+            h1.data = new JRaw("heatData");
+            h1.Hoverable(false);
+
+            option.Series(h1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [ActionName("heatmap_map")]
+        public string Heatmap3()
+        {
+            //js加载有问题
+            ChartOption option = new ChartOption();
+            option.BackgroundColor("#1b1b1b");
+            option.Title().Text("热力图结合地图").X(HorizontalType.center).TextStyle().Color("white");
+
+            option.ToolTip().Trigger(TriggerType.item).Formatter("{b}");         
+
+            Feature feature = new Feature();
+            feature.Mark().Show(true);
+            feature.DataZoom().Show(true);
+            feature.DataView().Show(true).ReadOnly(false);
+            feature.Restore().Show(true);
+
+            option.ToolBox().Show(true).Orient(OrientType.vertical)
+                .X(HorizontalType.right).Y(HorizontalType.center).SetFeature(feature);
+
+            var m1 = new Map("北京");
+            m1.data = new object();
+            var h1 = new HeatMap();
+            h1.data = new JRaw("heatData");
+           
+            h1.MinAlpha(0.1);
+
+            m1.MapType("china").Roam(true).Hoverable(false)
+                .SetHeatmap(h1);
+            m1.ItemStyle().Normal().BorderColor("rgba(100,149,237,0.6)")
+                .BorderWidth(0.5).AreaStyle().Color("#1b1b1b");
+                     
+            option.Series(m1);
+            var result = JsonTools.ObjectToJson2(option);
+            return result;
+        }
+        #endregion
+
 
         private ToolBox ToolBox(OrientType orient= OrientType.horizontal)
         {

@@ -213,7 +213,7 @@ function launchExample() {
             'echarts/chart/tree',
             'echarts/chart/wordCloud',
             'echarts/chart/heatmap',
-            //needMap() ? 'echarts/chart/map' : 'echarts'
+            needMap() ? 'echarts/chart/map' : 'echarts'
         ],
         requireCallback
     );

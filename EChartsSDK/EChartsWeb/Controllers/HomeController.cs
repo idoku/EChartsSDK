@@ -28,7 +28,7 @@ namespace EChartsWeb.Controllers
             {
                 ViewBag.ExtJs = "../Scripts/charts/lasagna.js";
             }
-            else if (api == "Force")
+            else if (api == "force")
             {
                 ViewBag.ExtJs = "../Scripts/charts/force.js";
             }
@@ -54,6 +54,14 @@ namespace EChartsWeb.Controllers
             }
             else if (api.Contains("gauge")) {
                 ViewBag.ExtJs = "../Scripts/charts/gauge.js";
+            }
+            else if (api=="heatmap_map")
+            {
+                ViewBag.ExtJs = "../Scripts/charts/heatmap_map.js";
+            }
+            else if (api.Contains("heatmap"))
+            {
+                ViewBag.ExtJs = "../Scripts/charts/heatmap.js";
             }
 
             return View();

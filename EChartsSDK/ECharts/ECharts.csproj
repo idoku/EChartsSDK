@@ -90,6 +90,7 @@
     <Compile Include="Entities\Polar.cs" />
     <Compile Include="Entities\RoamController.cs" />
     <Compile Include="Entities\series\ChartSeries.cs" />
+    <Compile Include="Entities\series\heatmap\GradientColorData.cs" />
     <Compile Include="Entities\series\K.cs" />
     <Compile Include="Entities\series\guage\GaugeTitle.cs" />
     <Compile Include="Entities\style\IconStyle.cs" />
