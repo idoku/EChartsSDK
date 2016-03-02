@@ -1848,7 +1848,7 @@ namespace EChartsWeb.Apis
 
         #region scatter data
         [AcceptVerbs("GET", "POST")]
-        [ActionName("Sactter1")]
+        [ActionName("sactter1")]
         public string StdScatter()
         {
             ChartOption option = new ChartOption();
