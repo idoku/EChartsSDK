@@ -476,27 +476,8 @@ EchartsWeb
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 对应的源码:
-
+```c#
 [AcceptVerbs("GET", "POST")]
         [ActionName("bar10")]
         public string TemperatureBar()
@@ -558,5 +539,5 @@ EchartsWeb
             var result = JsonTools.ObjectToJson2(option);
             return result;
         }
- 
+```
 
