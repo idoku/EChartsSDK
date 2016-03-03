@@ -3,42 +3,42 @@ ECharts .Net类库
 Echarts
 本项目是一个供.NET开发者使用的ECharts的开发包,主要目的是方便在.NET中构件Echarts中可能用的全部数据结构,完整的Option结构. ChartOption中的数据Series,包含Line-折线图,Bar-柱状图,Pie-饼图,Scatter-散点图等,支持Echarts中所有图表.支持所有Style类,如AreaStyle,ItemStyle,LineStyle等.支持多种Data数据类型,一个通用的Data数据,以及PieData,PolarData,TreeData等个性化数据结构.
 你可以使用本项目直接构件一个Option对象,使用方法JsonTools.ObjectToJson2(option),(直接使用Json方式返回存在问题,因为function不是标准化的json格式,转换会报错).
-
+ 
 图表类型
-•	Line - 折线（面积）图
-•	Bar - 柱状（条形）图
-•	Scatter - 散点（气泡）图
-•	K - K线图
-•	Pie - 饼（圆环）图
-•	Radar - 雷达（面积）图
-•	Chord - 和弦图
-•	Force - 力导向布局图
-•	Map - 地图
-•	Gauge - 仪表盘
-•	Funnel - 漏斗图
-•	Heatmap - 热力图
-•	EventRiver - 事件河流图
-•	Venn - 韦恩图
-•	Tree - 树图
-•	Treemap - 矩形树图
-•	WordCloud - 词云
+Line - 折线（面积）图
+Bar - 柱状（条形）图
+Scatter - 散点（气泡）图
+K - K线图
+Pie - 饼（圆环）图
+Radar - 雷达（面积）图
+Chord - 和弦图
+Force - 力导向布局图
+Map - 地图
+Gauge - 仪表盘
+Funnel - 漏斗图
+Heatmap - 热力图
+EventRiver - 事件河流图
+Venn - 韦恩图
+Tree - 树图
+Treemap - 矩形树图
+WordCloud - 词云
 Echarts组件
-•	Axis - 坐标轴
-•	Grid - 网格
-•	Title - 标题
-•	Tooltip - 提示
-•	Legend - 图例
-•	DataZoom - 数据区域缩放
-•	DataRange - 值域漫游
-•	Toolbox - 工具箱
-•	Timeline - 时间线
+Axis - 坐标轴
+Grid - 网格
+Title - 标题
+Tooltip - 提示
+Legend - 图例
+DataZoom - 数据区域缩放
+DataRange - 值域漫游
+Toolbox - 工具箱
+Timeline - 时间线
 Echarts网址
 http://echarts.baidu.com/
-
+ 
 ChartOption说明
-1.	ChartOption 是echarts的主要类.
-2.	使用JsonTools.ObjectToJson2方法返回给前端时,需要使用eval('(' + data + ')')转换为JSON结构.
-
+1.         ChartOption 是echarts的主要类.
+2.         使用JsonTools.ObjectToJson2方法返回给前端时,需要使用eval('(' + data + ')')转换为JSON结构.
+ 
 Function说明
 由于json标准中不包含function类型,一般json库都不支持这种类型,处理这种类型最简单的方式是转换json字符串时,对字符串进行处理.
 读者可以自行使用其他自定义方式实现,本项目使用的.net自带的JRaw()方式.不管是:
@@ -48,7 +48,7 @@ Function说明
             var res = '<div style="color:' + color + '">';
             res += '<strong>' + params[0].name + '消费（元）</strong>'
             for (var i = 0, l = params.length; i < l; i++) {
-                res += '<br/>' + params[i].seriesName + ' : ' + params[i].value 
+                res += '<br/>' + params[i].seriesName + ' : ' + params[i].value
             }
             res += '</div>';
             return res;
@@ -61,7 +61,7 @@ Function说明
                             [[0, 'green'],[1, 'yellow']]
                         )
                     })(),
-
+ 
 都可以利用JRaw来实现.
 option.ToolTip().Trigger(TriggerType.axis)
                 .BackgroundColor("rgba(255,255,255,0.7)")
@@ -76,7 +76,7 @@ option.ToolTip().Trigger(TriggerType.axis)
             res += '</div>';
             return res;
             }"))
-
+ 
             style.Emphasis().BarBorderColor("green").BarBorderWidth(5)
                 .Color(new JRaw(@"(function (){
                         var zrColor = require('zrender/tool/color');
@@ -85,13 +85,13 @@ option.ToolTip().Trigger(TriggerType.axis)
                             [[0, 'red'],[1, 'orange']]
                         )
                     })()"))
-	
+                                                          
 EchartsWeb
 本项目通过ASP.NET MVC和ASP.NET web api模拟了echarts官网网站中的全部示例,主要目的是方便大家参考使用和调整结构.
-
+ 
 1.简单Line示例
 演示地址: http://echarts.idoku.cn/home/example?api=line1
- 
+
 例子中给出的json结构.
 {
   "calculable": true,
@@ -199,7 +199,7 @@ EchartsWeb
     }
   ]
 }
-
+ 
 对应的源码:
    [AcceptVerbs("GET", "POST")]
         [ActionName("line1")]
@@ -321,10 +321,10 @@ EchartsWeb
             var result = JsonTools.ObjectToJson2(option);
             return result;
         }
-
-3.	使用function的bar示例.
-演示地址: http://echarts.idoku.cn/home/example?api=bar10#	
  
+3.         使用function的bar示例.
+演示地址: http://echarts.idoku.cn/home/example?api=bar10#              
+
 给出的json代码:
 {
   "title": {
@@ -456,7 +456,7 @@ EchartsWeb
     }
   ]
 }
-
+ 
 对应的源码:
 [AcceptVerbs("GET", "POST")]
         [ActionName("bar10")]
@@ -519,4 +519,4 @@ EchartsWeb
             var result = JsonTools.ObjectToJson2(option);
             return result;
         }
-
+ 
