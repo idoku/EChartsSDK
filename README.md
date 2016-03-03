@@ -8,23 +8,23 @@ Echarts
  
 图表类型
 #
-•	Line - 折线（面积）图
-•	Bar - 柱状（条形）图
-•	Scatter - 散点（气泡）图
-•	K - K线图
-•	Pie - 饼（圆环）图
-•	Radar - 雷达（面积）图
-•	Chord - 和弦图
-•	Force - 力导向布局图
-•	Map - 地图
-•	Gauge - 仪表盘
-•	Funnel - 漏斗图
-•	Heatmap - 热力图
-•	EventRiver - 事件河流图
-•	Venn - 韦恩图
-•	Tree - 树图
-•	Treemap - 矩形树图
-•	WordCloud - 词云
+•	Line - 折线（面积）图<br>
+•	Bar - 柱状（条形）图<br>
+•	Scatter - 散点（气泡）图<br>
+•	K - K线图<br>
+•	Pie - 饼（圆环）图<br>
+•	Radar - 雷达（面积）图<br>
+•	Chord - 和弦图<br>
+•	Force - 力导向布局图<br>
+•	Map - 地图<br>
+•	Gauge - 仪表盘<br>
+•	Funnel - 漏斗图<br>
+•	Heatmap - 热力图<br>
+•	EventRiver - 事件河流图<br>
+•	Venn - 韦恩图<br>
+•	Tree - 树图<br>
+•	Treemap - 矩形树图<br>
+•	WordCloud - 词云<br>
 Echarts组件
 •	Axis - 坐标轴
 •	Grid - 网格
@@ -47,7 +47,7 @@ Function说明
 #
 由于json标准中不包含function类型,一般json库都不支持这种类型,处理这种类型最简单的方式是转换json字符串时,对字符串进行处理.
 读者可以自行使用其他自定义方式实现,本项目使用的.net自带的JRaw()方式.不管是:
-
+```C#
     "formatter": function(params) {
             // for text color
             var color = colorList[params[0].dataIndex];
@@ -59,9 +59,9 @@ Function说明
             res += '</div>';
             return res;
             },
-
+```
 和
-
+```C#
 "color": (function (){
                         var zrColor = require('zrender/tool/color');
                         return zrColor.getLinearGradient(
@@ -69,15 +69,9 @@ Function说明
                             [[0, 'green'],[1, 'yellow']]
                         )
                     })(),
- 
+ ```
 都可以利用JRaw来实现.
-
-
-
-
-
-
-
+```C#
 option.ToolTip().Trigger(TriggerType.axis)
                 .BackgroundColor("rgba(255,255,255,0.7)")
                 .Formatter(new JRaw(@"function(params) {
@@ -91,9 +85,9 @@ option.ToolTip().Trigger(TriggerType.axis)
             res += '</div>';
             return res;
             }"))
-
+```
  和
-
+```C#
             style.Emphasis().BarBorderColor("green").BarBorderWidth(5)
                 .Color(new JRaw(@"(function (){
                         var zrColor = require('zrender/tool/color');
@@ -103,7 +97,7 @@ option.ToolTip().Trigger(TriggerType.axis)
                         )
                     })()"))
                                                           
-
+```
 EchartsWeb
 --------
 本项目通过ASP.NET MVC和ASP.NET web api模拟了echarts官网网站中的全部示例,主要目的是方便大家参考使用和调整结构.
@@ -113,7 +107,7 @@ EchartsWeb
 演示地址: http://echarts.idoku.cn/home/example?api=line1
  
 例子中给出的json结构.
-
+```C#
 {
   "calculable": true,
   "title": {
@@ -220,7 +214,7 @@ EchartsWeb
     }
   ]
 }
- 
+```
 
 
 
@@ -235,7 +229,7 @@ EchartsWeb
 
 
 对应的源码:
-
+```C#
    [AcceptVerbs("GET", "POST")]
         [ActionName("line1")]
         public string StdLine()
@@ -356,13 +350,13 @@ EchartsWeb
             var result = JsonTools.ObjectToJson2(option);
             return result;
         }
- 
+ ```
 3.         使用function的bar示例.
 #
 演示地址: http://echarts.idoku.cn/home/example?api=bar10#              
  
 给出的json代码:
-
+```C#
 {
   "title": {
     "text": "温度计式图表",
@@ -493,7 +487,7 @@ EchartsWeb
     }
   ]
 }
- 
+```
 
 
 
