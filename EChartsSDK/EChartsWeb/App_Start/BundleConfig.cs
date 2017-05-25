@@ -8,15 +8,32 @@ namespace EChartsWeb
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+
+          
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            
+            //菜单管理
+            bundles.Add(new ScriptBundle("~/bundles/nav").Include(
+                     "~/Scripts/examples-nav.js",                     
+                     "~/Scripts/chart-list.js",
+                      "~/Scripts/config.js",
+                      "~/Scripts/place/place.js",
+                         "~/Scripts/waypoint.js",
+                          "~/Scripts/jquery.lazyload.min.js"
+
+                   ));
+       
+           
+
             //绘图插件
             bundles.Add(new ScriptBundle("~/bundles/echarts").Include(
-                      "~/Scripts/plugins/echarts/echarts.js"
+                      "~/Scripts/plugins/echarts/echarts-all-3.js"
                     ));
 
            //zrender
@@ -35,6 +52,8 @@ namespace EChartsWeb
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+           
 
 
         }

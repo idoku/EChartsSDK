@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class Rectangular<T>: ChartSeries<Rectangular<T>> where T:class
+    public class Rectangular<T> : ChartSeries<Rectangular<T>>
+		where T : class
     {
         public string stack { get; set; }
 
         public int? xAxisIndex { get; set; }
 
         public int? yAxisIndex { get; set; }
+
+        public int? polarIndex { get; set; }
+
+        public int? geoIndex { get; set; }
 
         public object symbol { get; set; }
 
@@ -21,6 +26,8 @@ namespace ECharts.Entities.series
         public double? symbolRotate { get; set; }        
 
         public bool? legendHoverLink { get; set; }
+
+        public bool? showSymbol { get; set; }
 
         public T Stack(string stack)
         {
@@ -52,6 +59,13 @@ namespace ECharts.Entities.series
             return this as T;
         }
 
+        public T ShowSymbol(bool showSymbol)
+        {
+            this.showSymbol = showSymbol;
+            return this as T;
+        }
+
+
         public T Symbol(string icon)
         {
             this.symbol = icon;
@@ -65,6 +79,22 @@ namespace ECharts.Entities.series
             return this as T;
         }
 
+		/// 
+		/// <param name="polorIndex"></param>
+        public T PolorIndex(int polarIndex)
+        {
+            this.polarIndex = polarIndex;
+		return this as T; 
+		}
+
+		/// 
+		/// <param name="geoIndex"></param>
+		public T GeoIndex(int geoIndex){
+		     this.geoIndex=geoIndex;
+		return this as T; 
+		}
+
+        
 
     }
 }

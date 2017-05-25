@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.axis
 {
-    public class AxisPointer
+    public class AxisPointer:Basic<AxisPointer>
     {
         public bool? show { get; set; }
 
         public AxisPointType? type { get; set; }
+
+        public bool? snap { get; set; }
+
+        public AxisLink link { get; set; }
+
+        public AxisLabel label { get; set; }
 
         public LineStyle lineStyle { get; set; }
 
@@ -25,10 +31,33 @@ namespace ECharts.Entities.axis
             return this;
         }
 
+
+        public AxisLink Link()
+        {
+            if (this.link == null)
+                this.link = new AxisLink();
+            return this.link;
+        }
+
         public AxisPointer Type(AxisPointType type)
         {
             this.type = type;
             return this;
+        }
+
+        public AxisPointer Snap(bool snap)
+        {
+            this.snap = snap;
+            return this;
+        }
+
+        public AxisLabel Label()
+        {
+            if (this.label == null)
+            {
+                this.label = new AxisLabel();
+            }
+            return this.label;
         }
 
         public LineStyle LineStyle()
@@ -48,6 +77,7 @@ namespace ECharts.Entities.axis
             }
             return this.crossStyle;
         }
+
 
         public AreaStyle ShadowStyle()
         {

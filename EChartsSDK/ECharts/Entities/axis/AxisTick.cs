@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,14 @@ namespace ECharts.Entities.axis
         public int? length { get; set; }
         
         public LineStyle lineStyle { get; set; }
+
+        public bool? alignWithLabel { get; set; }
+
+        public AxisTick AlignWithLabel(bool alignWithLabel)
+        {
+            this.alignWithLabel = alignWithLabel;
+            return this;
+        }
 
         public AxisTick Length(int length)
         {

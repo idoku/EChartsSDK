@@ -14,6 +14,8 @@ namespace ECharts.Entities
 
         public TriggerType? trigger { get; set; }
 
+        public TriggerOnType triggerOn { get; set; }
+
         public object position { get; set; }
 
         public object formatter { get; set; }
@@ -109,6 +111,12 @@ namespace ECharts.Entities
         public ToolTip Trigger(TriggerType trigger)
         {
             this.trigger = trigger;
+            return this;
+        }
+
+        public ToolTip TriggerOn(TriggerOnType triggerOn)
+        {
+            this.triggerOn = triggerOn;
             return this;
         }        
 

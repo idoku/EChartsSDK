@@ -16,6 +16,14 @@ namespace ECharts.Entities.feature
 
         public IList<string> lang { get; set; }
 
+        public int? pixelRatio { get; set; }
+
+        public FeatureImage PixelRatio(int pixelRatio)
+        {
+            this.pixelRatio = pixelRatio;
+            return this;
+        }
+
         public FeatureImage Show(bool show)
         {
             this.show = show;

@@ -8,10 +8,17 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities
 {
-    public class Title:Basic<Title>
+	/// <summary>
+	/// �����ļ�
+	/// </summary>
+    public class Title : Basic<Title>
     {
+
+	   
+
         #region properties       
-        public string text { get; set; }
+        public string id { get; set; }
+        public object text { get; set; }
 
         public string link { get; set; }
 
@@ -24,8 +31,8 @@ namespace ECharts.Entities
         public TargetType? subtarget { get; set; }
        
         public HorizontalType? textAlign { get; set; }
-     
-        
+
+        public HorizontalType? align { get; set; }
 
         public int? itemGap { get; set; }
 
@@ -35,14 +42,21 @@ namespace ECharts.Entities
         #endregion
 
         #region method
-        public TextStyle TextStyle()
+
+	    public Title Id(string id)
+	    {
+	        this.id = id;
+	        return this;
+	    }
+
+	    public ECharts.Entities.style.TextStyle TextStyle()
         {
             if (this.textStyle == null)
                 textStyle = new style.TextStyle();
             return textStyle;
         }
 
-        public TextStyle SubtextStyle()
+        public ECharts.Entities.style.TextStyle SubtextStyle()
         {
             if (this.subtextStyle == null)
                 subtextStyle = new style.TextStyle();
@@ -66,6 +80,12 @@ namespace ECharts.Entities
             this.textAlign = textAlign;
             return this;
         }
+        public Title Align(HorizontalType align)
+        {
+            this.align = align;
+            return this;
+        }
+
 
         public Title Subtarget(TargetType subtarget)
         {
@@ -102,11 +122,19 @@ namespace ECharts.Entities
             return this;
         }
 
+        public Title Text(object text)
+        {
+            this.text = text;
+            return this;
+        }
+
         public Title SubText(string subtext)
         {
             this.subtext = subtext;
             return this;
         }
+
+		 
 
       
         #endregion

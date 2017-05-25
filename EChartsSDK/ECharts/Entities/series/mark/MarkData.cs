@@ -9,6 +9,7 @@ namespace ECharts.Entities.series
 {
     public class MarkData:BasicData<MarkData>
     {
+      
         public MarkData() : base()
         {
 
@@ -30,6 +31,7 @@ namespace ECharts.Entities.series
             this.name = name;
         }
 
+       
 
 
     }

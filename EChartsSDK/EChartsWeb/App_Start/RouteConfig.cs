@@ -13,6 +13,8 @@ namespace EChartsWeb
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.IgnoreRoute("*.json");
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

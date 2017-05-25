@@ -23,15 +23,48 @@ namespace ECharts.Entities.axis
         public string position { get; set; }
 
         public int? splitNumber { get; set; }
+        
 
+        public object min { get; set; }
 
-        public int? min { get; set; }
+        public object max { get; set; }
 
-        public int? max { get; set; }
+        public object top { get; set; }
+
+        public object bottom { get; set; }
 
         public bool? scale { get; set; }
 
+        public int? interval { get; set; }
+        public T Interval(int interval)
+        {
+            this.interval = interval;
+            return this as T;
+
+        }
+
+        public T Top(int top)
+        {
+            this.top = top;
+            return this as T;
+
+        }
+
+        public T Bottom(int bottom)
+        {
+            this.bottom = bottom;
+            return this as T;
+
+        }
+
         public T Max(int max)
+        {
+            this.max = max;
+            return this as T;
+
+        }
+
+        public T Max(string max)
         {
             this.max = max;
             return this as T;

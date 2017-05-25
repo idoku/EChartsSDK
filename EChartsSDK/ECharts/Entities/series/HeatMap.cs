@@ -20,6 +20,14 @@ namespace ECharts.Entities.series
 
         public double? opacity { get; set; }
 
+        public string coordinateSystem { get; set; }
+
+        public HeatMap CoordinateSystem(string coordinateSystem)
+        {
+            this.coordinateSystem = coordinateSystem;
+            return this;
+        }
+
         public HeatMap Hoverable(bool hoverable)
         {
             this.hoverable = hoverable;

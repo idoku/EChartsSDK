@@ -11,6 +11,8 @@ namespace ECharts.Entities
     {        
         public TimeType? type { get; set; }
 
+        public AxisType? axisType { get; set; }
+
         public bool? notMerge { get; set; }
 
         public bool? realtime { get; set; }       
@@ -19,11 +21,14 @@ namespace ECharts.Entities
 
         public object y2 { get; set; }
 
-        public int? width { get; set; }
+         
 
-        public int? height { get; set; }
-     
-       
+        public bool? inverse { get; set; }
+
+        public OrientType? orient { get; set; }
+
+
+
 
         public PositionType? controlPosition { get; set; }
 
@@ -35,9 +40,11 @@ namespace ECharts.Entities
 
         public LineStyle  lineStyle { get; set; }
 
-        public StyleLabel label { get; set; }
+        public EntityStyle<StyleLabel> label { get; set; }
 
         public CheckPointStyle checkpointStyle { get; set; }
+
+        public ControlStyle controlStyle { get; set; }
 
         public string symbol { get; set; }
 
@@ -46,6 +53,26 @@ namespace ECharts.Entities
         public int? currentIndex { get; set; }
 
         public IList<object> data { get; set; }
+
+        public TimeLine Symbol(string symbol)
+        {
+            this.symbol = symbol;
+            return this;
+        }
+
+
+        public TimeLine Type(TimeType type)
+        {
+            this.type = type;
+            return this;
+        }
+
+        public TimeLine AxisType(AxisType axisType)
+        {
+            this.axisType = axisType;
+            return this;
+        }
+
 
         public TimeLine AutoPlay(bool autoPlay)
         {
@@ -59,10 +86,22 @@ namespace ECharts.Entities
             return this;
         }
 
-        public StyleLabel Label()
+        public TimeLine Inverse(bool inverse)
+        {
+            this.inverse = inverse;
+            return this;
+        }
+
+        public TimeLine Orient(OrientType orient)
+        {
+            this.orient = orient;
+            return this;
+        }
+
+        public EntityStyle<StyleLabel> Label()
         {
             if (label == null)
-                label = new StyleLabel();
+                label = new EntityStyle<StyleLabel>();
             return label;
         }
 

@@ -44,25 +44,72 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\AbstractData.cs" />
-    <Compile Include="Entities\axis\Axis.cs" />
+    <Compile Include="Entities\axis\AngleAxis.cs" />
+    <Compile Include="Entities\axis\Axis.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Entities\axis\AxisData.cs" />
     <Compile Include="Entities\axis\AxisLabel.cs" />
     <Compile Include="Entities\axis\AxisLine.cs" />
+    <Compile Include="Entities\axis\AxisLink.cs" />
     <Compile Include="Entities\axis\AxisName.cs" />
     <Compile Include="Entities\axis\AxisPointer.cs" />
     <Compile Include="Entities\axis\AxisTick.cs" />
     <Compile Include="Entities\axis\CategoryAxis.cs" />
     <Compile Include="Entities\axis\ChartAxis.cs" />
+    <Compile Include="Entities\axis\ParallelAxis.cs" />
+    <Compile Include="Entities\axis\SingleAxis.cs" />
     <Compile Include="Entities\axis\LogAxis.cs" />
+    <Compile Include="Entities\axis\RadiusAxis.cs" />
     <Compile Include="Entities\axis\SplitLine.cs" />
     <Compile Include="Entities\axis\TimeAxis.cs" />
     <Compile Include="Entities\axis\SplitArea.cs" />
     <Compile Include="Entities\axis\ValueAxis.cs" />
     <Compile Include="Entities\Basic.cs" />
+    <Compile Include="Entities\bmap\BMap.cs" />
+    <Compile Include="Entities\bmap\MapStyle.cs" />
+    <Compile Include="Entities\bmap\StyleJson.cs" />
+    <Compile Include="Entities\bmap\Styler.cs" />
+    <Compile Include="Entities\bmap\VisibilityType.cs" />
+    <Compile Include="Entities\Brush.cs" />
+    <Compile Include="Entities\Calendar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\ChartData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Controller.cs" />
+    <Compile Include="Entities\DataZoom.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\feature\FeatureBrush.cs" />
+    <Compile Include="Entities\series\Boxplot.cs" />
+    <Compile Include="Entities\series\Graph.cs" />
+    <Compile Include="Entities\series\graph\Force.cs" />
+    <Compile Include="Entities\series\mark\MarkArea.cs" />
+    <Compile Include="Entities\series\PictorialBar.cs" />
+    <Compile Include="Entities\series\Sankey.cs" />
+    <Compile Include="Entities\series\Parallel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\series\ThemeRiver.cs" />
+    <Compile Include="Entities\style\BrushStyle.cs" />
+    <Compile Include="Entities\style\CalendarLabel.cs" />
+    <Compile Include="Entities\style\EntityStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\style\LineLabelStyle.cs" />
+    <Compile Include="Entities\style\PiecesStyle.cs" />
+    <Compile Include="Entities\VisualItem.cs" />
+    <Compile Include="Entities\category\XCategory.cs" />
+    <Compile Include="Entities\Geo.cs" />
     <Compile Include="Entities\NoDataLoadingOption.cs" />
     <Compile Include="Entities\LoadingOption.cs" />
+    <Compile Include="Entities\Regions.cs" />
+    <Compile Include="Entities\ScaleLimit.cs" />
     <Compile Include="Entities\series\data\PolarData.cs" />
     <Compile Include="Entities\series\data\RadarData.cs" />
+    <Compile Include="Entities\series\EffectScatter.cs" />
     <Compile Include="Entities\series\force\Category.cs" />
     <Compile Include="Entities\ChartOption.cs" />
     <Compile Include="Entities\DataRange.cs" />
@@ -85,7 +132,6 @@
     <Compile Include="Entities\feature\Mark.cs" />
     <Compile Include="Entities\feature\Feature.cs" />
     <Compile Include="Entities\Grid.cs" />
-    <Compile Include="Entities\DataZoom.cs" />
     <Compile Include="Entities\IndicatorData.cs" />
     <Compile Include="Entities\Polar.cs" />
     <Compile Include="Entities\RoamController.cs" />
@@ -93,6 +139,8 @@
     <Compile Include="Entities\series\heatmap\GradientColorData.cs" />
     <Compile Include="Entities\series\K.cs" />
     <Compile Include="Entities\series\guage\GaugeTitle.cs" />
+    <Compile Include="Entities\Parallel.cs" />
+    <Compile Include="Entities\series\RippleEffect.cs" />
     <Compile Include="Entities\series\tree\LocationData.cs" />
     <Compile Include="Entities\style\IconStyle.cs" />
     <Compile Include="Entities\TimeLine.cs" />
@@ -150,6 +198,7 @@
     <Compile Include="Entities\style\LineStyle.cs" />
     <Compile Include="Entities\style\TextStyle.cs" />
     <Compile Include="Entities\Title.cs" />
+    <Compile Include="Entities\VisualMap.cs" />
     <Compile Include="Json\JsonTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="T4\entity.cs">

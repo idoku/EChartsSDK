@@ -13,9 +13,18 @@ namespace ECharts.Entities.series
 
         public int? largeThreshold { get; set; }
 
+        public bool? hoverAnimation { get; set; }
+
         public Scatter LargeThreshold(int largeThreshold)
         {
             this.largeThreshold = largeThreshold;
+            return this;
+        }
+
+
+        public Scatter HoverAnimation(bool hoverAnimation)
+        {
+            this.hoverAnimation = hoverAnimation;
             return this;
         }
 

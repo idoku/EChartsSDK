@@ -24,11 +24,20 @@ namespace ECharts.Entities.feature
         public FeatureImage saveAsImage { get; set; }
 
 
+        public FeatureBrush brush { get; set; }
+
         public MagicType MagicType()
         {
             if (magicType == null)
                 magicType = new feature.MagicType();
             return magicType;
+        }
+
+        public FeatureBrush Brush()
+        {
+            if (brush == null)
+                brush = new feature.FeatureBrush();
+            return brush;
         }
 
 

@@ -15,6 +15,14 @@ namespace ECharts.Entities.series
 
         public string root { get; set; }
 
+        public object levels { get; set; }
+
+        public TreeMap Levels(object levels)
+        {
+            this.levels = levels;
+            return this;
+        }
+
         public TreeMap Center(object center)
         {
             this.center = center;

@@ -10,8 +10,8 @@ namespace ECharts.Entities
     public class Legend : Basic<Legend>, IData<Legend>
     {      
         public OrientType? orient { get; set; }
-            
-     
+
+        public HorizontalType? align { get; set; }
        
         public object itemGap { get; set; }
 
@@ -94,6 +94,12 @@ namespace ECharts.Entities
         public Legend Orient(OrientType orient)
         {
             this.orient = orient;
+            return this;
+        }
+
+        public Legend Align(HorizontalType align)
+        {
+            this.align = align;
             return this;
         }
         

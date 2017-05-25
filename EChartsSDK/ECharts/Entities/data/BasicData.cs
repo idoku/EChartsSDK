@@ -31,7 +31,11 @@ namespace ECharts.Entities.data
 
         public ItemStyle itemStyle { get; set; }
 
+        public EntityStyle<LineLabelStyle> label { get; set; }
+
         public int? valueIndex { get; set; }
+
+        public IList<object> coord { get; set; }
 
 
         public T SymbolSize(object symbolSize)
@@ -84,6 +88,12 @@ namespace ECharts.Entities.data
             return this.itemStyle;
         }
 
+        public EntityStyle<LineLabelStyle> Label()
+        {
+            if(this.label==null)
+                this.label = new EntityStyle<LineLabelStyle>();
+            return this.label;
+        }
 
         public T Symbol(object symbol)
         {
@@ -100,6 +110,14 @@ namespace ECharts.Entities.data
         public T Type(MarkType type)
         {
             this.type = type;
+            return this as T;
+        }
+
+        public T Coord(params double[] values)
+        {
+            if (this.coord == null)
+                this.coord = new List<object>();
+            values.ToList().ForEach(v => coord.Add(v));
             return this as T;
         }
 

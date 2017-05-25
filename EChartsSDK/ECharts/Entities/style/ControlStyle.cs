@@ -8,6 +8,12 @@ namespace ECharts.Entities.style
 {
     public class ControlStyle
     {
+
+        public bool? showNextBtn { get; set; }
+
+        public bool? showPrevBtn { get; set; }
+
+
         public int? itemSize { get; set; }
 
         public int? itemGap { get; set; }
@@ -36,9 +42,15 @@ namespace ECharts.Entities.style
             return this;
         }
 
-        public ControlStyle ItemSize(int itemSize)
+        public ControlStyle ShowNextBtn(bool showNextBtn)
         {
-            this.itemSize = itemSize;
+            this.showNextBtn = showNextBtn;
+            return this;
+        }
+
+        public ControlStyle ShowPrevBtn(bool showPrevBtn)
+        {
+            this.showPrevBtn = showPrevBtn;
             return this;
         }
 

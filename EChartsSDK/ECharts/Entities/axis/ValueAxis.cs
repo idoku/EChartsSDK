@@ -10,7 +10,7 @@ namespace ECharts.Entities.axis
     public class ValueAxis: ChartAxis<ValueAxis>
     {
 
-        public IList<double> boundaryGap { get; set; }
+        public object boundaryGap { get; set; }
 
         public ValueAxis()
         {
@@ -29,10 +29,27 @@ namespace ECharts.Entities.axis
             {
                 boundaryGap = new List<double>();
             }
-            values.ToList().ForEach(v => boundaryGap.Add(v));
+            boundaryGap = values.ToList();
             return this; 
         }
 
+        public ValueAxis BoundaryGap(params object[] values)
+        {
+            if (boundaryGap == null)
+            {
+                boundaryGap = new List<object>();
+            }
+            boundaryGap = values.ToList();
+            return this;
+        }
+
+        /// 
+        /// <param name="boundaryGap"></param>
+        public ValueAxis BoundaryGap(object boundaryGap)
+        {
+            this.boundaryGap = boundaryGap;
+            return this;
+        }
 
 
     }

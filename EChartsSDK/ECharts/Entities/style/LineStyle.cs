@@ -24,6 +24,14 @@ namespace ECharts.Entities.style
 
         public int? shadowOffsetY { get; set; }
 
+        public double? opacity { get; set; }
+
+        public LineStyle Opacity(double opacity)
+        {
+            this.opacity = opacity;
+            return this;
+        }
+
         public LineStyle ShadowBlur(int shadowBlur)
         {
             this.shadowBlur = shadowBlur;

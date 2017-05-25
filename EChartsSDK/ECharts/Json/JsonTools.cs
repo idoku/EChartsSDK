@@ -89,7 +89,8 @@ namespace ECharts
             //json.NullValueHandling = NullValueHandling.Ignore;
             json.ObjectCreationHandling = Newtonsoft.Json.ObjectCreationHandling.Replace;           
             json.MissingMemberHandling = Newtonsoft.Json.MissingMemberHandling.Ignore;
-            json.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;                        
+            json.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;     
+                   
             json.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
             IsoDateTimeConverter timeFormate = new IsoDateTimeConverter();
             timeFormate.DateTimeFormat = "yyyy-MM-dd";
@@ -103,6 +104,7 @@ namespace ECharts
             Newtonsoft.Json.JsonTextWriter writer = new JsonTextWriter(sw);
             writer.Formatting = Formatting.None;
             writer.QuoteChar = '"';
+            writer.QuoteName = false;
             json.Serialize(writer, value);
 
             string output = sw.ToString();

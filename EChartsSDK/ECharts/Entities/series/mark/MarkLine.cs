@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.series
 {
-    public class MarkLine:AbstractData<MarkPoint>
+    public class MarkLine : AbstractData<MarkPoint>
     {
         public bool? clickable { get; set; }
 
@@ -30,6 +30,12 @@ namespace ECharts.Entities.series
         public Effect effect { get; set; }
 
         public ItemStyle itemStyle { get; set; }
+
+        public ItemStyle label { get; set; }
+
+        public EntityStyle<LineStyle> lineStyle { get; set; }
+
+        public ToolTip toolTip { get; set; }
 
         public MarkLine Precision(int precision)
         {
@@ -88,7 +94,7 @@ namespace ECharts.Entities.series
             return this;
         }
 
-        public ItemStyle ItemStyle()
+        public ECharts.Entities.style.ItemStyle ItemStyle()
         {
             if (itemStyle == null)
                 itemStyle = new ItemStyle();
@@ -100,6 +106,27 @@ namespace ECharts.Entities.series
             if (effect == null)
                 effect = new series.Effect();
             return effect;
+        }
+
+		public ItemStyle Label()
+		{
+            if(label==null)
+                this.label = new ItemStyle();
+		    return this.label;
+		}
+
+        public EntityStyle<LineStyle> LineStyle()
+        {
+            if (this.lineStyle == null)
+                this.lineStyle = new EntityStyle<LineStyle>();
+            return this.lineStyle;
+        }
+
+        public ToolTip ToolTip()
+        {
+            if(this.toolTip == null)
+                this.toolTip = new ToolTip();
+            return this.toolTip;
         }
 
     }

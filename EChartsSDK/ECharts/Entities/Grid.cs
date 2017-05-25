@@ -1,22 +1,22 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ECharts.Entities
-{
-    public class Grid:Basic<Grid>
+{	 	
+	/// <summary>
+	/// 直角坐标系内绘图网格
+	/// </summary>
+    public class Grid : Basic<Grid>
     {
         public string type { get; set; }
 
         public object x2 { get; set; }
 
         public object y2 { get; set; }
-
-        public object width { get; set; }
-
-        public object height { get; set; }
+	 
 
         public object getX { get; set; }
 
@@ -44,5 +44,18 @@ namespace ECharts.Entities
             this.y2 = y2;
             return this;
         }
+
+		public bool? containLabel{
+			get;
+			set;
+		}
+
+		
+		public Grid ContainLabel(bool containLabel)
+		{
+		    this.containLabel = containLabel;
+			return null;
+		}
+		 
     }
 }

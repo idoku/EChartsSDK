@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ECharts.Entities.style
 {
-    public abstract class Style<T> where T :class
+    public abstract class Style<T>
+		where T : class
     {
+        public bool? show { get; set; }
+
         public object color { get; set; }
 
         public object color0 { get; set; }
@@ -22,6 +26,8 @@ namespace ECharts.Entities.style
 
         public LinkStyle linkStyle { get; set; }
 
+        public TextStyle textStyle { get; set; }
+
         public object borderColor { get; set; }      
 
         public double? borderWidth { get; set; }
@@ -34,11 +40,47 @@ namespace ECharts.Entities.style
 
         public  string brushType { get; set; }
 
+        public object position { get; set; }
+
+        public double[] offset { get; set; }
+
+        public object formatter { get; set; }
+
         public StyleLabel label { get; set; }
+
+        public LineStyleType? borderType { get; set; }
 
         public LabelLine labelLine { get; set; }
 
-        
+        public int? shadowBlur { get; set; }
+
+        public string shadowColor { get; set; }
+
+        public int? shadowOffsetX { get; set; }
+
+        public int? shadowOffsetY { get; set; }
+
+        public string areaColor { get; set; }
+
+        public double? width { get; set; }
+
+        public double? opacity { get; set; }
+
+        public double? curveness { get; set; }
+
+
+        public T Curveness(double curveness)
+        {
+            this.curveness = curveness;
+            return this as T;
+        }
+
+
+        public T AreaColor(string areaColor)
+        {
+            this.areaColor = areaColor;
+            return this as T;
+        }
 
           public T BrushType(string brushType)
         {
@@ -76,6 +118,12 @@ namespace ECharts.Entities.style
         public T BorderWidth(double borderWidth)
         {
             this.borderWidth = borderWidth;
+            return this as T;
+        }
+
+        public T BorderType(LineStyleType borderType)
+        {
+            this.borderType = borderType;
             return this as T;
         }
 
@@ -124,7 +172,12 @@ namespace ECharts.Entities.style
             return this.nodeStyle;
         }
 
-        
+        public TextStyle TextStyle()
+        {
+            if (textStyle == null)
+                this.textStyle = new style.TextStyle();
+            return this.textStyle;
+        }
 
 
         public LineStyle LineStyle()
@@ -161,6 +214,73 @@ namespace ECharts.Entities.style
             return linkStyle;
         }
 
-      
+		/// 
+		/// <param name="shadowBlur"></param>
+		public T ShadowBlur(int shadowBlur){
+		     this.shadowBlur=shadowBlur;
+		return this as T; 
+		}
+
+		/// 
+		/// <param name="shadowColor"></param>
+		public T ShadowColor(string shadowColor){
+		     this.shadowColor=shadowColor;
+		return this as T; 
+		}
+
+		/// 
+		/// <param name="shadowOffsetY"></param>
+		public T ShadowOffsetY(int shadowOffsetY){
+		     this.shadowOffsetY=shadowOffsetY;
+		return this as T; 
+		}
+
+        public T ShadowOffsetX(int shadowOffsetX)
+        {
+            this.shadowOffsetX = shadowOffsetX;
+            return this as T;
+        }
+
+
+		/// 
+		/// <param name="show"></param>
+		public T Show(bool show){
+		     this.show=show;
+		return this as T; 
+		}
+
+		/// 
+		/// <param name="position"></param>
+		public T Position(StyleLabelTyle position){
+		     this.position=position;
+		return this as T; 
+		}
+
+		/// 
+		/// <param name="formatter"></param>
+		public T Formatter(object formatter){
+		     this.formatter=formatter;
+		return this as T; 
+		}
+
+
+        public T Offset(double[] offset)
+        {
+            this.offset = offset;
+            return this as T;
+        }
+
+        public T Width(double width)
+        {
+            this.width = width;
+            return this as T;
+        }
+
+        public T Opacity(double opacity)
+        {
+            this.opacity = opacity;
+            return this as T;
+        }
+
     }
 }

@@ -14,6 +14,13 @@ namespace ECharts.Entities.series
 
         public object dataFilter { get; set; }
 
+
+        public object step { get; set; }
+
+
+
+        public SamplingType sampling { get; set; }
+
         public Line() {
             this.type = ChartType.line;
         }
@@ -28,9 +35,27 @@ namespace ECharts.Entities.series
             return this;
         }
 
+        public Line Sampling(SamplingType sampling)
+        {
+            this.sampling = sampling;
+            return this;
+        }
+
         public Line DataFilter(object dataFilter)
         {
             this.dataFilter = dataFilter;
+            return this;
+        }
+
+        public Line Step(bool step)
+        {
+            this.step = step;
+            return this;
+        }
+
+        public Line Step(LineStepType step)
+        {
+            this.step = step;
             return this;
         }
 

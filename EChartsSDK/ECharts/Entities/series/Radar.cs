@@ -18,6 +18,9 @@ namespace ECharts.Entities.series
 
         public bool? legendHoverLink { get; set; }
 
+        public IList<IndicatorData> indicator { get; set; }
+
+
         public Radar PolarIndex(int polarIndex)
         {
             this.polarIndex = polarIndex;
@@ -48,6 +51,11 @@ namespace ECharts.Entities.series
             return this;
         }
 
+        public Radar Indicator(params IndicatorData[] values)
+        {
+            this.indicator = values.ToList();
+            return this;
+        }
 
 
         public Radar() {

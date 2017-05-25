@@ -5,11 +5,85 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ECharts;
+using ECharts.Entities;
 
 namespace EChartsWeb.Util
 {
     public class ChartsUtil
     {
+
+        public static string ConvertChartsData(ChartData chartData)
+        {
+            var str = "app.title = '" + chartData.title + "';\r\n";
+
+
+            if (!string.IsNullOrEmpty(chartData.ajax))
+            {
+                str += "$.get('" + chartData.ajax + "',function(data){\r\n";
+            }
+            if (chartData.data != null)
+            {
+                foreach (var data in chartData.data)
+                {
+                    str += "var " + data.Key + " =" + JsonTools.ObjectToJson2(data.Value) + ";\r\n ";
+                }
+            }
+
+            if (chartData.fun != null)
+            {
+                foreach (var fun in chartData.fun)
+                {
+                    str += "var " + fun.Key + " =" + JsonTools.ObjectToJson2(fun.Value) + ";\r\n ";
+                }
+            }
+
+            if (chartData.fundata != null)
+            {
+                foreach (var fd in chartData.fundata)
+                {
+                    str += "var " + fd.Key + " =" + JsonTools.ObjectToJson2(fd.Value) + ";\r\n ";
+                }
+            }
+
+            if (chartData.beforeRaw != null)
+            {
+                foreach (var raw in chartData.beforeRaw)
+                {
+                    str += JsonTools.ObjectToJson2(raw) + ";\r\n ";
+                }
+            }
+            if (chartData.option != null)
+            {
+                if (chartData.IsSetOption)
+                {
+                    str += "myChart.setOption( option = " + JsonTools.ObjectToJson2(chartData.option) + ");\r\n";
+                }
+                else
+                {
+                    str += "option =" + JsonTools.ObjectToJson2(chartData.option) + ";\r\n ";
+                }
+            }
+          
+
+            
+
+            if (chartData.raw != null)
+            {
+                foreach (var raw in chartData.raw)
+                {
+                    str += JsonTools.ObjectToJson2(raw) + ";\r\n ";
+                }
+            }
+            
+            if (!string.IsNullOrEmpty(chartData.ajax))
+            {
+               str += "});";
+            }
+
+            return str;
+        }
+
         public static IList<string> Weeks()
         {
             IList<string> weeks = new List<string>(){

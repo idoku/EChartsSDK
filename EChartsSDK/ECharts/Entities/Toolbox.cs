@@ -28,6 +28,7 @@ namespace ECharts.Entities
 
         public Feature feature { get; set; }
 
+        public ItemStyle iconStyle { get; set; }
         
 
         public ToolBox ShowTitle(bool showTitle)
@@ -86,6 +87,15 @@ namespace ECharts.Entities
             if (textStyle == null)
                 this.textStyle = new style.TextStyle();
             return this.textStyle;
+        }
+
+        public ItemStyle IconStyle()
+        {
+            if (iconStyle==null)
+            {
+                this.iconStyle = new ItemStyle();
+            }
+            return this.iconStyle;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECharts.Entities.style
 {
-    public class AreaStyle
+    public class AreaStyle:Style<AreaStyle>
     {
         public object color { get; set; }
 

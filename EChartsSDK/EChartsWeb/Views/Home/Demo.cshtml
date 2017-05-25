@@ -1,0 +1,262 @@
+﻿@{
+    ViewBag.Title = "Demo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/nav")
+
+@section scripts{
+    <script src="~/Scripts/prefect-scrollbar/perfect-scrollbar.min.js"></script>
+    <link href="~/Scripts/prefect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        var GALLERY_PATH = 'http://echarts.baidu.com/';
+        console.log(GALLERY_PATH);
+        var GALLERY_EDITOR_PATH = 'editor?c=';
+        var GALLERY_VIEW_PATH = GALLERY_PATH + 'view.html?c=';
+        var GALLERY_THUMB_PATH = GALLERY_PATH + 'gallery/data/thumb/';
+    </script>
+
+    <script type="text/javascript">
+     document.getElementById('nav-examples').className = 'active';
+        function loadDemo() {
+            var chartId = location.hash.slice(1);
+            $('#chart-demo').html('<iframe src="' + GALLERY_EDITOR_PATH + chartId + '"></iframe>');
+        }
+
+        $(window).on('hashchange', function () {
+            loadDemo();
+        });
+        loadDemo();
+    </script>
+}
+
+<div id="left-chart-nav" class="ps-container ps-active-y" data-ps-id="efecb0e8-e3fd-9bed-e5ec-3b91a57a267d">
+    <ul>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-scatter">
+                <div class="chart-icon"></div>
+                <div class="chart-name">散点图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-line">
+                <div class="chart-icon"></div>
+                <div class="chart-name">折线图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-bar">
+                <div class="chart-icon"></div>
+                <div class="chart-name">柱状图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-map">
+                <div class="chart-icon"></div>
+                <div class="chart-name">地图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-pie">
+                <div class="chart-icon"></div>
+                <div class="chart-name">饼图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-radar">
+                <div class="chart-icon"></div>
+                <div class="chart-name">雷达图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-candlestick">
+                <div class="chart-icon"></div>
+                <div class="chart-name">k线图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-boxplot">
+                <div class="chart-icon"></div>
+                <div class="chart-name">箱线图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-heatmap">
+                <div class="chart-icon"></div>
+                <div class="chart-name">热力图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-graph">
+                <div class="chart-icon"></div>
+                <div class="chart-name">关系图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-treemap">
+                <div class="chart-icon"></div>
+                <div class="chart-name">矩形树图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-parallel">
+                <div class="chart-icon"></div>
+                <div class="chart-name">平行坐标</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-sankey">
+                <div class="chart-icon"></div>
+                <div class="chart-name">桑基图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-funnel">
+                <div class="chart-icon"></div>
+                <div class="chart-name">漏斗图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-gauge">
+                <div class="chart-icon"></div>
+                <div class="chart-name">仪表盘</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-pictorialBar">
+                <div class="chart-icon"></div>
+                <div class="chart-name">象形柱图</div>
+            </a>
+        </li>
+        <li>
+            <a class="left-chart-nav-link" id="left-chart-nav-themeRiver">
+                <div class="chart-icon"></div>
+                <div class="chart-name">主题河流图</div>
+            </a>
+        </li>
+    </ul>
+    <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+        <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+    </div>
+    <div class="ps-scrollbar-y-rail" style="top: 0px; height: 237px; right: 3px;">
+        <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 61px;"></div>
+    </div>
+</div>
+<div id="nav-mask" style="display: block;"></div>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <a href="http://echarts.baidu.com/index.html" class="navbar-brand"><img src="~/Content/img/logo.png" alt="echarts logo" class="navbar-logo"></a>
+        </div>
+        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li id="nav-index"><a href="http://echarts.baidu.com/index.html">首页</a></li>
+                <li id="nav-doc" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/tutorial.html">教程</a></li>
+                        <li><a href="http://echarts.baidu.com/api.html">API</a></li>
+                        <li><a href="http://echarts.baidu.com/option.html">配置项手册</a></li>
+                        <li><a href="http://echarts.baidu.com/blog/index.html">博客</a></li>
+                        <li><a href="http://echarts.baidu.com/changelog.html">CHANGELOG</a></li>
+
+                    </ul>
+                </li>
+                <li id="nav-examples" class="active">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">作品<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/examples.html">官方示例</a></li>
+                        <li><a href="http://gallery.echartsjs.com">GALLERY</a></li>
+                    </ul>
+                </li>
+                <li id="nav-download" class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://echarts.baidu.com/download.html">下载</a></li>
+                        <li><a href="http://echarts.baidu.com/builder.html">在线构建</a></li>
+                        <li><a href="http://echarts.baidu.com/download-map.html">地图下载</a></li>
+                        <li><a href="http://ecomfe.github.io/echarts-map-tool/">地图构建</a></li>
+                        <li><a href="http://echarts.baidu.com/download-theme.html">主题下载</a></li>
+                        <li><a href="http://echarts.baidu.com/theme-builder/">主题构建</a></li>
+                        <li><a href="http://echarts.baidu.com/spreadsheet.html">表格工具</a></li>
+                    </ul>
+                </li>
+                <li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank">GitHub</a></li>
+                <li id="nav-2" class="0"><a href="http://echarts.baidu.com/echarts2/">2.0</a></li>
+                <li id="nav-homeen"><a href="https://ecomfe.github.io/echarts-doc/public/index.html">EN</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="nav-layer" class="ps-container ps-active-y" data-ps-id="2eed2ba6-8bbf-c2f2-5df6-414498fe2d3a" style="display: block; top: -63px;">
+    <ul class="chart-list">
+        <li>
+            <a href="demo#bubble-gradient"><img src="http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png"></a>
+        </li>
+        <li>
+            <a href="demo#effectScatter-bmap"><img src="http://echarts.baidu.com/gallery/data/thumb/effectScatter-bmap.png"></a>
+        </li>
+        <li>
+            <a href="demo#effectScatter-map"><img src="http://echarts.baidu.com/gallery/data/thumb/effectScatter-map.png"></a>
+        </li>
+        <li>
+            <a href="demo#map-parallel-prices"><img src="http://echarts.baidu.com/gallery/data/thumb/map-parallel-prices.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-anscombe-quartet"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-anscombe-quartet.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-aqi-color"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-aqi-color.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-large"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-large.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-life-expectancy-timeline"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-life-expectancy-timeline.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-map-brush"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-map-brush.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-map"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-map.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-nutrients"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-nutrients.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-painter-choice"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-painter-choice.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-polar-punchCard"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-polar-punchCard.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-punchCard"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-punchCard.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-single-axis"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-single-axis.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-weibo"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-weibo.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-weight"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-weight.png"></a>
+        </li>
+        <li>
+            <a href="demo#scatter-world-population"><img src="http://echarts.baidu.com/gallery/data/thumb/scatter-world-population.png"></a>
+        </li>
+    </ul>
+    <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+        <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+    </div>
+    <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 350px;">
+        <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 120px;"></div>
+    </div>
+</div>
+
+
+<div id="chart-demo"><iframe src="editor?c=bubble-gradient"></iframe></div>
