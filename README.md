@@ -1,34 +1,42 @@
 ECharts .Net类库
 ====================
-当前版本1.0.1
-Echarts
+当前版本3.6.1 Echarts
 ------
 java版:https://github.com/abel533/ECharts  
+------
 echart:http://echarts.baidu.com/
+------
 演示地址:http://echarts.idoku.cn/
------
+------
 本项目是一个.Net版的ECharts开发包,参考@abel1533的java版本,主要目的是方便在.NET中构件Echarts中可能用的全部数据结构,完整的Option结构. ChartOption中的数据Series,包含Line-折线图,Bar-柱状图,Pie-饼图,Scatter-散点图等,支持Echarts中所有图表.支持所有Style类,如AreaStyle,ItemStyle,LineStyle等.支持多种Data数据类型,一个通用的Data数据,以及PieData,PolarData,TreeData等个性化数据结构.
 你可以使用本项目直接构件一个Option对象,使用方法JsonTools.ObjectToJson2(option),(直接使用Json方式返回存在问题,因为function不是标准化的json格式,转换会报错).
  
 图表类型
+###图表类型3.x版本(2.x版本支持的图表不一样)
 #
 •	Line - 折线（面积）图<br>
 •	Bar - 柱状（条形）图<br>
 •	Scatter - 散点（气泡）图<br>
 •	K - K线图<br>
+*       **Candlestick - K线图**
 •	Pie - 饼（圆环）图<br>
 •	Radar - 雷达（面积）图<br>
-•	Chord - 和弦图<br>
 •	Force - 力导向布局图<br>
 •	Map - 地图<br>
 •	Gauge - 仪表盘<br>
 •	Funnel - 漏斗图<br>
 •	Heatmap - 热力图<br>
-•	EventRiver - 事件河流图<br>
-•	Venn - 韦恩图<br>
-•	Tree - 树图<br>
 •	Treemap - 矩形树图<br>
-•	WordCloud - 词云<br>
+*       **EffectScatter - 涟漪效果散点图**
+*       **Boxplot - 箱线图** 
+*       **Graph - 关系图,可以实现force**
+*       **Parallel - 平行坐标系**
+*       **Sankey - 桑基图**
+*       **PictorialBar - 象形柱图  **
+*       **ThemeRiver - 主题河流图  **
+*       **Calendar - 日历图   **
+*       **Map - 地图   **
+
 Echarts组件
 •	Axis - 坐标轴
 •	Grid - 网格
@@ -39,6 +47,14 @@ Echarts组件
 •	DataRange - 值域漫游
 •	Toolbox - 工具箱
 •	Timeline - 时间线
+*       **visualMap - 视觉映射组件**
+
+**3.x版本相比2.x版本改动很大，除了部分图表不一样外，少数api也有改动，因此如果要从2.x升级3.x，一定要做好测试!**
+3.6.1 2017.5.26
+* 3.0版本去掉了k(改为candlestick),radar(雷达图),chord(和弦图),force(使用graph,layout=force替代),island(孤岛),eventRiver(事件河流图),venn(韦恩图),wordCloud(词云),Tree(树图)
+* 3.0版本新增了lines(线图),effectScatter(涟漪效果散点图),candlestick(新的k线图),graph(关系图,可以实现force),boxplot(箱形图),parallel(平行坐标系),sankey(桑基图)
+* 新增大量相关类，部分已有类增加大量属性
+
 Echarts网址
 http://echarts.baidu.com/
  
