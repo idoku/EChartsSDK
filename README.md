@@ -1,70 +1,64 @@
-ECharts .Net类库
-====================
-当前版本3.6.1 Echarts
-------
-java版:https://github.com/abel533/ECharts  
-------
-echart:http://echarts.baidu.com/
-------
-演示地址:http://echarts.idoku.cn/
-------
-本项目是一个.Net版的ECharts开发包,参考@abel1533的java版本,主要目的是方便在.NET中构件Echarts中可能用的全部数据结构,完整的Option结构. ChartOption中的数据Series,包含Line-折线图,Bar-柱状图,Pie-饼图,Scatter-散点图等,支持Echarts中所有图表.支持所有Style类,如AreaStyle,ItemStyle,LineStyle等.支持多种Data数据类型,一个通用的Data数据,以及PieData,PolarData,TreeData等个性化数据结构.
-你可以使用本项目直接构件一个Option对象,使用方法JsonTools.ObjectToJson2(option),(直接使用Json方式返回存在问题,因为function不是标准化的json格式,转换会报错).
- 
-图表类型
-###图表类型3.x版本(2.x版本支持的图表不一样)
-#
-•	Line - 折线（面积）图<br>
-•	Bar - 柱状（条形）图<br>
-•	Scatter - 散点（气泡）图<br>
-•	K - K线图<br>
-*       **Candlestick - K线图**
-•	Pie - 饼（圆环）图<br>
-•	Radar - 雷达（面积）图<br>
-•	Force - 力导向布局图<br>
-•	Map - 地图<br>
-•	Gauge - 仪表盘<br>
-•	Funnel - 漏斗图<br>
-•	Heatmap - 热力图<br>
-•	Treemap - 矩形树图<br>
-*       **EffectScatter - 涟漪效果散点图**
-*       **Boxplot - 箱线图** 
-*       **Graph - 关系图,可以实现force**
-*       **Parallel - 平行坐标系**
-*       **Sankey - 桑基图**
-*       **PictorialBar - 象形柱图  **
-*       **ThemeRiver - 主题河流图  **
-*       **Calendar - 日历图   **
-*       **Map - 地图   **
+##ECharts .Net类库
+###当前版本3.6.1 Echarts
+java版:<https://github.com/abel533/ECharts>
+echart:<http://echarts.baidu.com/>
+演示地址:<http://echarts.idoku.cn/>
+
+本项目是一个.Net版的ECharts开发包,参考[@abel1533][https://github.com/abel533/ECharts]的java版本,主要目的是方便在.NET中构件Echarts中可能用的全部数据结构,完整的Option结构. ChartOption中的数据Series,包含Line-折线图,Bar-柱状图,Pie-饼图,Scatter-散点图等,支持Echarts中所有图表.支持所有Style类,如AreaStyle,ItemStyle,LineStyle等.支持多种Data数据类型,一个通用的Data数据,以及PieData,PolarData,TreeData等个性化数据结构.
+你可以使用本项目直接构件一个Option对象,使用方法JsonTools.ObjectToJson2(option),(直接使用Json方式返回存在问题,因为function不是标准化的json格式,转换会报错).  
+
+###图表类型
+图表类型3.x版本(2.x版本支持的图表不一样)
+- Line  折线（面积）图  
+- Bar  柱状（条形）图  
+- Scatter  散点（气泡）图  
+- K  K线图
+- **Candlestick K线图**  
+- Pie  饼（圆环）图
+- Radar 雷达（面积）图
+- Force 力导向布局图
+- Map 地图
+- Gauge 仪表盘
+- Funnel 漏斗图
+- Heatmap 热力图
+- Treemap 矩形树图
+- **EffectScatter - 涟漪效果散点图**
+- **Boxplot - 箱线图** 
+- **Graph - 关系图,可以实现force**
+- **Parallel - 平行坐标系**
+- **Sankey - 桑基图**
+- **PictorialBar - 象形柱图**
+- **ThemeRiver - 主题河流图**
+- **Calendar - 日历图**
+- **Map - 地图**
 
 Echarts组件
-•	Axis - 坐标轴
-•	Grid - 网格
-•	Title - 标题
-•	Tooltip - 提示
-•	Legend - 图例
-•	DataZoom - 数据区域缩放
-•	DataRange - 值域漫游
-•	Toolbox - 工具箱
-•	Timeline - 时间线
-*       **visualMap - 视觉映射组件**
+- Axis  坐标轴
+- Grid  网格
+- Title  标题
+- Tooltip  提示
+- Legend  图例
+- DataZoom  数据区域缩放
+- DataRange  值域漫游
+- Toolbox  工具箱
+- Timeline  时间线
+- **visualMap  视觉映射组件**
 
+###更新日志
 **3.x版本相比2.x版本改动很大，除了部分图表不一样外，少数api也有改动，因此如果要从2.x升级3.x，一定要做好测试!**
 3.6.1 2017.5.26
-* 3.0版本去掉了k(改为candlestick),radar(雷达图),chord(和弦图),force(使用graph,layout=force替代),island(孤岛),eventRiver(事件河流图),venn(韦恩图),wordCloud(词云),Tree(树图)
-* 3.0版本新增了lines(线图),effectScatter(涟漪效果散点图),candlestick(新的k线图),graph(关系图,可以实现force),boxplot(箱形图),parallel(平行坐标系),sankey(桑基图)
-* 新增大量相关类，部分已有类增加大量属性
+- 3.0版本去掉了k(改为candlestick),radar(雷达图),chord(和弦图),force(使用graph,layout=force替代),island(孤岛),eventRiver(事件河流图),venn(韦恩图),wordCloud(词云),Tree(树图)
+- 3.0版本新增了lines(线图),effectScatter(涟漪效果散点图),candlestick(新的k线图),graph(关系图,可以实现force),boxplot(箱形图),parallel(平行坐标系),sankey(桑基图)
+- 新增大量相关类，部分已有类增加大量属性
 
-Echarts网址
-http://echarts.baidu.com/
+###Echarts网址
+<http://echarts.baidu.com/>
  
-ChartOption说明
-#
-1.         ChartOption 是echarts的主要类.
-2.         使用JsonTools.ObjectToJson2方法返回给前端时,需要使用eval('(' + data + ')')转换为JSON结构.
+####ChartOption说明
+1. ChartOption 是echarts的主要类.
+2. 使用JsonTools.ObjectToJson2方法返回给前端时,需要使用eval('(' + data + ')')转换为JSON结构.
  
-Function说明
-#
+####Function说明
 由于json标准中不包含function类型,一般json库都不支持这种类型,处理这种类型最简单的方式是转换json字符串时,对字符串进行处理.
 读者可以自行使用其他自定义方式实现,本项目使用的.net自带的JRaw()方式.不管是:
 ```C#
