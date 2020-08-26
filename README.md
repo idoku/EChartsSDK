@@ -1,10 +1,10 @@
 ## ECharts .Net类库
-### 当前版本3.6.1 Echarts
+### 当前版本3.6.1 Apache ECharts (incubating)
 java版:<https://github.com/abel533/ECharts>  
 echart:<http://echarts.baidu.com/>  
 演示地址:<http://echarts.idoku.cn/>  
 
-本项目是一个.Net版的ECharts开发包,参考[@abel1533](https://github.com/abel533/ECharts)的java版本,主要目的是方便在.NET中构件Echarts中可能用的全部数据结构,完整的Option结构. ChartOption中的数据Series,包含Line-折线图,Bar-柱状图,Pie-饼图,Scatter-散点图等,支持Echarts中所有图表.支持所有Style类,如AreaStyle,ItemStyle,LineStyle等.支持多种Data数据类型,一个通用的Data数据,以及PieData,PolarData,TreeData等个性化数据结构.
+本项目是一个.Net版的Apache ECharts (incubating)开发包,参考[@abel1533](https://github.com/abel533/ECharts)的java版本,主要目的是方便在.NET中构件Echarts中可能用的全部数据结构,完整的Option结构. ChartOption中的数据Series,包含Line-折线图,Bar-柱状图,Pie-饼图,Scatter-散点图等,支持Echarts中所有图表.支持所有Style类,如AreaStyle,ItemStyle,LineStyle等.支持多种Data数据类型,一个通用的Data数据,以及PieData,PolarData,TreeData等个性化数据结构.
 你可以使用本项目直接构件一个Option对象,使用方法JsonTools.ObjectToJson2(option),(直接使用Json方式返回存在问题,因为function不是标准化的json格式,转换会报错).  
 
 ### 图表类型
@@ -52,7 +52,7 @@ Echarts组件
 - 新增大量相关类，部分已有类增加大量属性
 
 ### Echarts网址
-<http://echarts.baidu.com/>
+<https://echarts.apache.org/>
  
 #### ChartOption说明
 1. ChartOption 是echarts的主要类.
